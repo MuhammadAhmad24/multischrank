@@ -1,10 +1,5 @@
 import React, { useRef } from "react";
-import {
-    motion,
-    useScroll,
-    useTransform,
-    useSpring,
-} from "framer-motion";
+import { motion } from "framer-motion";
 import ScrollCharacterHeading from "./ScrollCharacterHeading";
 import {
     Sparkles,
@@ -80,33 +75,7 @@ const features = [
     },
 ];
 
-function FeatureCard({ item, index, progress }) {
-    const cardY = useSpring(
-        useTransform(
-            progress,
-            [0, 1],
-            index % 2 === 0 ? [26, -26] : [36, -36]
-        ),
-        {
-            stiffness: 90,
-            damping: 24,
-            mass: 0.6,
-        }
-    );
-
-    const contentY = useSpring(
-        useTransform(
-            progress,
-            [0, 1],
-            index % 2 === 0 ? [10, -10] : [14, -14]
-        ),
-        {
-            stiffness: 90,
-            damping: 24,
-            mass: 0.6,
-        }
-    );
-
+function FeatureCard({ item, index }) {
     return (
         <motion.div
             custom={index}
@@ -114,17 +83,14 @@ function FeatureCard({ item, index, progress }) {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.18 }}
-            style={{ y: cardY }}
             whileHover={{
-                y: -6,
-                transition: { duration: 0.3, ease: "easeOut" },
+                y: -4,
+                transition: { duration: 0.25, ease: "easeOut" },
             }}
             className="group relative overflow-hidden rounded-4xl border border-white/10 bg-white/5 p-6 backdrop-blur-2xl transition-all duration-500 hover:border-white/20 hover:shadow-[0_22px_60px_rgba(0,0,0,0.26)] md:p-8"
         >
-            {/* soft amber top glow */}
             <div className="pointer-events-none absolute inset-0 rounded-4xl bg-[radial-gradient(circle_at_top_right,rgba(251,191,36,0.10),transparent_34%)] opacity-70" />
 
-            {/* full card shine */}
             <motion.div
                 animate={{ x: ["-160%", "220%"] }}
                 transition={{
@@ -136,20 +102,11 @@ function FeatureCard({ item, index, progress }) {
                 className="pointer-events-none absolute -top-[20%] left-0 h-[140%] w-[42%] -rotate-18 bg-linear-to-r from-transparent via-white/14 to-transparent blur-2xl"
             />
 
-            <motion.div style={{ y: contentY }} className="relative z-10">
+            <div className="relative z-10">
                 <div className="flex items-start justify-between gap-4">
-                    <motion.div
-                        animate={{ y: [0, -3, 0] }}
-                        transition={{
-                            duration: 3.5,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                            delay: index * 0.2,
-                        }}
-                        className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5"
-                    >
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
                         {item.icon}
-                    </motion.div>
+                    </div>
 
                     <div className="text-4xl font-semibold tracking-[-0.05em] text-white/10 md:text-5xl">
                         {item.number}
@@ -169,64 +126,13 @@ function FeatureCard({ item, index, progress }) {
                         {item.text}
                     </p>
                 </div>
-            </motion.div>
+            </div>
         </motion.div>
     );
 }
 
 export default function MultiSchrankMaterials() {
     const sectionRef = useRef(null);
-
-    const { scrollYProgress } = useScroll({
-        target: sectionRef,
-        offset: ["start end", "end start"],
-    });
-
-    const smoothProgress = useSpring(scrollYProgress, {
-        stiffness: 90,
-        damping: 24,
-        mass: 0.5,
-    });
-
-    const headingY = useSpring(
-        useTransform(smoothProgress, [0, 1], [50, -50]),
-        {
-            stiffness: 80,
-            damping: 22,
-        }
-    );
-
-    const paragraphY = useSpring(
-        useTransform(smoothProgress, [0, 1], [22, -22]),
-        {
-            stiffness: 80,
-            damping: 22,
-        }
-    );
-
-    const ctaY = useSpring(
-        useTransform(smoothProgress, [0, 1], [16, -16]),
-        {
-            stiffness: 80,
-            damping: 22,
-        }
-    );
-
-    const orbLeftY = useSpring(
-        useTransform(smoothProgress, [0, 1], [80, -80]),
-        {
-            stiffness: 60,
-            damping: 20,
-        }
-    );
-
-    const orbRightY = useSpring(
-        useTransform(smoothProgress, [0, 1], [-70, 70]),
-        {
-            stiffness: 60,
-            damping: 20,
-        }
-    );
 
     return (
         <section
@@ -236,8 +142,7 @@ export default function MultiSchrankMaterials() {
             {/* background */}
             <div className="pointer-events-none absolute inset-0">
                 <motion.div
-                    style={{ y: orbLeftY }}
-                    animate={{ scale: [1, 1.04, 1] }}
+                    animate={{ y: [0, -24, 0], scale: [1, 1.04, 1] }}
                     transition={{
                         duration: 10,
                         repeat: Infinity,
@@ -246,8 +151,7 @@ export default function MultiSchrankMaterials() {
                     className="absolute left-[-10%] top-[8%] h-80 w-80 rounded-full bg-amber-500/10 blur-3xl"
                 />
                 <motion.div
-                    style={{ y: orbRightY }}
-                    animate={{ scale: [1, 1.03, 1] }}
+                    animate={{ y: [0, 22, 0], scale: [1, 1.03, 1] }}
                     transition={{
                         duration: 12,
                         repeat: Infinity,
@@ -264,7 +168,6 @@ export default function MultiSchrankMaterials() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true, amount: 0.3 }}
-                    style={{ y: headingY }}
                     className="mx-auto max-w-4xl text-center"
                 >
                     <motion.div
@@ -292,24 +195,18 @@ export default function MultiSchrankMaterials() {
                         line2="Finished with intention."
                     />
 
-                    <motion.p
-                        style={{ y: paragraphY }}
-                        className="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/65 md:text-lg"
-                    >
+                    <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/65 md:text-lg">
                         We focus on materials, precision, and functionality to create
                         furniture that feels refined in appearance, premium in quality,
                         and effortless in daily use.
-                    </motion.p>
+                    </p>
 
-                    <motion.div
-                        style={{ y: ctaY }}
-                        className="mt-8 flex justify-center"
-                    >
+                    <div className="mt-8 flex justify-center">
                         <motion.a
                             href="#"
                             target="_blank"
                             rel="noreferrer"
-                            whileHover={{ y: -3, scale: 1.03 }}
+                            whileHover={{ y: -2, scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-green-400/25 bg-green-500/10 px-5 py-3.5 text-sm font-medium text-green-300 backdrop-blur-xl transition duration-300 hover:border-green-400/50 hover:bg-green-500/20 sm:px-6"
                         >
@@ -329,7 +226,7 @@ export default function MultiSchrankMaterials() {
                                 className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                             />
                         </motion.a>
-                    </motion.div>
+                    </div>
                 </motion.div>
 
                 {/* cards */}
@@ -339,7 +236,6 @@ export default function MultiSchrankMaterials() {
                             key={item.title}
                             item={item}
                             index={index}
-                            progress={smoothProgress}
                         />
                     ))}
                 </div>
