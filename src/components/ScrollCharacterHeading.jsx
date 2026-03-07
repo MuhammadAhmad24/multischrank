@@ -2,7 +2,7 @@ import React, { useMemo, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 function Character({ char, progress, start, end }) {
-    const opacity = useTransform(progress, [start, end], [0.5, 1]);
+    const opacity = useTransform(progress, [start, end], [0.1, 1]);
     const y = useTransform(progress, [start, end], [14, 0]);
 
     return (
@@ -37,9 +37,9 @@ function Line({ text, startIndex, progress }) {
 
 function CharacterMap({ char, index, progress }) {
     const totalSpread = 0.78;
-    const step = 0.022;
+    const step = 0.024;
     const start = Math.min(index * step, totalSpread);
-    const end = Math.min(start + 0.16, 1);
+    const end = Math.min(start + 0.18, 1);
 
     return (
         <Character

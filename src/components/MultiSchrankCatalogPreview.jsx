@@ -1,5 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
 import {
     ArrowLeft,
     ArrowRight,
@@ -30,23 +32,6 @@ const fadeUp = {
         filter: "blur(0px)",
         transition: {
             duration: 0.8,
-            ease: [0.22, 1, 0.36, 1],
-        },
-    },
-};
-
-const cardReveal = {
-    hidden: {
-        opacity: 0,
-        y: 24,
-        scale: 0.985,
-    },
-    show: {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        transition: {
-            duration: 0.7,
             ease: [0.22, 1, 0.36, 1],
         },
     },
@@ -103,156 +88,201 @@ const items = [
     },
 ];
 
-function SliderCard({ item, index }) {
+function autoplay(slider) {
+    let timeout;
+    let mouseOver = false;
+
+    function clearNextTimeout() {
+        clearTimeout(timeout);
+    }
+
+    function nextTimeout() {
+        clearTimeout(timeout);
+        if (mouseOver) return;
+        timeout = setTimeout(() => {
+            slider.next();
+        }, 3500);
+    }
+
+    slider.on("created", () => {
+        slider.container.addEventListener("mouseover", () => {
+            mouseOver = true;
+            clearNextTimeout();
+        });
+        slider.container.addEventListener("mouseout", () => {
+            mouseOver = false;
+            nextTimeout();
+        });
+        nextTimeout();
+    });
+
+    slider.on("dragStarted", clearNextTimeout);
+    slider.on("animationEnded", nextTimeout);
+    slider.on("updated", nextTimeout);
+}
+
+function SliderCard({ item, index, details }) {
+    const slide = details?.slides?.[index];
+    const portion = slide?.portion ?? 0;
+    const distance = Math.abs(slide?.distance ?? 1);
+
+    const scale = 0.9 + Math.max(0, 1 - distance) * 0.1;
+    const opacity = 0.45 + portion * 0.55;
+    const translateY = 18 - portion * 18;
+    const imgScale = 1.02 + portion * 0.06;
+    const glowOpacity = Math.max(0, 1 - distance) * 1;
+    const textOpacity = 0.7 + portion * 0.3;
+
     return (
-        <motion.a
-            data-slide
-            variants={cardReveal}
-            href={item.href}
-            className="group relative block h-90 sm:h-112 w-[82vw] shrink-0 snap-center overflow-hidden rounded-4xl border border-white/10 bg-white/5 shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-2xl sm:w-120 lg:h-136 lg:w-xl"
-        >
-            <div className="absolute inset-0 overflow-hidden">
-                <img
-                    src={item.image}
-                    alt={item.title}
-                    className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.05]"
+        <div className="keen-slider__slide flex justify-center">
+            <motion.a
+                href={item.href}
+                animate={{
+                    scale,
+                    opacity,
+                    y: translateY,
+                    filter: distance < 0.55 ? "blur(0px)" : "blur(1px)",
+                }}
+                transition={{
+                    duration: 0.35,
+                    ease: [0.22, 1, 0.36, 1],
+                }}
+                className="group relative block h-90 w-[82vw] overflow-hidden rounded-4xl border border-white/10 bg-white/5 backdrop-blur-2xl sm:h-112 sm:w-120 lg:h-136 lg:w-160"
+            >
+                <div className="absolute inset-0 overflow-hidden">
+                    <motion.img
+                        src={item.image}
+                        alt={item.title}
+                        animate={{ scale: imgScale }}
+                        transition={{ duration: 0.35, ease: "easeOut" }}
+                        className="h-full w-full object-cover"
+                    />
+
+                    <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/25 to-transparent" />
+                    <div className="absolute inset-0 bg-[linear-gradient(120deg,transparent_0%,rgba(255,255,255,0.08)_45%,transparent_65%)] opacity-70" />
+                </div>
+
+                <motion.div
+                    animate={{ opacity: 0.55 + portion * 0.45 }}
+                    transition={{ duration: 0.35 }}
+                    className="pointer-events-none absolute inset-0 rounded-4xl ring-1 ring-inset ring-white/10"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/25 to-transparent" />
-                <div className="absolute inset-0 bg-[linear-gradient(120deg,transparent_0%,rgba(255,255,255,0.08)_45%,transparent_65%)] opacity-70" />
-            </div>
 
-            <div className="pointer-events-none absolute inset-0 rounded-4xl ring-1 ring-inset ring-white/10 transition duration-300 group-hover:ring-amber-300/30" />
+                <motion.div
+                    animate={{ opacity: glowOpacity }}
+                    transition={{ duration: 0.35 }}
+                    className="pointer-events-none absolute inset-0 rounded-4xl ring-1 ring-inset ring-amber-300/30"
+                />
 
-            <div className="relative flex h-full flex-col justify-between p-6 md:p-8">
-                <div className="flex items-start justify-between gap-4">
-                    <div className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-[11px] uppercase tracking-[0.24em] text-white/75 backdrop-blur-xl">
-                        {item.tag}
-                    </div>
+                <motion.div
+                    animate={{ opacity: glowOpacity }}
+                    transition={{ duration: 0.35 }}
+                    className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.16),transparent_58%)]"
+                />
 
-                    <div className="text-sm font-medium text-white/40">
-                        0{index + 1}
-                    </div>
+                <div className="relative flex h-full flex-col justify-between p-6 md:p-8">
+                    <motion.div
+                        animate={{
+                            opacity: textOpacity,
+                            y: 8 - portion * 8,
+                        }}
+                        transition={{ duration: 0.35 }}
+                        className="flex items-start justify-between gap-4"
+                    >
+                        <div className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-[11px] uppercase tracking-[0.24em] text-white/75 backdrop-blur-xl">
+                            {item.tag}
+                        </div>
+
+                        <div className="text-sm font-medium text-white/40">
+                            {String(index + 1).padStart(2, "0")}
+                        </div>
+                    </motion.div>
+
+                    <motion.div
+                        animate={{
+                            opacity: textOpacity,
+                            y: 18 - portion * 18,
+                        }}
+                        transition={{ duration: 0.35 }}
+                        className="max-w-xl"
+                    >
+                        <h3 className="text-2xl font-semibold tracking-[-0.03em] text-white md:text-4xl">
+                            {item.title}
+                        </h3>
+
+                        <p className="mt-1 max-w-lg text-sm text-white/65 md:mt-4 md:text-base md:leading-7">
+                            {item.description}
+                        </p>
+
+                        <div className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-white/85 transition duration-300 group-hover:text-amber-300 sm:mt-6">
+                            <span>Explore Collection</span>
+                            <ArrowUpRight
+                                size={16}
+                                className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                            />
+                        </div>
+                    </motion.div>
                 </div>
-
-                <div className="max-w-xl">
-                    <h3 className="text-2xl font-semibold tracking-[-0.03em] text-white md:text-4xl">
-                        {item.title}
-                    </h3>
-
-                    <p className="mt-1 sm:mt-4 max-w-lg text-sm md:leading-7 text-white/65 md:text-base">
-                        {item.description}
-                    </p>
-
-                    <div className="mt-2 sm:mt-6 inline-flex items-center gap-2 text-sm font-medium text-white/85 transition duration-300 group-hover:text-amber-300">
-                        <span>Explore Collection</span>
-                        <ArrowUpRight
-                            size={16}
-                            className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                        />
-                    </div>
-                </div>
-            </div>
-        </motion.a>
+            </motion.a>
+        </div>
     );
 }
 
 export default function MultiSchrankCatalogSlider() {
-    const sliderRef = useRef(null);
-    const autoSlideRef = useRef(null);
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const [details, setDetails] = useState(null);
 
-    const getCards = () => {
-        if (!sliderRef.current) return [];
-        return Array.from(sliderRef.current.querySelectorAll("[data-slide]"));
-    };
-
-    const getActiveIndex = () => {
-        if (!sliderRef.current) return 0;
-
-        const cards = getCards();
-        if (!cards.length) return 0;
-
-        const currentScroll = sliderRef.current.scrollLeft;
-
-        let closestIndex = 0;
-        let smallestDiff = Infinity;
-
-        cards.forEach((card, index) => {
-            const diff = Math.abs(card.offsetLeft - currentScroll);
-            if (diff < smallestDiff) {
-                smallestDiff = diff;
-                closestIndex = index;
-            }
-        });
-
-        return closestIndex;
-    };
-
-    const scrollToIndex = (index) => {
-        if (!sliderRef.current) return;
-
-        const cards = getCards();
-        if (!cards.length) return;
-
-        const safeIndex = Math.max(0, Math.min(index, cards.length - 1));
-
-        sliderRef.current.scrollTo({
-            left: cards[safeIndex].offsetLeft,
-            behavior: "smooth",
-        });
-    };
-
-    const scrollLeft = () => {
-        const currentIndex = getActiveIndex();
-        const prevIndex = currentIndex <= 0 ? 0 : currentIndex - 1;
-        scrollToIndex(prevIndex);
-    };
-
-    const scrollRight = () => {
-        const cards = getCards();
-        if (!cards.length) return;
-
-        const currentIndex = getActiveIndex();
-        const nextIndex = currentIndex >= cards.length - 1 ? 0 : currentIndex + 1;
-
-        scrollToIndex(nextIndex);
-    };
-
-    const pauseAutoSlide = () => {
-        if (autoSlideRef.current) {
-            clearInterval(autoSlideRef.current);
-            autoSlideRef.current = null;
-        }
-    };
-
-    const resumeAutoSlide = () => {
-        pauseAutoSlide();
-
-        autoSlideRef.current = setInterval(() => {
-            scrollRight();
-        }, 3500);
-    };
-
-    useEffect(() => {
-        resumeAutoSlide();
-
-        return () => {
-            pauseAutoSlide();
-        };
-    }, []);
+    const [sliderRef, instanceRef] = useKeenSlider(
+        {
+            loop: true,
+            mode: "snap",
+            rubberband: false,
+            renderMode: "precision",
+            initial: 0,
+            slideChanged(slider) {
+                setCurrentSlide(slider.track.details.rel);
+            },
+            detailsChanged(slider) {
+                setDetails(slider.track.details);
+            },
+            created(slider) {
+                setCurrentSlide(slider.track.details.rel);
+                setDetails(slider.track.details);
+            },
+            slides: {
+                origin: "center",
+                perView: 1,
+                spacing: 20,
+            },
+            breakpoints: {
+                "(min-width: 640px)": {
+                    slides: {
+                        origin: "center",
+                        perView: 1,
+                        spacing: 20,
+                    },
+                },
+                "(min-width: 1024px)": {
+                    slides: {
+                        origin: "center",
+                        perView: 2,
+                        spacing: 20,
+                    },
+                },
+            },
+        },
+        [autoplay]
+    );
 
     return (
         <section
             id="catalog"
             className="relative overflow-hidden bg-neutral-950 py-12 text-white md:py-18"
         >
-            {/* Background */}
             <div className="pointer-events-none absolute inset-0">
                 <div className="absolute left-[-8%] top-[12%] h-80 w-80 rounded-full bg-amber-500/10 blur-3xl" />
                 <div className="absolute right-[-8%] bottom-[8%] h-96 w-96 rounded-full bg-white/6 blur-3xl" />
             </div>
-
-            {/* Grid */}
-            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size[:42px_42px]" />
 
             <motion.div
                 variants={container}
@@ -261,7 +291,6 @@ export default function MultiSchrankCatalogSlider() {
                 viewport={{ once: true, amount: 0.12 }}
                 className="relative"
             >
-                {/* Header */}
                 <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
                     <div className="max-w-3xl">
                         <motion.div
@@ -286,62 +315,63 @@ export default function MultiSchrankCatalogSlider() {
                             variants={fadeUp}
                             className="mt-6 max-w-2xl text-base leading-8 text-white/65 md:text-lg"
                         >
-                            Explore a curated selection of premium furniture and
-                            interior solutions created for elegant homes, modern
-                            lifestyles, and timeless living spaces.
+                            Explore a curated selection of premium furniture and interior
+                            solutions created for elegant homes, modern lifestyles, and
+                            timeless living spaces.
                         </motion.p>
                     </div>
                 </div>
 
-                {/* Slider */}
-                <motion.div variants={fadeUp} className="relative mt-8 sm:mt-14">
-                    {/* Left Arrow */}
+                <motion.div variants={fadeUp} className="relative z-50 mt-8 sm:mt-14">
                     <button
-                        onClick={() => {
-                            pauseAutoSlide();
-                            scrollLeft();
-                            resumeAutoSlide();
-                        }}
+                        onClick={() => instanceRef.current?.prev()}
                         className="absolute left-4 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-neutral-900/70 text-white/80 backdrop-blur-xl transition duration-300 hover:border-white/20 hover:bg-neutral-800/80 hover:text-white lg:inline-flex"
                         aria-label="Scroll left"
                     >
                         <ArrowLeft size={18} />
                     </button>
 
-                    {/* Right Arrow */}
                     <button
-                        onClick={() => {
-                            pauseAutoSlide();
-                            scrollRight();
-                            resumeAutoSlide();
-                        }}
+                        onClick={() => instanceRef.current?.next()}
                         className="absolute right-4 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-neutral-900/70 text-white/80 backdrop-blur-xl transition duration-300 hover:border-white/20 hover:bg-neutral-800/80 hover:text-white lg:inline-flex"
                         aria-label="Scroll right"
                     >
                         <ArrowRight size={18} />
                     </button>
 
-                    <div
-                        ref={sliderRef}
-                        onMouseEnter={pauseAutoSlide}
-                        onMouseLeave={resumeAutoSlide}
-                        className="scrollbar-none flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 sm:px-6 pb-4 lg:px-10"
-                        style={{
-                            scrollbarWidth: "none",
-                            msOverflowStyle: "none",
-                        }}
-                    >
+                    <div ref={sliderRef} className="keen-slider px-0 sm:px-6 lg:px-10">
                         {items.map((item, index) => (
-                            <SliderCard key={item.title} item={item} index={index} />
+                            <SliderCard
+                                key={item.title}
+                                item={item}
+                                index={index}
+                                details={details}
+                            />
                         ))}
+                    </div>
+
+                    <div className="mt-7 flex items-center justify-center gap-2">
+                        {items.map((_, idx) => {
+                            const isActive = currentSlide === idx;
+                            return (
+                                <button
+                                    key={idx}
+                                    onClick={() => instanceRef.current?.moveToIdx(idx)}
+                                    aria-label={`Go to slide ${idx + 1}`}
+                                    className={`h-2 rounded-full transition-all duration-500 ${isActive
+                                            ? "w-8 bg-amber-300"
+                                            : "w-2 bg-white/25 hover:bg-white/45"
+                                        }`}
+                                />
+                            );
+                        })}
                     </div>
                 </motion.div>
 
-                {/* CTA */}
                 <div className="mx-auto mt-12 flex max-w-7xl flex-col items-center justify-center gap-4 px-5 sm:px-6 sm:flex-row lg:px-10">
                     <a
                         href="/catalog"
-                        className="group inline-flex items-center gap-2 rounded-full bg-white px-5 sm:px-6 py-3.5 text-sm font-semibold text-neutral-900 transition duration-300 hover:scale-[1.03] hover:shadow-[0_12px_40px_rgba(255,255,255,0.18)]"
+                        className="group inline-flex items-center gap-2 rounded-full bg-white px-5 py-3.5 text-sm font-semibold text-neutral-900 transition duration-300 hover:scale-[1.03] hover:shadow-[0_12px_40px_rgba(255,255,255,0.18)] sm:px-6"
                     >
                         View Full Catalog
                         <ArrowRight
@@ -354,7 +384,7 @@ export default function MultiSchrankCatalogSlider() {
                         href="#"
                         target="_blank"
                         rel="noreferrer"
-                        className="group inline-flex items-center gap-2 rounded-full border border-green-400/25 bg-green-500/10 px-5 sm:px-6 py-3.5 text-sm font-medium text-green-300 backdrop-blur-xl transition duration-300 hover:scale-[1.03] hover:border-green-400/50 hover:bg-green-500/20"
+                        className="group inline-flex items-center gap-2 rounded-full border border-green-400/25 bg-green-500/10 px-5 py-3.5 text-sm font-medium text-green-300 backdrop-blur-xl transition duration-300 hover:scale-[1.03] hover:border-green-400/50 hover:bg-green-500/20 sm:px-6"
                     >
                         <MessageCircle size={17} />
                         Start Your Project

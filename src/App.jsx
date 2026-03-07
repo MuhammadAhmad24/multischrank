@@ -11,7 +11,6 @@ import MultiSchrankProcess from "./components/MultiSchrankProcess";
 import MultiSchrankFooter from "./components/Footer";
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>

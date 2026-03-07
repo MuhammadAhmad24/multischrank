@@ -1,147 +1,177 @@
 import React from "react";
-import { ArrowUpRight, MessageCircle, Mail, Phone, MapPin } from "lucide-react";
+import { motion } from "framer-motion";
+import { MessageCircle } from "lucide-react";
 
-const footerLinks = [
+const navLinks = [
     { name: "Home", href: "#" },
     { name: "About", href: "#about" },
     { name: "Catalog", href: "#catalog" },
     { name: "Contact", href: "#contact" },
 ];
 
+const socialLinks = [
+    { name: "Instagram", href: "#" },
+    { name: "Facebook", href: "#" },
+];
+
+const brand = "MultiSchrank";
+
+function AnimatedBrandText({ text }) {
+    return (
+        <h2
+            className="
+                select-none
+                leading-none
+                tracking-[-0.08em]
+                text-white
+                text-[3.4rem]
+                sm:text-[6rem]
+                md:text-[8rem]
+                lg:text-[11rem]
+                xl:text-[14rem]
+                2xl:text-[16rem]
+                font-semibold
+                whitespace-nowrap
+            "
+        >
+            {text.split("").map((char, index) => (
+                <motion.span
+                    key={`${char}-${index}`}
+                    whileHover={{
+                        scaleY: 1.08,
+                        scaleX: 1.03,
+                        y: -4,
+                    }}
+                    transition={{
+                        type: "spring",
+                        stiffness: 260,
+                        damping: 16,
+                    }}
+                    className="inline-block origin-bottom"
+                >
+                    {char === " " ? "\u00A0" : char}
+                </motion.span>
+            ))}
+        </h2>
+    );
+}
+
 export default function MultiSchrankFooter() {
     return (
-        <footer className="relative overflow-hidden border-t border-white/10 bg-neutral-950 text-white">
-            {/* Background Glow */}
+        <footer className="relative overflow-hidden bg-neutral-950 text-white">
+            {/* subtle background glow */}
             <div className="pointer-events-none absolute inset-0">
-                <div className="absolute left-[-10%] top-[10%] h-72 w-72 rounded-full bg-amber-500/10 blur-3xl" />
-                <div className="absolute right-[-8%] bottom-[-10%] h-80 w-80 rounded-full bg-white/5 blur-3xl" />
+                <div className="absolute left-[-10%] top-[-10%] h-72 w-72 rounded-full bg-white/5 blur-3xl" />
+                <div className="absolute right-[-10%] bottom-[-20%] h-96 w-96 rounded-full bg-amber-500/10 blur-3xl" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.05),transparent_40%)]" />
             </div>
 
-            {/* Fine Grid Overlay */}
-            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[40px_40px] hidden" />
+            <div className="relative mx-auto max-w-400 px-5 pb-5 pt-8 sm:px-8 md:px-10 lg:px-12 lg:pt-10">
+                {/* top area */}
+                <div className="grid grid-cols-1 gap-10 pb-10 md:grid-cols-2 lg:grid-cols-[1.2fr_0.9fr_0.9fr_0.7fr] lg:gap-12">
+                    {/* brand / logo */}
+                    <div className="flex flex-col justify-between">
+                        <div>
+                            <p className="mb-8 text-sm tracking-wide text-white/90">
+                                MultiSchrank
+                            </p>
 
-            <div className="relative mx-auto max-w-7xl px-5 sm:px-6 pt-16 lg:px-10">
-                <div className="grid gap-10 lg:grid-cols-4">
-                    {/* Brand */}
-                    <div className="lg:col-span-1">
-                        <a href="#" className="group inline-flex items-center gap-3">
-                            <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/15 bg-white/5 shadow-[0_0_30px_rgba(255,255,255,0.06)] backdrop-blur-xl transition duration-300 group-hover:scale-105 group-hover:border-amber-400/40">
-                                <span className="text-sm font-semibold text-white">M</span>
-                            </div>
-                            <div>
-                                <p className="text-[11px] uppercase tracking-[0.45em] text-white/45">
-                                    Premium Interiors
-                                </p>
-                                <h2 className="text-lg font-semibold tracking-wide text-white">
-                                    MultiSchrank
-                                </h2>
-                            </div>
-                        </a>
-
-                        <p className="mt-5 max-w-sm text-sm leading-7 text-white/65">
-                            Modern premium wardrobes and interior solutions crafted with
-                            elegance, functionality, and timeless design.
-                        </p>
-
-                        <a
-                            href="#"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="mt-6 inline-flex items-center gap-2 rounded-full border border-green-400/25 bg-green-500/10 px-4 py-2.5 text-sm font-medium text-green-300 backdrop-blur-xl transition duration-300 hover:scale-[1.03] hover:border-green-400/50 hover:bg-green-500/20"
-                        >
-                            <MessageCircle size={16} />
-                            Start Your Project
-                        </a>
-                    </div>
-
-                    {/* Quick Links */}
-                    <div>
-                        <h3 className="text-sm font-semibold uppercase tracking-[0.25em] text-white/45">
-                            Quick Links
-                        </h3>
-                        <div className="mt-5 flex flex-col gap-3">
-                            {footerLinks.map((item) => (
-                                <a
-                                    key={item.name}
-                                    href={item.href}
-                                    className="w-fit text-sm text-white/70 transition hover:text-white"
-                                >
-                                    {item.name}
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Contact Info */}
-                    <div>
-                        <h3 className="text-sm font-semibold uppercase tracking-[0.25em] text-white/45">
-                            Contact
-                        </h3>
-                        <div className="mt-5 space-y-4">
-                            <a
-                                href="mailto:info@multischrank.com"
-                                className="flex items-start gap-3 text-sm text-white/70 transition hover:text-white"
-                            >
-                                <Mail size={16} className="mt-0.5 text-amber-400" />
-                                <span>info@multischrank.com</span>
+                            {/* header style logo */}
+                            <a href="#" className="group inline-flex items-center gap-3">
+                                <div className="flex h-20 w-20 items-center justify-center rounded-[1.7rem] border border-white/15 bg-white/5 shadow-[0_0_30px_rgba(255,255,255,0.06)] backdrop-blur-xl transition duration-300 group-hover:scale-105 group-hover:border-amber-400/40">
+                                    <span className="text-2xl font-semibold text-white">
+                                        M
+                                    </span>
+                                </div>
                             </a>
 
-                            <a
-                                href="tel:+923001234567"
-                                className="flex items-start gap-3 text-sm text-white/70 transition hover:text-white"
-                            >
-                                <Phone size={16} className="mt-0.5 text-amber-400" />
-                                <span>+49 111 1234567</span>
-                            </a>
-
-                            <div className="flex items-start gap-3 text-sm text-white/70">
-                                <MapPin size={16} className="mt-0.5 text-amber-400" />
-                                <span>Germany</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* CTA / Catalog */}
-                    <div>
-                        <h3 className="text-sm font-semibold uppercase tracking-[0.25em] text-white/45">
-                            Explore
-                        </h3>
-
-                        <div className="mt-5 rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl">
-                            <p className="text-sm leading-7 text-white/70">
-                                Discover elegant wardrobe concepts, premium materials, and
-                                custom interior solutions designed for modern living.
+                            <p className="mt-6 max-w-xs text-sm leading-7 text-white/60">
+                                Premium wardrobes and interior solutions crafted with
+                                elegance, precision, and timeless design.
                             </p>
 
                             <a
-                                href="#catalog"
-                                className="group mt-5 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-neutral-900 transition duration-300 hover:scale-[1.03] hover:shadow-[0_10px_40px_rgba(255,255,255,0.18)]"
+                                href="#"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="mt-6 inline-flex items-center gap-2 rounded-full border border-green-400/25 bg-green-500/10 px-4 py-2.5 text-sm font-medium text-green-300 backdrop-blur-xl transition duration-300 hover:scale-[1.03] hover:border-green-400/50 hover:bg-green-500/20"
                             >
-                                Explore Catalog
-                                <ArrowUpRight
-                                    size={16}
-                                    className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                                />
+                                <MessageCircle size={16} />
+                                Start Your Project
                             </a>
                         </div>
                     </div>
+
+                    {/* nav */}
+                    <div>
+                        <ul className="space-y-2.5">
+                            {navLinks.map((item) => (
+                                <li key={item.name}>
+                                    <a
+                                        href={item.href}
+                                        className="text-[15px] text-white transition duration-300 hover:opacity-70"
+                                    >
+                                        {item.name}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* contact */}
+                    <div>
+                        <div className="space-y-2.5 text-[15px] leading-relaxed text-white">
+                            <a
+                                href="mailto:info@multischrank.com"
+                                className="block transition duration-300 hover:opacity-70"
+                            >
+                                info@multischrank.com
+                            </a>
+                            <a
+                                href="tel:+491111234567"
+                                className="block transition duration-300 hover:opacity-70"
+                            >
+                                +49 111 1234567
+                            </a>
+                            <div className="pt-1 text-white/85">
+                                <p>MultiSchrank Interiors</p>
+                                <p>Germany</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* socials */}
+                    <div>
+                        <ul className="space-y-2.5">
+                            {socialLinks.map((item) => (
+                                <li key={item.name}>
+                                    <a
+                                        href={item.href}
+                                        className="text-[15px] text-white transition duration-300 hover:opacity-70"
+                                    >
+                                        {item.name}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
 
-                {/* Bottom Bar */}
-                <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 py-6 text-sm text-white/45 md:flex-row">
-                    <p>© {new Date().getFullYear()} MultiSchrank. All rights reserved.</p>
+                {/* huge brand text */}
+                <div className="overflow-hidden pt-2">
+                    <AnimatedBrandText text={brand} />
+                </div>
 
-                    <p className="text-center md:text-right">
-                        Designed by{" "}
-                        <a
-                            href="https://gplusagency.com"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="font-medium text-white/75 transition hover:text-amber-400"
-                        >
-                            G+ Agency
-                        </a>
+                {/* bottom bar */}
+                <div className="mt-4 flex flex-col gap-3 border-t border-white/20 pt-4 text-xs text-white sm:flex-row sm:items-center sm:justify-between">
+                    <p>
+                        © {new Date().getFullYear()} MultiSchrank | Designed &
+                        developed by <a href="#">G+ Agency</a>
                     </p>
+
+                    <a href="#" className="transition duration-300 hover:opacity-70">
+                        Privacy Policy
+                    </a>
                 </div>
             </div>
         </footer>

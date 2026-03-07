@@ -19,7 +19,7 @@ export default function MultiSchrankHeader() {
     }, []);
 
     return (
-        <header className="relative overflow-hidden bg-neutral-950 text-white">
+        <header className="relative overflow-hidden bg-neutral-950 text-white z-90">
 
             {/* Navbar */}
             <nav

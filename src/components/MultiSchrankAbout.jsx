@@ -1,50 +1,6 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Sparkles, BadgeCheck, Ruler, Layers3 } from "lucide-react";
-
-const container = {
-    hidden: {},
-    show: {
-        transition: {
-            staggerChildren: 0.14,
-            delayChildren: 0.1,
-        },
-    },
-};
-
-const fadeUp = {
-    hidden: {
-        opacity: 0,
-        y: 40,
-        filter: "blur(10px)",
-    },
-    show: {
-        opacity: 1,
-        y: 0,
-        filter: "blur(0px)",
-        transition: {
-            duration: 0.9,
-            ease: [0.22, 1, 0.36, 1],
-        },
-    },
-};
-
-const cardReveal = {
-    hidden: {
-        opacity: 0,
-        y: 24,
-        filter: "blur(8px)",
-    },
-    show: {
-        opacity: 1,
-        y: 0,
-        filter: "blur(0px)",
-        transition: {
-            duration: 0.7,
-            ease: [0.22, 1, 0.36, 1],
-        },
-    },
-};
 
 const features = [
     {
@@ -64,88 +20,149 @@ const features = [
     },
 ];
 
-export default function MultiSchrankAbout() {
+function AnimatedCard({ item, progress, range }) {
+    const [start, end] = range;
+
+    const opacity = useTransform(progress, [start, end], [0, 1]);
+    const y = useTransform(progress, [start, end], [90, 0]);
+    const scale = useTransform(progress, [start, end], [0.9, 1]);
+    const rotateX = useTransform(progress, [start, end], [12, 0]);
+    const filter = useTransform(
+        progress,
+        [start, end],
+        ["blur(10px)", "blur(0px)"]
+    );
+
     return (
-        <section
-            id="about"
-            className="relative overflow-hidden bg-neutral-950 py-12 text-white md:py-18"
+        <motion.div
+            style={{
+                opacity,
+                y,
+                scale,
+                rotateX,
+                filter,
+                transformPerspective: 1200,
+            }}
+            className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-xl transition-all duration-500"
         >
-            {/* Background */}
-            <div className="pointer-events-none absolute inset-0">
-                <div className="absolute left-[10%] top-[10%] h-72 w-72 rounded-full bg-amber-500/10 blur-3xl" />
-                <div className="absolute right-[8%] bottom-[0%] h-80 w-80 rounded-full bg-white/6 blur-3xl" />
+            <div className="absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.15),transparent_60%)]" />
             </div>
 
-            {/* Grid */}
-            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size[:42px_42px]" />
+            <div className="relative">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5">
+                    {item.icon}
+                </div>
+
+                <h3 className="mt-6 text-xl font-semibold text-white">
+                    {item.title}
+                </h3>
+
+                <p className="mt-3 text-sm leading-7 text-white/60">
+                    {item.text}
+                </p>
+            </div>
+        </motion.div>
+    );
+}
+
+export default function MultiSchrankAbout() {
+    const sectionRef = useRef(null);
+    const cardsRef = useRef(null);
+
+    const { scrollYProgress: sectionProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start 85%", "end 20%"],
+    });
+
+    const { scrollYProgress: cardsProgress } = useScroll({
+        target: cardsRef,
+        offset: ["start 90%", "end 20%"],
+    });
+
+    const bgY = useTransform(sectionProgress, [0, 1], [60, -60]);
+    const sectionOpacity = useTransform(
+        sectionProgress,
+        [0, 0.12, 0.9, 1],
+        [0.45, 1, 1, 0.75]
+    );
+
+    const headingY = useTransform(sectionProgress, [0, 0.2], [40, 0]);
+    const headingOpacity = useTransform(sectionProgress, [0, 0.18], [0, 1]);
+    const headingFilter = useTransform(
+        sectionProgress,
+        [0, 0.18],
+        ["blur(10px)", "blur(0px)"]
+    );
+
+    // 1 -> 2 -> 3 on scroll down
+    // 3 -> 2 -> 1 on scroll up automatically
+    const ranges = [
+        [0.00, 0.22],
+        [0.18, 0.40],
+        [0.36, 0.58],
+    ];
+
+    return (
+        <section
+            ref={sectionRef}
+            id="about"
+            className="relative overflow-hidden bg-neutral-950 pb-12 sm:pb-18 -mt-20 text-white"
+        >
+            {/* Background glow */}
+            <motion.div
+                style={{ y: bgY }}
+                className="pointer-events-none absolute inset-0"
+            >
+                <div className="absolute left-[10%] top-[10%] h-72 w-72 rounded-full bg-amber-500/10 blur-3xl" />
+                <div className="absolute right-[8%] bottom-[0%] h-80 w-80 rounded-full bg-white/10 blur-3xl" />
+            </motion.div>
 
             <motion.div
-                variants={container}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.2 }}
-                className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-10"
+                style={{ opacity: sectionOpacity }}
+                className="relative mx-auto max-w-7xl px-6 lg:px-10"
             >
-                {/* Center Intro */}
-                <div className="mx-auto max-w-4xl text-center">
-                    <motion.div
-                        variants={fadeUp}
-                        className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.28em] text-white/65 backdrop-blur-xl"
-                    >
+                {/* Heading */}
+                <motion.div
+                    style={{
+                        y: headingY,
+                        opacity: headingOpacity,
+                        filter: headingFilter,
+                    }}
+                    className="mx-auto max-w-4xl text-center"
+                >
+                    <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.28em] text-white/70 backdrop-blur-xl">
                         <Sparkles size={14} className="text-amber-400" />
                         About MultiSchrank
-                    </motion.div>
+                    </div>
 
-                    <motion.h2
-                        variants={fadeUp}
-                        className="mt-6 text-3xl font-semibold leading-[1.05] tracking-[-0.04em] text-white sm:text-4xl md:text-5xl xl:text-6xl"
-                    >
+                    <h2 className="mt-6 text-4xl font-semibold leading-tight tracking-tight sm:text-5xl md:text-6xl">
                         Crafted to bring{" "}
                         <span className="bg-linear-to-r from-white via-white to-amber-300 bg-clip-text text-transparent">
                             beauty and function
                         </span>{" "}
-                        into everyday spaces.
-                    </motion.h2>
+                        into everyday spaces
+                    </h2>
 
-                    <motion.p
-                        variants={fadeUp}
-                        className="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/65 md:text-lg"
-                    >
+                    <p className="mx-auto mt-6 max-w-3xl text-lg text-white/60">
                         MultiSchrank creates premium furniture and interior solutions
                         that combine modern aesthetics, thoughtful functionality, and
-                        timeless craftsmanship. Every concept is designed to elevate
-                        contemporary homes with a balance of elegance, comfort, and
-                        intelligent use of space.
-                    </motion.p>
-                </div>
+                        timeless craftsmanship.
+                    </p>
+                </motion.div>
 
-                {/* Feature Cards */}
-                <div className="mt-8 sm:mt-14 grid gap-5 md:grid-cols-3">
-                    {features.map((item) => (
-                        <motion.div
+                {/* Cards */}
+                <div
+                    ref={cardsRef}
+                    className="mt-16 grid gap-6 md:grid-cols-3"
+                >
+                    {features.map((item, index) => (
+                        <AnimatedCard
                             key={item.title}
-                            variants={cardReveal}
-                            className="group relative overflow-hidden rounded-4xl border border-white/10 bg-white/5 p-6 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.25)] transition-all duration-500 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_35px_80px_rgba(0,0,0,0.55)]"
-                        >
-
-                            {/* Hover Glow */}
-                            <div className="pointer-events-none absolute inset-0 rounded-4xl bg-[radial-gradient(circle_at_top_right,rgba(251,191,36,0.10),transparent_28%)] opacity-0 transition duration-500 group-hover:opacity-100" />
-
-                            <div className="relative">
-                                <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
-                                    {item.icon}
-                                </div>
-
-                                <h3 className="mt-5 text-xl font-semibold text-white">
-                                    {item.title}
-                                </h3>
-
-                                <p className="mt-3 text-sm leading-7 text-white/60">
-                                    {item.text}
-                                </p>
-                            </div>
-
-                        </motion.div>
+                            item={item}
+                            progress={cardsProgress}
+                            range={ranges[index]}
+                        />
                     ))}
                 </div>
             </motion.div>
