@@ -22,9 +22,9 @@ function App() {
 
   return (
     <>
-      {/* {loading && <PremiumPreloader onFinish={() => setLoading(false)} />}
+      {loading && <PremiumPreloader onFinish={() => setLoading(false)} />}
 
-      {!loading && ( */}
+      {!loading && (
         <BrowserRouter>
           <ScrollToTop />
           <MultiSchrankHeader />
@@ -36,7 +36,7 @@ function App() {
 
           <MultiSchrankFooter />
         </BrowserRouter>
-       {/* )} */}
+      )}
     </>
   )
 }
