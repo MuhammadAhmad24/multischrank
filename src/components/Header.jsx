@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Menu, X, ArrowRight, MessageCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const navLinks = [
-    { name: "Home", href: "#" },
-    { name: "About", href: "#about" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
     { name: "Catalog", href: "#catalog" },
     { name: "Contact", href: "#contact" },
 ];
@@ -30,7 +31,7 @@ export default function MultiSchrankHeader() {
             >
                 <div className="mx-auto flex max-w-7xl items-center justify-between px-5 sm:px-6 py-4 lg:px-10">
                     {/* Logo */}
-                    <a href="#" className="group relative inline-flex items-center gap-3">
+                    <Link to="/" className="group relative inline-flex items-center gap-3">
                         <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/15 bg-white/5 shadow-[0_0_30px_rgba(255,255,255,0.06)] backdrop-blur-xl transition duration-300 group-hover:scale-105 group-hover:border-amber-400/40">
                             <span className="text-sm font-semibold text-white">
                                 M
@@ -44,19 +45,19 @@ export default function MultiSchrankHeader() {
                                 MultiSchrank
                             </h1>
                         </div>
-                    </a>
+                    </Link>
 
                     {/* Desktop Menu */}
                     <div className="hidden items-center gap-8 lg:flex">
                         {navLinks.map((item) => (
-                            <a
+                            <Link
                                 key={item.name}
-                                href={item.href}
+                                to={item.href}
                                 className="group relative text-sm font-medium text-white/75 transition hover:text-white"
                             >
                                 {item.name}
                                 <span className="absolute -bottom-1 left-0 h-px w-0 bg-amber-400 transition-all duration-300 group-hover:w-full" />
-                            </a>
+                            </Link>
                         ))}
                     </div>
 
@@ -72,8 +73,8 @@ export default function MultiSchrankHeader() {
                             Contact Us
                         </a>
 
-                        <a
-                            href="#catalog"
+                        <Link
+                            to="/catalog"
                             className="group inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-neutral-900 transition duration-300 hover:scale-[1.03] hover:shadow-[0_10px_40px_rgba(255,255,255,0.18)]"
                         >
                             Explore Catalog
@@ -81,7 +82,7 @@ export default function MultiSchrankHeader() {
                                 size={16}
                                 className="transition-transform duration-300 group-hover:translate-x-1"
                             />
-                        </a>
+                        </Link>
                     </div>
 
                     {/* Mobile Toggle */}
@@ -101,14 +102,14 @@ export default function MultiSchrankHeader() {
                     <div className="mx-auto max-w-7xl px-5 sm:px-6 py-5">
                         <div className="flex flex-col gap-4">
                             {navLinks.map((item) => (
-                                <a
+                                <Link
                                     key={item.name}
-                                    href={item.href}
+                                    to={item.href}
                                     onClick={() => setMobileOpen(false)}
                                     className="rounded-xl border border-white/8 bg-white/3 px-4 py-3 text-sm text-white/80 transition hover:border-white/15 hover:bg-white/5 hover:text-white"
                                 >
                                     {item.name}
-                                </a>
+                                </Link>
                             ))}
 
                             <a
@@ -121,13 +122,12 @@ export default function MultiSchrankHeader() {
                                 Contact Us
                             </a>
 
-                            <a
-                                href="#catalog"
+                            <Link to="/catalog"
                                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-semibold text-neutral-900 transition hover:opacity-90"
                             >
                                 Explore Catalog
                                 <ArrowRight size={16} />
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

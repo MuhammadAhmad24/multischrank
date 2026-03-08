@@ -1,10 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const navLinks = [
-    { name: "Home", href: "#" },
-    { name: "About", href: "#about" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
     { name: "Catalog", href: "#catalog" },
     { name: "Contact", href: "#contact" },
 ];
@@ -107,12 +108,13 @@ export default function MultiSchrankFooter() {
                         <ul className="space-y-2.5">
                             {navLinks.map((item) => (
                                 <li key={item.name}>
-                                    <a
-                                        href={item.href}
+                                    <Link
+                                        to={item.href}
+                                        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                                         className="text-[15px] text-white transition duration-300 hover:opacity-70"
                                     >
                                         {item.name}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>

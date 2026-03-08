@@ -1,0 +1,242 @@
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+
+const steps = [
+    {
+        id: "01",
+        label: "Discovery",
+        title: "Understanding the space",
+        text: "Every project begins with observation. We study proportion, mood, and how the space should feel in real use.",
+    },
+    {
+        id: "02",
+        label: "Concept",
+        title: "Shaping the direction",
+        text: "Materials, structure, and visual rhythm are defined to create a clear design language.",
+    },
+    {
+        id: "03",
+        label: "Refinement",
+        title: "Resolving the details",
+        text: "Dimensions, transitions, and finishes are refined carefully before production begins.",
+    },
+    {
+        id: "04",
+        label: "Craft",
+        title: "Built with precision",
+        text: "Each element is produced with discipline where construction quality and finishing matter equally.",
+    },
+    {
+        id: "05",
+        label: "Completion",
+        title: "Balanced final result",
+        text: "The final result is designed to feel calm, refined, and lasting beyond trends.",
+    },
+];
+
+export default function ProcessSection() {
+    const sectionRef = useRef(null);
+    const timelineRef = useRef(null);
+
+    const { scrollYProgress } = useScroll({
+        target: timelineRef,
+        offset: ["start 75%", "end 85%"],
+    });
+
+    const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+    const dotY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
+    const { scrollYProgress: sectionProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start 85%", "end 20%"],
+    });
+
+    const bgY = useTransform(sectionProgress, [0, 1], [60, -60]);
+
+    return (
+        <section
+            ref={sectionRef}
+            className="relative overflow-hidden bg-neutral-950 py-28 text-white md:py-32"
+        >
+
+            {/* Background glow */}
+            <motion.div
+                style={{ y: bgY }}
+                className="pointer-events-none fixed inset-0"
+            >
+                <div className="fixed left-[10%] top-[5%] h-72 w-72 rounded-full bg-amber-500/10 blur-3xl" />
+                <div className="absolute right-[8%] bottom-[0%] h-80 w-80 rounded-full bg-white/10 blur-3xl" />
+            </motion.div>
+            
+            <div className="pointer-events-none absolute inset-0">
+                <div className="absolute left-1/2 top-1/2 h-120 w-120 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/4 blur-[140px]" />
+            </div>
+
+            <div className="relative mx-auto max-w-7xl px-6 md:px-10 lg:px-16">
+                <div className="max-w-3xl">
+                    <span className="inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[11px] uppercase tracking-[0.28em] text-white/60">
+                        Craftsmanship / Process
+                    </span>
+
+                    <h2 className="mt-6 text-4xl font-medium leading-[0.92] tracking-[-0.05em] sm:text-5xl md:text-6xl">
+                        A refined workflow shaped by precision and material.
+                    </h2>
+                </div>
+
+                <div ref={timelineRef} className="relative mt-20 md:mt-24">
+                    <div className="pointer-events-none absolute bottom-0 left-1/2 top-0 hidden -translate-x-1/2 lg:block">
+                        <div className="relative h-full w-px bg-white/10">
+                            <motion.div
+                                style={{ height: lineHeight }}
+                                className="absolute left-0 top-0 w-px bg-white"
+                            />
+
+                            <motion.div
+                                style={{ top: dotY }}
+                                className="absolute left-1/2 z-20 hidden h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_0_6px_rgba(255,255,255,0.06)] lg:block"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="space-y-24 md:space-y-28 lg:space-y-32">
+                        {steps.map((step, index) => (
+                            <ProcessRow key={step.id} step={step} index={index} />
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}
+
+function ProcessRow({ step, index }) {
+    const desktopRef = useRef(null);
+    const mobileRef = useRef(null);
+
+    const desktopScroll = useScroll({
+        target: desktopRef,
+        offset: ["start 92%", "center 70%"],
+    });
+
+    const mobileScroll = useScroll({
+        target: mobileRef,
+        offset: ["start 92%", "center 72%"],
+    });
+
+    const desktopY = useTransform(desktopScroll.scrollYProgress, [0, 1], [90, 0]);
+    const desktopOpacity = useTransform(
+        desktopScroll.scrollYProgress,
+        [0, 0.35, 1],
+        [0.18, 0.55, 1]
+    );
+    const desktopFilter = useTransform(
+        desktopScroll.scrollYProgress,
+        [0, 1],
+        ["blur(14px)", "blur(0px)"]
+    );
+    const desktopSweepX = useTransform(
+        desktopScroll.scrollYProgress,
+        [0, 1],
+        ["-120%", "120%"]
+    );
+
+    const mobileY = useTransform(mobileScroll.scrollYProgress, [0, 1], [90, 0]);
+    const mobileOpacity = useTransform(
+        mobileScroll.scrollYProgress,
+        [0, 0.35, 1],
+        [0.18, 0.55, 1]
+    );
+    const mobileFilter = useTransform(
+        mobileScroll.scrollYProgress,
+        [0, 1],
+        ["blur(14px)", "blur(0px)"]
+    );
+    const mobileSweepX = useTransform(
+        mobileScroll.scrollYProgress,
+        [0, 1],
+        ["-120%", "120%"]
+    );
+
+    const isLeft = index % 2 === 0;
+
+    return (
+        <>
+            {/* desktop */}
+            <div
+                ref={desktopRef}
+                className="relative hidden items-center lg:grid lg:grid-cols-[minmax(0,1fr)_100px_minmax(0,1fr)]"
+            >
+                <div>
+                    {isLeft && (
+                        <ProcessCard
+                            step={step}
+                            y={desktopY}
+                            opacity={desktopOpacity}
+                            filter={desktopFilter}
+                            sweepX={desktopSweepX}
+                        />
+                    )}
+                </div>
+
+                <div />
+
+                <div>
+                    {!isLeft && (
+                        <ProcessCard
+                            step={step}
+                            y={desktopY}
+                            opacity={desktopOpacity}
+                            filter={desktopFilter}
+                            sweepX={desktopSweepX}
+                        />
+                    )}
+                </div>
+            </div>
+
+            {/* mobile */}
+            <div ref={mobileRef} className="lg:hidden">
+                <ProcessCard
+                    step={step}
+                    y={mobileY}
+                    opacity={mobileOpacity}
+                    filter={mobileFilter}
+                    sweepX={mobileSweepX}
+                />
+            </div>
+        </>
+    );
+}
+
+function ProcessCard({ step, y, opacity, filter, sweepX }) {
+    return (
+        <motion.div
+            style={{ y, opacity, filter, willChange: "transform, opacity, filter" }}
+            className="relative overflow-hidden rounded-[28px] border border-white/10 bg-white/3 p-7 backdrop-blur-xl"
+        >
+            <motion.div
+                style={{ x: sweepX }}
+                className="pointer-events-none absolute inset-y-0 w-[40%] skew-x-[-18deg] bg-linear-to-r from-transparent via-white/20 to-transparent blur-2xl"
+            />
+
+            <div className="relative">
+                <span className="text-5xl font-medium tracking-[-0.06em] text-white/20">
+                    {step.id}
+                </span>
+
+                <div className="mt-3 text-[11px] uppercase tracking-[0.24em] text-white/40">
+                    {step.label}
+                </div>
+
+                <h3 className="mt-3 text-2xl font-medium tracking-[-0.04em] text-white sm:text-3xl">
+                    {step.title}
+                </h3>
+
+                <p className="mt-4 text-sm leading-7 text-white/60 sm:text-base">
+                    {step.text}
+                </p>
+
+                <div className="mt-6 h-px w-32 bg-white/15" />
+            </div>
+        </motion.div>
+    );
+}

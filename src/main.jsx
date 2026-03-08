@@ -5,7 +5,7 @@ import App from "./App";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <ReactLenis
       root
       options={{
@@ -17,5 +17,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     >
       <App />
     </ReactLenis>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
