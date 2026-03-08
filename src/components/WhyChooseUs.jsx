@@ -150,15 +150,15 @@ export default function WhyChooseUsStacked() {
                     style={{ y: headingY, opacity: headingOpacity }}
                     className="absolute left-0 right-0 top-0 z-30 mx-auto w-full max-w-6xl px-5 pt-16 sm:px-6 md:px-8 lg:px-10 lg:pt-20"
                 >
-                    <div className="max-w-2xl">
+                    <div>
                         <span className="inline-block text-[0.72rem] uppercase tracking-[0.35em] text-white/40">
                             Why Choose Us
                         </span>
 
                         <h2 className="mt-4 text-4xl font-semibold leading-[0.95] text-white/85 sm:text-5xl md:text-6xl lg:text-7xl">
-                            Reasons that
+                            Reasons that feel
                             <span className="block">
-                                feel clear in every detail
+                                 clear in every detail
                             </span>
                         </h2>
                     </div>
