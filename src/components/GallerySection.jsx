@@ -15,7 +15,7 @@ const topRow = [
     "/gallery-5.jpg",
     "/gallery-3.jpeg",
     "/gallery-4.jpeg",
-    "/gallery-6.jpeg",
+    "/gallery-6.jpg",
 ];
 
 const bottomRow = [
