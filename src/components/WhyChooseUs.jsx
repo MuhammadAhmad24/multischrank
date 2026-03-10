@@ -158,7 +158,7 @@ export default function WhyChooseUsStacked() {
                         <h2 className="mt-4 text-4xl font-semibold leading-[0.95] text-white/85 sm:text-5xl md:text-6xl lg:text-7xl">
                             Reasons that feel
                             <span className="block">
-                                 clear in every detail
+                                clear in every detail
                             </span>
                         </h2>
                     </div>

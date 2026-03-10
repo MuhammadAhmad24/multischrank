@@ -5,6 +5,7 @@ import ProcessSection from "../components/ProcessSection";
 import OurValuesSection from "../components/OurValuesSection";
 import GallerySection from "../components/GallerySection";
 import WhyChooseUs from "../components/WhyChooseUs";
+import OurPartnersSection from "../components/OurPartnersSection";
 import AboutCTASection from "../components/AboutCTASection";
 
 export default function About() {
@@ -16,6 +17,7 @@ export default function About() {
       <OurValuesSection />
       <GallerySection />
       <WhyChooseUs />
+      <OurPartnersSection />
       <AboutCTASection />
 
     </>
