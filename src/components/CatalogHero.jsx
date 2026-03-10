@@ -81,7 +81,7 @@ export default function CatalogHero() {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_45%)]" />
             </div>
 
-            <div className="relative mx-auto grid min-h-screen max-w-360 grid-cols-1 gap-12 px-6 pb-14 pt-32 md:px-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:py-18">
+            <div className="relative mx-auto grid min-h-screen max-w-360 grid-cols-1 gap-12 px-6 pb-14 pt-32 md:px-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:pb-18 lg:pt-30">
                 <motion.div
                     style={{ y: textY, opacity: textOpacity }}
                     variants={stagger}
