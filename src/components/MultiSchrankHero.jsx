@@ -113,11 +113,11 @@ export default function MultiSchrankHero() {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_30%)]" />
 
                 {/* purple glow */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(239,68,68,0.14),transparent_22%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(249,115,22,0.14),transparent_22%)]" />
 
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_80%,rgba(255,255,255,0.05),transparent_20%)]" />
 
-                <div className="absolute left-[-10%] top-[-8%] h-112 w-md rounded-full bg-red-500/10 blur-3xl" />
+                <div className="absolute left-[-10%] top-[-8%] h-112 w-md rounded-full bg-orange-500/10 blur-3xl" />
 
                 <div className="absolute right-[-8%] top-[10%] h-96 w-[24rem] rounded-full bg-white/8 blur-3xl" />
             </div>
@@ -135,7 +135,7 @@ export default function MultiSchrankHero() {
                         variants={fadeUp}
                         className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[10px] uppercase tracking-[0.32em] text-white/65 backdrop-blur-xl sm:text-xs"
                     >
-                        <Sparkles size={14} className="text-red-400" />
+                        <Sparkles size={14} className="text-orange-400" />
                         Premium Interiors • MultiSchrank
                     </motion.div>
 
@@ -152,9 +152,9 @@ export default function MultiSchrankHero() {
                             className="mx-auto max-w-5xl text-5xl font-semibold leading-[0.95] tracking-[-0.05em] sm:text-6xl md:text-7xl xl:text-[6.4rem]"
                         >
                             for{" "}
-                            <span className="bg-linear-to-r from-white via-red-300 to-red-500 bg-clip-text text-transparent">
-                                refined spaces
-                            </span>
+                            <span className="bg-linear-to-r from-white via-orange-300 to-orange-500 bg-clip-text text-transparent">
+    refined spaces
+</span>
                         </motion.h1>
                     </div>
                 </motion.div>
@@ -180,7 +180,7 @@ export default function MultiSchrankHero() {
                             }}
                             className="relative overflow-hidden border border-white/10 bg-white/5 backdrop-blur-2xl"
                         >
-                            <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.14),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(239,68,68,0.18),transparent_28%)]" />
+                            <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.14),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(249,115,22,0.18),transparent_28%)]" />
 
                             <motion.img
                                 src="hero-interior.jpg"
