@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
-    { name: "Catalog", href: "#catalog" },
-    { name: "Contact", href: "#contact" },
+    { name: "Catalog", href: "/catalog" },
+    { name: "Contact", href: "/contact" },
 ];
 
 const socialLinks = [
@@ -73,18 +73,25 @@ export default function MultiSchrankFooter() {
                     {/* brand / logo */}
                     <div className="flex flex-col justify-between">
                         <div>
-                            <p className="mb-8 text-sm tracking-wide text-white/90">
+                            {/* <p className="mb-8 text-sm tracking-wide text-white/90">
                                 MultiSchrank
                             </p>
-
-                            {/* header style logo */}
                             <a href="#" className="group inline-flex items-center gap-3">
                                 <div className="flex h-20 w-20 items-center justify-center rounded-[1.7rem] border border-white/15 bg-white/5 shadow-[0_0_30px_rgba(255,255,255,0.06)] backdrop-blur-xl transition duration-300 group-hover:scale-105 group-hover:border-amber-400/40">
                                     <span className="text-2xl font-semibold text-white">
                                         M
                                     </span>
                                 </div>
-                            </a>
+                            </a> */}
+                            {/* Logo */}
+                            <Link to="/" className="group relative inline-flex items-center gap-3">
+                                <img src="/logo.png" alt="logo" className="h-12 sm:h-16" />
+                                <div>
+                                    <h1 className="text-lg font-semibold tracking-wide text-white">
+                                        MultiSchrank
+                                    </h1>
+                                </div>
+                            </Link>
 
                             <p className="mt-6 max-w-xs text-sm leading-7 text-white/60">
                                 Premium wardrobes and interior solutions crafted with

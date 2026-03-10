@@ -117,8 +117,6 @@ export default function MultiSchrankHero() {
                 <div className="absolute right-[-8%] top-[10%] h-96 w-[24rem] rounded-full bg-white/8 blur-3xl" />
             </div>
 
-            <div className="pointer-events-none absolute inset-0 opacity-[0.16] bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size-[44px_44px]" />
-
             {/* first screen */}
             <div className="relative z-20 min-h-[78vh] sm:min-h-screen mb-5 md:mb-0">
                 <motion.div
@@ -126,7 +124,7 @@ export default function MultiSchrankHero() {
                     animate="show"
                     variants={container}
                     style={{ y: contentY, opacity: contentOpacity }}
-                    className="mx-auto flex md:min-h-screen w-full max-w-7xl flex-col items-center px-5 pt-24 text-center sm:px-6 md:pt-44 lg:px-10"
+                    className="mx-auto flex md:min-h-screen w-full max-w-7xl flex-col items-center px-5 pt-[20vh] text-center sm:px-6 md:pt-44 lg:px-10"
                 >
                     <motion.div
                         variants={fadeUp}

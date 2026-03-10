@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
-    { name: "Catalog", href: "#catalog" },
-    { name: "Contact", href: "#contact" },
+    { name: "Catalog", href: "/catalog" },
+    { name: "Contact", href: "/contact" },
 ];
 
 export default function MultiSchrankHeader() {
@@ -32,15 +32,16 @@ export default function MultiSchrankHeader() {
                 <div className="mx-auto flex max-w-7xl items-center justify-between px-5 sm:px-6 py-4 lg:px-10">
                     {/* Logo */}
                     <Link to="/" className="group relative inline-flex items-center gap-3">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/15 bg-white/5 shadow-[0_0_30px_rgba(255,255,255,0.06)] backdrop-blur-xl transition duration-300 group-hover:scale-105 group-hover:border-amber-400/40">
+                        {/* <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/15 bg-white/5 shadow-[0_0_30px_rgba(255,255,255,0.06)] backdrop-blur-xl transition duration-300 group-hover:scale-105 group-hover:border-amber-400/40">
                             <span className="text-sm font-semibold text-white">
                                 M
                             </span>
-                        </div>
+                        </div> */}
+                        <img src="/logo.png" alt="logo" className="h-12 sm:h-16" />
                         <div>
-                            <p className="text-[11px] uppercase tracking-[0.45em] text-white/45">
+                            {/* <p className="text-[11px] uppercase tracking-[0.45em] text-white/45">
                                 Premium Interiors
-                            </p>
+                            </p> */}
                             <h1 className="text-lg font-semibold tracking-wide text-white">
                                 MultiSchrank
                             </h1>
