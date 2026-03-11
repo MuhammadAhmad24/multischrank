@@ -93,17 +93,17 @@ export default function CatalogHero() {
                         className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.22em] text-orange-200 backdrop-blur-md"
                     >
                         <Sparkles className="h-4 w-4 text-orange-400" />
-                        Collection
+                        Kollektion
                     </motion.div>
 
                     <motion.h1
                         variants={fadeUp}
                         style={{ y: headingY }}
-                        className="text-4xl font-semibold leading-[1.02] tracking-tight sm:text-5xl md:text-6xl"
+                        className="text-3xl font-semibold leading-[1.02] tracking-tight sm:text-4xl md:text-5xl"
                     >
-                        Crafted furniture for
+                        Maßgefertigte Möbel für
                         <span className="block bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
-                            modern living spaces
+                            moderne Wohnräume
                         </span>
                     </motion.h1>
 
@@ -111,12 +111,13 @@ export default function CatalogHero() {
                         variants={fadeUp}
                         className="mt-6 max-w-xl text-sm leading-7 text-white/65 md:text-base"
                     >
-                        Explore a refined catalog of wardrobes, storage systems,
-                        TV units, bedroom furniture, and custom-built interior
-                        solutions designed to feel timeless, balanced, and premium.
+                        Entdecken Sie einen ausgewählten Katalog mit
+                        Kleiderschränken, Stauraumlösungen, TV-Möbeln,
+                        Schlafzimmermöbeln und individuellen Interior-Lösungen,
+                        die zeitlos, ausgewogen und hochwertig wirken.
                     </motion.p>
 
-                    <a href="#">
+                    <a href="https://wa.me/4915563440433">
                         <motion.div
                             variants={fadeUp}
                             className="mt-8 flex flex-wrap gap-4"
@@ -126,7 +127,7 @@ export default function CatalogHero() {
                                 whileTap={{ scale: 0.98 }}
                                 className="inline-flex items-center gap-2 rounded-full bg-orange-400 px-6 py-3 text-sm font-medium text-black transition hover:bg-white cursor-pointer"
                             >
-                                Request Custom Design
+                                Individuelles Design anfragen
                                 <ArrowUpRight className="h-4 w-4" />
                             </motion.button>
                         </motion.div>
@@ -150,7 +151,7 @@ export default function CatalogHero() {
                     <div className="relative overflow-hidden rounded-4xl border border-white/10 bg-white/5 shadow-2xl">
                         <motion.img
                             src="/catalog-hero.jpg"
-                            alt="Catalog hero"
+                            alt="Katalog Hero"
                             className="h-full w-full object-cover"
                             style={{
                                 scale: useTransform(
@@ -187,10 +188,10 @@ export default function CatalogHero() {
                         >
                             <div className="rounded-3xl border border-white/10 bg-black/25 p-5 backdrop-blur-md">
                                 <p className="text-xs uppercase tracking-[0.2em] text-orange-300">
-                                    Signature Series
+                                    Signature-Serie
                                 </p>
                                 <h3 className="mt-2 text-xl font-medium text-white md:text-2xl">
-                                    Built to fit, styled to last
+                                    Maßgefertigt und für lange Zeit gestaltet
                                 </h3>
                             </div>
                         </motion.div>

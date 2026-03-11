@@ -84,16 +84,16 @@ export default function AboutCTASection() {
                                 className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[11px] uppercase tracking-[0.22em] text-orange-200"
                             >
                                 <Sparkles size={14} className="text-orange-400" />
-                                Start Your Project
+                                Projekt starten
                             </motion.div>
 
                             <motion.h2
                                 variants={fadeUp}
                                 className="max-w-3xl text-3xl font-light leading-[1.05] text-white sm:text-4xl md:text-5xl lg:text-[64px]"
                             >
-                                Let’s create a space that feels
+                                Lassen Sie uns einen Raum schaffen, der
                                 <span className="block bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
-                                    precise, warm, and premium.
+                                    präzise, warm und hochwertig wirkt.
                                 </span>
                             </motion.h2>
 
@@ -101,9 +101,10 @@ export default function AboutCTASection() {
                                 variants={fadeUp}
                                 className="mt-5 max-w-2xl text-sm leading-7 text-white/65 sm:text-base"
                             >
-                                From concept to final execution, we design furniture and interiors
-                                with detail, balance, and craftsmanship in mind. Build a space
-                                that reflects quality in every line.
+                                Vom Konzept bis zur finalen Umsetzung gestalten wir
+                                Möbel und Innenräume mit Fokus auf Details, Balance
+                                und Handwerkskunst. Schaffen Sie einen Raum, der
+                                Qualität in jeder Linie widerspiegelt.
                             </motion.p>
 
                             <motion.div
@@ -114,7 +115,7 @@ export default function AboutCTASection() {
                                     href="/contact"
                                     className="group inline-flex items-center justify-center gap-2 rounded-full bg-orange-400 px-6 py-3 text-sm font-medium text-black transition-all duration-300 hover:scale-[1.02] hover:bg-orange-300"
                                 >
-                                    Get Started
+                                    Jetzt starten
                                     <ArrowUpRight
                                         size={18}
                                         className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -122,12 +123,12 @@ export default function AboutCTASection() {
                                 </a>
 
                                 <a
-                                    href="https://wa.me/923000000000"
+                                    href="https://wa.me/4915563440433"
                                     target="_blank"
                                     rel="noreferrer"
                                     className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/12 bg-white/3 px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:scale-[1.02] hover:border-orange-300/20 hover:bg-white/[0.07]"
                                 >
-                                    WhatsApp Us
+                                    Per WhatsApp kontaktieren
                                     <MessageCircle
                                         size={18}
                                         className="transition-transform duration-300 group-hover:translate-x-0.5"
@@ -144,7 +145,7 @@ export default function AboutCTASection() {
                                 <div className="relative overflow-hidden rounded-[22px]">
                                     <img
                                         src="/about-cta-img.jpg"
-                                        alt="Premium interior"
+                                        alt="Hochwertiges Interieur"
                                         className="h-80 w-full object-cover md:h-95"
                                     />
 
@@ -161,10 +162,12 @@ export default function AboutCTASection() {
                                         className="absolute bottom-4 left-4 right-4 rounded-[20px] border border-white/10 bg-white/10 p-4 backdrop-blur-xl"
                                     >
                                         <p className="text-xs uppercase tracking-[0.22em] text-orange-300">
-                                            Book Consultation
+                                            Beratung buchen
                                         </p>
                                         <p className="mt-2 text-lg font-light text-white">
-                                            Bring your vision to life with refined design and custom execution.
+                                            Verwirklichen Sie Ihre Vision mit
+                                            anspruchsvollem Design und individueller
+                                            Umsetzung.
                                         </p>
                                     </motion.div>
                                 </div>

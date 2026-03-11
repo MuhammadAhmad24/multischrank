@@ -105,7 +105,7 @@ export default function Preloader({ onFinish }) {
 
                         <div className="text-center">
                             <p className="mb-2 text-[11px] uppercase tracking-[0.5em] text-orange-200/45">
-                                Premium Interiors
+                                Exklusive Innenräume
                             </p>
                             <h1 className="text-3xl font-semibold tracking-[0.18em] text-white sm:text-4xl">
                                 MultiSchrank
@@ -114,7 +114,7 @@ export default function Preloader({ onFinish }) {
 
                         <div className="mt-10 w-full max-w-md">
                             <div className="mb-3 flex items-center justify-between text-[11px] uppercase tracking-[0.35em] text-white/35">
-                                <span>Loading</span>
+                                <span>Lädt</span>
                                 <span>{progress}%</span>
                             </div>
 
@@ -134,7 +134,7 @@ export default function Preloader({ onFinish }) {
                             transition={{ delay: 0.35, duration: 0.6 }}
                             className="mt-6 text-center text-sm text-white/45"
                         >
-                            Crafted spaces. Refined living.
+                            Durchdachte Räume. Stilvolles Wohnen.
                         </motion.p>
                     </motion.div>
                 </motion.div>

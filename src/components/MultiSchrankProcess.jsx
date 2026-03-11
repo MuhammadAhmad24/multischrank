@@ -14,26 +14,26 @@ const steps = [
     {
         number: "01",
         icon: <Ruler size={18} className="text-orange-400" />,
-        title: "Consultation",
-        text: "We begin by understanding your space, style, and practical requirements to shape the right furniture direction.",
+        title: "Beratung",
+        text: "Wir beginnen damit, Ihren Raum, Ihren Stil und Ihre praktischen Anforderungen zu verstehen, um die richtige Möbelrichtung zu entwickeln.",
     },
     {
         number: "02",
         icon: <PencilRuler size={18} className="text-orange-400" />,
-        title: "Design Concept",
-        text: "Layouts, finishes, proportions, and material direction are refined into a concept tailored to your interior.",
+        title: "Designkonzept",
+        text: "Layouts, Oberflächen, Proportionen und Materialauswahl werden zu einem Konzept verfeinert, das perfekt zu Ihrem Interior passt.",
     },
     {
         number: "03",
         icon: <Hammer size={18} className="text-orange-400" />,
-        title: "Crafting",
-        text: "Each piece is produced with attention to detail, clean execution, and premium-quality material selection.",
+        title: "Fertigung",
+        text: "Jedes Möbelstück wird mit höchster Präzision, Liebe zum Detail und hochwertigen Materialien gefertigt.",
     },
     {
         number: "04",
         icon: <CheckCircle2 size={18} className="text-orange-400" />,
-        title: "Installation",
-        text: "Final fitting and finishing are completed with precision to ensure a seamless result in your space.",
+        title: "Montage",
+        text: "Die finale Montage und Feinabstimmung erfolgen präzise, um ein nahtloses Ergebnis in Ihrem Raum zu gewährleisten.",
     },
 ];
 
@@ -128,21 +128,21 @@ export default function MultiSchrankProcess() {
                         >
                             <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.28em] text-orange-200 backdrop-blur-xl">
                                 <Sparkles size={14} className="text-orange-400" />
-                                Our Process
+                                Unser Prozess
                             </div>
 
                             <h2 className="mt-6 max-w-xl text-3xl font-semibold leading-[1.05] tracking-[-0.04em] text-white sm:text-4xl md:text-5xl xl:text-6xl">
-                                From concept
+                                Vom Konzept
                                 <br />
                                 <span className="bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
-                                    to completion.
+                                    bis zur Fertigstellung.
                                 </span>
                             </h2>
 
-                            <p className="mt-6 max-w-md text-base leading-8 text-white/65 md:text-lg">
-                                A refined process built around clarity, craftsmanship,
-                                and seamless execution — from the first conversation
-                                to the final installation.
+                            <p className="mt-4">
+                                Ein durchdachter Prozess, der auf Klarheit, handwerklicher Qualität
+                                und reibungsloser Umsetzung basiert — vom ersten Gespräch bis zur
+                                finalen Montage.
                             </p>
 
                             <div className="mt-8">
@@ -153,7 +153,7 @@ export default function MultiSchrankProcess() {
                                     className="group inline-flex items-center gap-2 rounded-full border border-green-400/25 bg-green-500/10 px-5 py-3.5 text-sm font-medium text-green-300 backdrop-blur-xl transition duration-300 hover:scale-[1.03] hover:border-green-400/50 hover:bg-green-500/20"
                                 >
                                     <MessageCircle size={17} />
-                                    Start Your Project
+                                    Starten Sie Ihr Projekt
                                     <ArrowUpRight
                                         size={16}
                                         className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"

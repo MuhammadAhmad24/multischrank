@@ -3,10 +3,10 @@ import { Menu, X, ArrowRight, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Catalog", href: "/catalog" },
-    { name: "Contact", href: "/contact" },
+    { name: "Startseite", href: "/" },
+    { name: "Über uns", href: "/about" },
+    { name: "Katalog", href: "/catalog" },
+    { name: "Kontakt", href: "/contact" },
 ];
 
 export default function MultiSchrankHeader() {
@@ -59,20 +59,20 @@ export default function MultiSchrankHeader() {
                     {/* Desktop CTA */}
                     <div className="hidden items-center gap-3 lg:flex">
                         <a
-                            href="#"
+                            href="https://wa.me/4915563440433"
                             target="_blank"
                             rel="noreferrer"
                             className="inline-flex items-center gap-2 rounded-full border border-green-400/25 bg-green-500/10 px-4 py-2 text-sm font-medium text-green-300 backdrop-blur-xl transition duration-300 hover:scale-[1.03] hover:border-green-400/50 hover:bg-green-500/20"
                         >
                             <MessageCircle size={16} />
-                            Contact Us
+                            Kontakt
                         </a>
 
                         <Link
                             to="/catalog"
                             className="group inline-flex items-center gap-2 rounded-full bg-orange-400 px-5 py-2.5 text-sm font-semibold text-neutral-900 transition duration-300 hover:scale-[1.03] hover:bg-orange-300 hover:shadow-[0_10px_40px_rgba(249,115,22,0.22)]"
                         >
-                            Explore Catalog
+                            Katalog entdecken
                             <ArrowRight
                                 size={16}
                                 className="transition-transform duration-300 group-hover:translate-x-1"
@@ -109,20 +109,20 @@ export default function MultiSchrankHeader() {
                             ))}
 
                             <a
-                                href="#"
+                                href="https://wa.me/4915563440433"
                                 target="_blank"
                                 rel="noreferrer"
                                 className="mt-2 inline-flex items-center justify-center gap-2 rounded-xl border border-green-400/20 bg-green-500/10 px-4 py-3 text-sm font-medium text-green-300 transition hover:bg-green-500/20"
                             >
                                 <MessageCircle size={16} />
-                                Contact Us
+                                Kontakt
                             </a>
 
                             <Link
                                 to="/catalog"
                                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-orange-400 px-4 py-3 text-sm font-semibold text-neutral-900 transition hover:bg-orange-300"
                             >
-                                Explore Catalog
+                                Katalog entdecken
                                 <ArrowRight size={16} />
                             </Link>
                         </div>

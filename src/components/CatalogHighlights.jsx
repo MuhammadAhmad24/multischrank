@@ -10,23 +10,23 @@ import { Ruler, BadgeCheck, Hammer, Sparkles } from "lucide-react";
 const highlights = [
     {
         icon: Ruler,
-        title: "Made to Measure",
-        text: "Built around your room dimensions and layout needs.",
+        title: "Maßgefertigt",
+        text: "Perfekt abgestimmt auf Ihre Raummaße und funktionalen Anforderungen.",
     },
     {
         icon: BadgeCheck,
-        title: "Premium Materials",
-        text: "Selected finishes and durable construction standards.",
+        title: "Hochwertige Materialien",
+        text: "Ausgewählte Oberflächen und langlebige Qualitätsstandards in der Verarbeitung.",
     },
     {
         icon: Hammer,
-        title: "Precision Build",
-        text: "Clean detailing with a strong focus on execution quality.",
+        title: "Präzise Verarbeitung",
+        text: "Klare Details und ein hoher Anspruch an Ausführung und Qualität.",
     },
     {
         icon: Sparkles,
-        title: "Refined Finish",
-        text: "Minimal, elegant surfaces designed for modern interiors.",
+        title: "Raffinierte Oberflächen",
+        text: "Minimalistische und elegante Flächen für moderne Innenräume.",
     },
 ];
 
@@ -125,20 +125,20 @@ export default function CatalogHighlights() {
                     className="mx-auto mb-10 max-w-3xl text-center md:mb-14"
                 >
                     <p className="text-xs uppercase tracking-[0.28em] text-orange-200/70">
-                        Why it feels premium
+                        Warum es hochwertig wirkt
                     </p>
 
                     <h2 className="mt-4 text-3xl font-semibold leading-tight text-white md:text-5xl">
-                        Crafted for balance,
+                        Entwickelt für Balance,
                         <span className="block bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
-                            precision, and lasting use
+                            Präzision und langlebige Nutzung
                         </span>
                     </h2>
 
                     <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-white/60 md:text-base">
-                        Every detail is shaped to feel intentional, from dimension
-                        planning to finish quality, so the final result looks refined
-                        and works beautifully in daily life.
+                        Jedes Detail ist bewusst gestaltet – von der Maßplanung
+                        bis zur Qualität der Oberflächen – damit das Endergebnis
+                        hochwertig wirkt und im Alltag perfekt funktioniert.
                     </p>
                 </motion.div>
 
@@ -155,4 +155,4 @@ export default function CatalogHighlights() {
             </motion.div>
         </section>
     );
-}
+}   

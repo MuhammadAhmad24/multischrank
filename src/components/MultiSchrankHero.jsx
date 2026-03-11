@@ -136,7 +136,7 @@ export default function MultiSchrankHero() {
                         className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[10px] uppercase tracking-[0.32em] text-white/65 backdrop-blur-xl sm:text-xs"
                     >
                         <Sparkles size={14} className="text-orange-400" />
-                        Premium Interiors • MultiSchrank
+                        Premium Innenräume • MultiSchrank
                     </motion.div>
 
                     <div className="mt-8 space-y-3">
@@ -144,17 +144,17 @@ export default function MultiSchrankHero() {
                             variants={revealLine}
                             className="mx-auto max-w-5xl text-5xl font-semibold leading-[0.95] tracking-[-0.05em] sm:text-6xl md:text-7xl xl:text-[6.4rem]"
                         >
-                            Modern furniture
+                            Moderne Möbel
                         </motion.h1>
 
                         <motion.h1
                             variants={revealLine}
                             className="mx-auto max-w-5xl text-5xl font-semibold leading-[0.95] tracking-[-0.05em] sm:text-6xl md:text-7xl xl:text-[6.4rem]"
                         >
-                            for{" "}
+                            für{" "}
                             <span className="bg-linear-to-r from-white via-orange-300 to-orange-500 bg-clip-text text-transparent">
-    refined spaces
-</span>
+                                stilvolle Räume
+                            </span>
                         </motion.h1>
                     </div>
                 </motion.div>
@@ -184,7 +184,7 @@ export default function MultiSchrankHero() {
 
                             <motion.img
                                 src="hero-interior.jpg"
-                                alt="Premium interior"
+                                alt="Luxuriöses Interieur"
                                 style={{ height: imageHeight }}
                                 className="w-full object-cover"
                             />

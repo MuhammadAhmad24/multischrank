@@ -2,10 +2,10 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const lines = [
-    "We design spaces that feel calm, warm, and intentional.",
-    "Every detail is crafted to bring clarity, balance, and premium presence.",
-    "From concept to finish, our work transforms simple interiors into memorable experiences.",
-    "Built with precision, shaped with taste, and made to feel timeless.",
+    "Wir gestalten Räume, die ruhig, warm und bewusst wirken.",
+    "Jedes Detail wird so ausgearbeitet, dass Klarheit, Balance und eine hochwertige Ausstrahlung entstehen.",
+    "Vom Konzept bis zur Fertigstellung verwandelt unsere Arbeit schlichte Innenräume in unvergessliche Erlebnisse.",
+    "Mit Präzision gefertigt, mit Gespür gestaltet und für zeitlose Wirkung geschaffen.",
 ];
 
 export default function AboutHero() {
@@ -55,7 +55,7 @@ export default function AboutHero() {
                                 transition={{ duration: 0.7 }}
                                 className="inline-block rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[11px] uppercase tracking-[0.28em] text-orange-200"
                             >
-                                About Us
+                                Über uns
                             </motion.span>
 
                             <motion.h1
@@ -65,11 +65,11 @@ export default function AboutHero() {
                                 transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
                                 className="max-w-3xl text-4xl font-medium leading-[0.95] tracking-[-0.04em] text-white sm:text-5xl md:text-6xl lg:text-7xl"
                             >
-                                We create interiors that feel{" "}
+                                Wir schaffen Innenräume, die sich{" "}
                                 <span className="bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
-                                    premium
+                                    hochwertig
                                 </span>{" "}
-                                before they are even touched.
+                                anfühlen, noch bevor man sie berührt.
                             </motion.h1>
                         </div>
 
@@ -100,7 +100,7 @@ export default function AboutHero() {
                             >
                                 <img
                                     src="/about-hero.jpeg"
-                                    alt="About visual"
+                                    alt="Über uns Visual"
                                     className="h-full w-full object-cover"
                                 />
 

@@ -16,26 +16,26 @@ const values = [
     {
         icon: Gem,
         number: "01",
-        title: "Material Integrity",
-        text: "We choose finishes, textures, and structural materials with long-term durability and visual balance in mind.",
+        title: "Materialqualität",
+        text: "Wir wählen Oberflächen, Texturen und Konstruktionsmaterialien mit Blick auf langfristige Haltbarkeit und visuelle Balance.",
     },
     {
         icon: ShieldCheck,
         number: "02",
-        title: "Built to Last",
-        text: "Every detail is shaped around precision, strength, and disciplined execution so the final piece feels dependable over time.",
+        title: "Für Langlebigkeit gebaut",
+        text: "Jedes Detail entsteht mit Präzision, Stabilität und disziplinierter Ausführung, damit das Endergebnis über lange Zeit verlässlich wirkt.",
     },
     {
         icon: Sparkles,
         number: "03",
-        title: "Quiet Aesthetics",
-        text: "Our approach avoids noise. We focus on proportion, warmth, and refined simplicity that feels timeless instead of temporary.",
+        title: "Ruhige Ästhetik",
+        text: "Unser Ansatz vermeidet visuelle Unruhe. Im Mittelpunkt stehen Proportion, Wärme und eine raffinierte Schlichtheit, die zeitlos statt kurzfristig wirkt.",
     },
     {
         icon: Compass,
         number: "04",
-        title: "Client-Centered Thinking",
-        text: "Each project is guided by real lifestyle needs, not trends alone, so every space feels personal and functional.",
+        title: "Kundenzentriertes Denken",
+        text: "Jedes Projekt orientiert sich an echten Lebensgewohnheiten und nicht nur an Trends, damit jeder Raum persönlich und funktional wirkt.",
     },
 ];
 
@@ -205,12 +205,12 @@ export default function OurValuesSection() {
                     >
                         <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[11px] uppercase tracking-[0.28em] text-white/65 backdrop-blur-sm">
                             <span className="h-1.5 w-1.5 rounded-full bg-orange-400" />
-                            Our Values
+                            Unsere Werte
                         </div>
 
                         <h2 className="text-3xl font-medium leading-[0.95] tracking-[-0.04em] sm:text-5xl md:text-6xl xl:text-7xl">
                             <ScrollRevealText
-                                text="Principles that shape"
+                                text="Prinzipien, die"
                                 progress={headingProgress}
                                 start={0.05}
                                 end={0.42}
@@ -218,7 +218,7 @@ export default function OurValuesSection() {
 
                             <span className="block text-white">
                                 <ScrollRevealText
-                                    text="every decision we make"
+                                    text="jede unserer Entscheidungen prägen"
                                     progress={headingProgress}
                                     start={0.48}
                                     end={0.92}

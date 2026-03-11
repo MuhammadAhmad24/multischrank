@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useKeenSlider } from "keen-slider/react";
+import { Link } from "react-router-dom";
 import "keen-slider/keen-slider.min.css";
 import {
     ArrowLeft,
@@ -39,52 +40,52 @@ const fadeUp = {
 
 const items = [
     {
-        title: "Luxury Wardrobes",
+        title: "Luxus-Kleiderschränke",
         description:
-            "Elegant wardrobe systems with refined finishes, seamless detailing, and intelligent storage.",
+            "Elegante Schranksysteme mit hochwertigen Oberflächen, nahtlosen Details und intelligentem Stauraum.",
         image: "catalog-wardrobe.webp",
-        tag: "Featured",
-        href: "#catalog",
+        tag: "Highlight",
+        href: "/catalog",
     },
     {
-        title: "Living Room Furniture",
+        title: "Wohnzimmermöbel",
         description:
-            "Modern furniture concepts crafted to bring warmth, sophistication, and balance into everyday spaces.",
+            "Moderne Möbelkonzepte, die Wärme, Eleganz und Ausgewogenheit in den Alltag bringen.",
         image: "catalog-living.webp",
         tag: "Modern",
-        href: "#catalog",
+        href: "/catalog",
     },
     {
-        title: "Bedroom Furniture",
+        title: "Schlafzimmermöbel",
         description:
-            "Timeless bedroom pieces designed for comfort, calm interiors, and contemporary elegance.",
+            "Zeitlose Möbelstücke für Schlafzimmer, gestaltet für Komfort, Ruhe und moderne Eleganz.",
         image: "catalog-bedroom.webp",
-        tag: "Refined",
-        href: "#catalog",
+        tag: "Stilvoll",
+        href: "/catalog",
     },
     {
-        title: "Kitchen Solutions",
+        title: "Küchenlösungen",
         description:
-            "Functional kitchen cabinetry and premium design solutions tailored for modern living.",
+            "Funktionale Küchenmöbel und hochwertige Designlösungen, individuell abgestimmt auf modernes Wohnen.",
         image: "catalog-kitchen.webp",
-        tag: "Custom",
-        href: "#catalog",
+        tag: "Individuell",
+        href: "/catalog",
     },
     {
-        title: "TV Units",
+        title: "TV-Möbel",
         description:
-            "Minimal entertainment units shaped for clean compositions and elevated interior aesthetics.",
+            "Minimalistische TV-Units für klare Raumkompositionen und eine gehobene Innenraumästhetik.",
         image: "catalog-tv-unit.webp",
         tag: "Minimal",
-        href: "#catalog",
+        href: "/catalog",
     },
     {
-        title: "Office Furniture",
+        title: "Büromöbel",
         description:
-            "Smart workspace furniture that combines productivity, elegance, and practical organization.",
+            "Durchdachte Arbeitsmöbel, die Produktivität, Eleganz und praktische Organisation verbinden.",
         image: "catalog-office.webp",
         tag: "Workspace",
-        href: "#catalog",
+        href: "/catalog",
     },
 ];
 
@@ -135,8 +136,7 @@ function SliderCard({ item, index, details }) {
 
     return (
         <div className="keen-slider__slide flex justify-center">
-            <motion.a
-                href={item.href}
+            <motion.div
                 animate={{
                     scale,
                     opacity,
@@ -147,83 +147,87 @@ function SliderCard({ item, index, details }) {
                     duration: 0.35,
                     ease: [0.22, 1, 0.36, 1],
                 }}
-                className="group relative block h-90 w-[82vw] overflow-hidden rounded-4xl border border-white/10 bg-white/5 backdrop-blur-2xl sm:h-112 sm:w-120 lg:h-136 lg:w-160"
             >
-                <div className="absolute inset-0 overflow-hidden">
-                    <motion.img
-                        src={item.image}
-                        alt={item.title}
-                        animate={{ scale: imgScale }}
-                        transition={{ duration: 0.35, ease: "easeOut" }}
-                        className="h-full w-full object-cover"
+                <Link
+                    to={item.href}
+                    className="group relative block h-90 w-[82vw] overflow-hidden rounded-4xl border border-white/10 bg-white/5 backdrop-blur-2xl sm:h-112 sm:w-120 lg:h-136 lg:w-160"
+                >
+                    <div className="absolute inset-0 overflow-hidden">
+                        <motion.img
+                            src={item.image}
+                            alt={item.title}
+                            animate={{ scale: imgScale }}
+                            transition={{ duration: 0.35, ease: "easeOut" }}
+                            className="h-full w-full object-cover"
+                        />
+
+                        <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/25 to-transparent" />
+                        <div className="absolute inset-0 bg-[linear-gradient(120deg,transparent_0%,rgba(255,255,255,0.08)_45%,transparent_65%)] opacity-70" />
+                    </div>
+
+                    <motion.div
+                        animate={{ opacity: 0.55 + portion * 0.45 }}
+                        transition={{ duration: 0.35 }}
+                        className="pointer-events-none absolute inset-0 rounded-4xl ring-1 ring-inset ring-white/10"
                     />
 
-                    <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/25 to-transparent" />
-                    <div className="absolute inset-0 bg-[linear-gradient(120deg,transparent_0%,rgba(255,255,255,0.08)_45%,transparent_65%)] opacity-70" />
-                </div>
-
-                <motion.div
-                    animate={{ opacity: 0.55 + portion * 0.45 }}
-                    transition={{ duration: 0.35 }}
-                    className="pointer-events-none absolute inset-0 rounded-4xl ring-1 ring-inset ring-white/10"
-                />
-
-                <motion.div
-                    animate={{ opacity: glowOpacity }}
-                    transition={{ duration: 0.35 }}
-                    className="pointer-events-none absolute inset-0 rounded-4xl ring-1 ring-inset ring-orange-300/30"
-                />
-
-                <motion.div
-                    animate={{ opacity: glowOpacity }}
-                    transition={{ duration: 0.35 }}
-                    className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(249,115,22,0.16),transparent_58%)]"
-                />
-
-                <div className="relative flex h-full flex-col justify-between p-6 md:p-8">
                     <motion.div
-                        animate={{
-                            opacity: textOpacity,
-                            y: 8 - portion * 8,
-                        }}
+                        animate={{ opacity: glowOpacity }}
                         transition={{ duration: 0.35 }}
-                        className="flex items-start justify-between gap-4"
-                    >
-                        <div className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-[11px] uppercase tracking-[0.24em] text-white/75 backdrop-blur-xl">
-                            {item.tag}
-                        </div>
-
-                        <div className="text-sm font-medium text-orange-200/40">
-                            {String(index + 1).padStart(2, "0")}
-                        </div>
-                    </motion.div>
+                        className="pointer-events-none absolute inset-0 rounded-4xl ring-1 ring-inset ring-orange-300/30"
+                    />
 
                     <motion.div
-                        animate={{
-                            opacity: textOpacity,
-                            y: 18 - portion * 18,
-                        }}
+                        animate={{ opacity: glowOpacity }}
                         transition={{ duration: 0.35 }}
-                        className="max-w-xl"
-                    >
-                        <h3 className="text-2xl font-semibold tracking-[-0.03em] text-white md:text-4xl">
-                            {item.title}
-                        </h3>
+                        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(249,115,22,0.16),transparent_58%)]"
+                    />
 
-                        <p className="mt-1 max-w-lg text-sm text-white/65 md:mt-4 md:text-base md:leading-7">
-                            {item.description}
-                        </p>
+                    <div className="relative flex h-full flex-col justify-between p-6 md:p-8">
+                        <motion.div
+                            animate={{
+                                opacity: textOpacity,
+                                y: 8 - portion * 8,
+                            }}
+                            transition={{ duration: 0.35 }}
+                            className="flex items-start justify-between gap-4"
+                        >
+                            <div className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-[11px] uppercase tracking-[0.24em] text-white/75 backdrop-blur-xl">
+                                {item.tag}
+                            </div>
 
-                        <div className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-white/85 transition duration-300 group-hover:text-orange-300 sm:mt-6">
-                            <span>Explore Collection</span>
-                            <ArrowUpRight
-                                size={16}
-                                className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                            />
-                        </div>
-                    </motion.div>
-                </div>
-            </motion.a>
+                            <div className="text-sm font-medium text-orange-200/40">
+                                {String(index + 1).padStart(2, "0")}
+                            </div>
+                        </motion.div>
+
+                        <motion.div
+                            animate={{
+                                opacity: textOpacity,
+                                y: 18 - portion * 18,
+                            }}
+                            transition={{ duration: 0.35 }}
+                            className="max-w-xl"
+                        >
+                            <h3 className="text-2xl font-semibold tracking-[-0.03em] text-white md:text-4xl">
+                                {item.title}
+                            </h3>
+
+                            <p className="mt-1 max-w-lg text-sm text-white/65 md:mt-4 md:text-base md:leading-7">
+                                {item.description}
+                            </p>
+
+                            <div className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-white/85 transition duration-300 group-hover:text-orange-300 sm:mt-6">
+                                <span>Kollektion entdecken</span>
+                                <ArrowUpRight
+                                    size={16}
+                                    className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                                />
+                            </div>
+                        </motion.div>
+                    </div>
+                </Link>
+            </motion.div>
         </div>
     );
 }
@@ -299,16 +303,16 @@ export default function MultiSchrankCatalogSlider() {
                             className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.28em] text-orange-200 backdrop-blur-xl"
                         >
                             <Sparkles size={14} className="text-orange-400" />
-                            Our Collection
+                            Unsere Kollektion
                         </motion.div>
 
                         <motion.h2
                             variants={fadeUp}
                             className="mt-6 text-3xl font-semibold leading-[1.05] tracking-[-0.04em] text-white sm:text-4xl md:text-5xl xl:text-6xl"
                         >
-                            Discover furniture with a{" "}
+                            Entdecken Sie Möbel mit{" "}
                             <span className="bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
-                                luxury perspective.
+                                luxuriöser Ausstrahlung.
                             </span>
                         </motion.h2>
 
@@ -316,9 +320,9 @@ export default function MultiSchrankCatalogSlider() {
                             variants={fadeUp}
                             className="mt-6 max-w-2xl text-base leading-8 text-white/65 md:text-lg"
                         >
-                            Explore a curated selection of premium furniture and interior
-                            solutions created for elegant homes, modern lifestyles, and
-                            timeless living spaces.
+                            Entdecken Sie eine kuratierte Auswahl hochwertiger Möbel
+                            und Interior-Lösungen für elegante Zuhause, moderne
+                            Lebensstile und zeitlose Wohnräume.
                         </motion.p>
                     </div>
                 </div>
@@ -327,7 +331,7 @@ export default function MultiSchrankCatalogSlider() {
                     <button
                         onClick={() => instanceRef.current?.prev()}
                         className="absolute left-4 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-neutral-900/70 text-white/80 backdrop-blur-xl transition duration-300 hover:border-orange-300/20 hover:bg-neutral-800/80 hover:text-orange-200 lg:inline-flex"
-                        aria-label="Scroll left"
+                        aria-label="Nach links scrollen"
                     >
                         <ArrowLeft size={18} />
                     </button>
@@ -335,7 +339,7 @@ export default function MultiSchrankCatalogSlider() {
                     <button
                         onClick={() => instanceRef.current?.next()}
                         className="absolute right-4 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-neutral-900/70 text-white/80 backdrop-blur-xl transition duration-300 hover:border-orange-300/20 hover:bg-neutral-800/80 hover:text-orange-200 lg:inline-flex"
-                        aria-label="Scroll right"
+                        aria-label="Nach rechts scrollen"
                     >
                         <ArrowRight size={18} />
                     </button>
@@ -358,7 +362,7 @@ export default function MultiSchrankCatalogSlider() {
                                 <button
                                     key={idx}
                                     onClick={() => instanceRef.current?.moveToIdx(idx)}
-                                    aria-label={`Go to slide ${idx + 1}`}
+                                    aria-label={`Gehe zu Slide ${idx + 1}`}
                                     className={`h-2 rounded-full transition-all duration-500 ${
                                         isActive
                                             ? "w-8 bg-orange-300"
@@ -371,25 +375,25 @@ export default function MultiSchrankCatalogSlider() {
                 </motion.div>
 
                 <div className="mx-auto mt-12 flex max-w-7xl flex-col items-center justify-center gap-4 px-5 sm:px-6 sm:flex-row lg:px-10">
-                    <a
-                        href="/catalog"
+                    <Link
+                        to="/catalog"
                         className="group inline-flex items-center gap-2 rounded-full bg-orange-400 px-5 py-3.5 text-sm font-semibold text-neutral-900 transition duration-300 hover:scale-[1.03] hover:bg-orange-300 hover:shadow-[0_12px_40px_rgba(249,115,22,0.22)] sm:px-6"
                     >
-                        View Full Catalog
+                        Gesamten Katalog ansehen
                         <ArrowRight
                             size={17}
                             className="transition-transform duration-300 group-hover:translate-x-1"
                         />
-                    </a>
+                    </Link>
 
                     <a
-                        href="#"
+                        href="https://wa.me/4915563440433"
                         target="_blank"
                         rel="noreferrer"
                         className="group inline-flex items-center gap-2 rounded-full border border-green-400/25 bg-green-500/10 px-5 py-3.5 text-sm font-medium text-green-300 backdrop-blur-xl transition duration-300 hover:scale-[1.03] hover:border-green-400/50 hover:bg-green-500/20 sm:px-6"
                     >
                         <MessageCircle size={17} />
-                        Start Your Project
+                        Projekt starten
                         <ArrowUpRight
                             size={16}
                             className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"

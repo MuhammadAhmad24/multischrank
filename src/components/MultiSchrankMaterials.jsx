@@ -52,26 +52,26 @@ const features = [
     {
         number: "01",
         icon: <Layers3 size={18} className="text-orange-400" />,
-        title: "Premium Materials",
-        text: "Carefully selected finishes, elegant textures, and refined surfaces that bring warmth, quality, and long-lasting visual appeal.",
+        title: "Hochwertige Materialien",
+        text: "Sorgfältig ausgewählte Oberflächen, edle Texturen und raffinierte Materialien, die Wärme, Qualität und eine langanhaltende Ausstrahlung vermitteln.",
     },
     {
         number: "02",
         icon: <Hammer size={18} className="text-orange-400" />,
-        title: "Precision Craftsmanship",
-        text: "Every furniture concept is shaped with accuracy, balance, and detailing that reflects a premium standard from every angle.",
+        title: "Präzise Handwerkskunst",
+        text: "Jedes Möbelkonzept wird mit Genauigkeit, Ausgewogenheit und einem hohen Anspruch an Details gestaltet – aus jeder Perspektive.",
     },
     {
         number: "03",
         icon: <ScanSearch size={18} className="text-orange-400" />,
-        title: "Intelligent Function",
-        text: "Smart storage, practical layouts, and thoughtful usability combine to create interiors that feel effortless in everyday living.",
+        title: "Intelligente Funktion",
+        text: "Durchdachter Stauraum, praktische Aufteilungen und eine klare Nutzbarkeit schaffen Innenräume, die sich im Alltag mühelos anfühlen.",
     },
     {
         number: "04",
         icon: <BadgeCheck size={18} className="text-orange-400" />,
-        title: "Refined Finish",
-        text: "A timeless visual language with clean lines, soft balance, and sophisticated finishing designed for modern spaces.",
+        title: "Raffinierte Ausführung",
+        text: "Eine zeitlose Formensprache mit klaren Linien, sanfter Balance und hochwertigen Details – entwickelt für moderne Räume.",
     },
 ];
 
@@ -115,7 +115,7 @@ function FeatureCard({ item, index }) {
 
                 <div className="mt-6">
                     <p className="text-xs uppercase tracking-[0.24em] text-orange-200/40">
-                        Feature {item.number}
+                        Merkmal {item.number}
                     </p>
 
                     <h3 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-white">
@@ -188,23 +188,23 @@ export default function MultiSchrankMaterials() {
                         >
                             <Sparkles size={14} className="text-orange-400" />
                         </motion.span>
-                        Materials & Craftsmanship
+                        Materialien & Handwerkskunst
                     </motion.div>
 
                     <ScrollCharacterHeading
-                        line1="Built around detail."
-                        line2="Finished with intention."
+                        line1="Entwickelt mit Blick fürs Detail."
+                        line2="Vollendet mit klarer Absicht."
                     />
 
                     <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/65 md:text-lg">
-                        We focus on materials, precision, and functionality to create
-                        furniture that feels refined in appearance, premium in quality,
-                        and effortless in daily use.
+                        Unser Fokus liegt auf Materialien, Präzision und Funktionalität,
+                        um Möbel zu schaffen, die in ihrer Optik anspruchsvoll, in ihrer
+                        Qualität hochwertig und im Alltag mühelos sind.
                     </p>
 
                     <div className="mt-8 flex justify-center">
                         <motion.a
-                            href="#"
+                            href="https://wa.me/4915563440433"
                             target="_blank"
                             rel="noreferrer"
                             whileHover={{ y: -2, scale: 1.02 }}
@@ -221,7 +221,7 @@ export default function MultiSchrankMaterials() {
                                 className="pointer-events-none absolute -top-[30%] left-0 h-[160%] w-[34%] -rotate-18 bg-linear-to-r from-transparent via-white/18 to-transparent blur-xl"
                             />
                             <MessageCircle size={17} />
-                            Discuss Your Project
+                            Besprechen Sie Ihr Projekt
                             <ArrowUpRight
                                 size={16}
                                 className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"

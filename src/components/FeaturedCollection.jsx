@@ -35,7 +35,7 @@ export default function FeaturedCollection() {
                     <motion.img
                         style={{ scale: imageScale }}
                         src="/featured.jpg"
-                        alt="Featured collection"
+                        alt="Ausgewählte Kollektion"
                         className="h-full w-full object-cover"
                     />
                     <motion.div
@@ -49,28 +49,28 @@ export default function FeaturedCollection() {
                 <div className="relative z-50 grid min-h-110 items-end p-7 md:p-10 lg:p-14">
                     <div className="max-w-2xl">
                         <p className="text-xs uppercase tracking-[0.24em] text-orange-200/65">
-                            Featured Collection
+                            Ausgewählte Kollektion
                         </p>
 
                         <h2 className="mt-1 text-xl font-semibold leading-tight text-white sm:mt-4 sm:text-3xl md:text-5xl">
-                            Signature wardrobe systems
+                            Signature-Kleiderschranksysteme
                             <span className="block bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
-                                tailored for modern homes
+                                maßgeschneidert für moderne Wohnräume
                             </span>
                         </h2>
 
                         <p className="max-w-xl text-sm text-white/70 sm:mt-5 sm:leading-7">
-                            Designed with precision, clean joinery, balanced storage
-                            layouts, and finishes that elevate the room without overwhelming
-                            it.
+                            Präzise gestaltet mit klarer Verarbeitung, ausgewogenen
+                            Stauraumlösungen und Oberflächen, die den Raum aufwerten,
+                            ohne ihn zu überladen.
                         </p>
 
                         <a
-                            href="#"
+                            href="https://wa.me/4915563440433"
                             className="mt-3 inline-flex items-center gap-2 rounded-full bg-orange-400 px-6 py-3 text-sm font-medium text-[#111] transition hover:scale-[1.02] hover:bg-orange-300 sm:mt-7"
                         >
                             <MessageCircle size={17} />
-                            Start Your Project
+                            Projekt starten
                             <ArrowUpRight className="h-4 w-4" />
                         </a>
                     </div>

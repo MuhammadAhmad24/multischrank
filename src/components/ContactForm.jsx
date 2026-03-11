@@ -54,14 +54,14 @@ export default function ContactForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const whatsappNumber = "491234567890";
+        const whatsappNumber = "4915563440433";
 
-        const text = `Hello, I would like to inquire about a furniture project.
+        const text = `Hallo, ich möchte mich über ein Möbelprojekt informieren.
 
 Name: ${formData.name}
-Phone: ${formData.phone}
-Email: ${formData.email}
-Message: ${formData.message}`;
+Telefon: ${formData.phone}
+E-Mail: ${formData.email}
+Nachricht: ${formData.message}`;
 
         const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
         window.open(url, "_blank");
@@ -88,13 +88,13 @@ Message: ${formData.message}`;
                     className="relative sm:mt-18"
                 >
                     <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/4 px-4 py-2 text-[11px] uppercase tracking-[0.22em] text-orange-200 backdrop-blur-md">
-                        Contact Form
+                        Kontaktformular
                     </div>
 
                     <h2 className="text-[clamp(2.7rem,5vw,4.8rem)] font-semibold leading-[0.95] tracking-[-0.05em]">
-                        Tell us about
+                        Erzählen Sie uns von
                         <span className="block bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
-                            your project
+                            Ihrem Projekt
                         </span>
                     </h2>
 
@@ -110,15 +110,11 @@ Message: ${formData.message}`;
                     }}
                     className="relative z-60 rounded-4xl border border-white/10 bg-white/4 p-6 backdrop-blur-xl md:p-8"
                 >
-                    <div className="pointer-events-none absolute inset-0 rounded-4xl">
-                        <div className="absolute right-0 top-0 h-32 w-32 rounded-full bg-orange-500/8 blur-3xl" />
-                    </div>
-
                     <form onSubmit={handleSubmit} className="relative z-10 space-y-5">
                         <input
                             type="text"
                             name="name"
-                            placeholder="Full Name"
+                            placeholder="Vollständiger Name"
                             required
                             value={formData.name}
                             onChange={handleChange}
@@ -128,7 +124,7 @@ Message: ${formData.message}`;
                         <input
                             type="text"
                             name="phone"
-                            placeholder="Phone Number"
+                            placeholder="Telefonnummer"
                             required
                             value={formData.phone}
                             onChange={handleChange}
@@ -138,7 +134,7 @@ Message: ${formData.message}`;
                         <input
                             type="email"
                             name="email"
-                            placeholder="Email Address"
+                            placeholder="E-Mail-Adresse"
                             required
                             value={formData.email}
                             onChange={handleChange}
@@ -148,7 +144,7 @@ Message: ${formData.message}`;
                         <textarea
                             name="message"
                             rows={6}
-                            placeholder="Tell us about your project..."
+                            placeholder="Erzählen Sie uns mehr über Ihr Projekt..."
                             required
                             value={formData.message}
                             onChange={handleChange}
@@ -159,7 +155,7 @@ Message: ${formData.message}`;
                             type="submit"
                             className="group flex w-full items-center justify-center gap-2 rounded-full bg-orange-400 px-6 py-4 text-sm font-medium text-black transition duration-300 hover:scale-[1.01] hover:bg-white cursor-pointer"
                         >
-                            Submit
+                            Absenden
                             <ArrowUpRight className="h-4 w-4 transition duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                         </button>
                     </form>

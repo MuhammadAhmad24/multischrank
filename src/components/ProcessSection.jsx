@@ -4,33 +4,33 @@ import { motion, useScroll, useTransform } from "framer-motion";
 const steps = [
     {
         id: "01",
-        label: "Discovery",
-        title: "Understanding the space",
-        text: "Every project begins with observation. We study proportion, mood, and how the space should feel in real use.",
+        label: "Analyse",
+        title: "Den Raum verstehen",
+        text: "Jedes Projekt beginnt mit Beobachtung. Wir analysieren Proportion, Stimmung und wie sich der Raum in der tatsächlichen Nutzung anfühlen soll.",
     },
     {
         id: "02",
-        label: "Concept",
-        title: "Shaping the direction",
-        text: "Materials, structure, and visual rhythm are defined to create a clear design language.",
+        label: "Konzept",
+        title: "Die Richtung formen",
+        text: "Materialien, Struktur und visueller Rhythmus werden definiert, um eine klare Gestaltungssprache zu schaffen.",
     },
     {
         id: "03",
-        label: "Refinement",
-        title: "Resolving the details",
-        text: "Dimensions, transitions, and finishes are refined carefully before production begins.",
+        label: "Verfeinerung",
+        title: "Die Details ausarbeiten",
+        text: "Maße, Übergänge und Oberflächen werden sorgfältig verfeinert, bevor die Produktion beginnt.",
     },
     {
         id: "04",
-        label: "Craft",
-        title: "Built with precision",
-        text: "Each element is produced with discipline where construction quality and finishing matter equally.",
+        label: "Handwerk",
+        title: "Mit Präzision gefertigt",
+        text: "Jedes Element wird mit höchster Sorgfalt gefertigt, wobei Konstruktionsqualität und Ausführung gleichermaßen zählen.",
     },
     {
         id: "05",
-        label: "Completion",
-        title: "Balanced final result",
-        text: "The final result is designed to feel calm, refined, and lasting beyond trends.",
+        label: "Vollendung",
+        title: "Ein ausgewogenes Endergebnis",
+        text: "Das Endergebnis ist darauf ausgelegt, ruhig, hochwertig und über Trends hinaus zeitlos zu wirken.",
     },
 ];
 
@@ -75,13 +75,13 @@ export default function ProcessSection() {
             <div className="relative mx-auto max-w-7xl px-6 md:px-10 lg:px-16">
                 <div className="max-w-3xl">
                     <span className="inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[11px] uppercase tracking-[0.28em] text-orange-200">
-                        Craftsmanship / Process
+                        Handwerkskunst / Prozess
                     </span>
 
                     <h2 className="mt-6 text-4xl font-medium leading-[0.92] tracking-[-0.05em] sm:text-5xl md:text-6xl">
-                        A refined workflow shaped by
+                        Ein verfeinerter Arbeitsablauf, geprägt von
                         <span className="block bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
-                            precision and material.
+                            Präzision und Material.
                         </span>
                     </h2>
                 </div>

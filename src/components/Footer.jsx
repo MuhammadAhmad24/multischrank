@@ -4,10 +4,10 @@ import { MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Catalog", href: "/catalog" },
-    { name: "Contact", href: "/contact" },
+    { name: "Startseite", href: "/" },
+    { name: "Über uns", href: "/about" },
+    { name: "Katalog", href: "/catalog" },
+    { name: "Kontakt", href: "/contact" },
 ];
 
 const socialLinks = [
@@ -86,18 +86,18 @@ export default function MultiSchrankFooter() {
                             </Link>
 
                             <p className="mt-6 max-w-xs text-sm leading-7 text-white/60">
-                                Premium wardrobes and interior solutions crafted with
-                                elegance, precision, and timeless design.
+                                Hochwertige Kleiderschränke und Innenraumlösungen,
+                                gefertigt mit Eleganz, Präzision und zeitlosem Design.
                             </p>
 
                             <a
-                                href="#"
+                                href="https://wa.me/4915563440433"
                                 target="_blank"
                                 rel="noreferrer"
-                                className="mt-6 inline-flex items-center gap-2 rounded-full border border-green-400/25 bg-green-500/10 px-4 py-2.5 text-sm font-medium text-green-300 backdrop-blur-xl transition duration-300 hover:scale-[1.03] hover:border-green-400/50 hover:bg-green-500/20"
+                                className="mt-6 relative z-90 inline-flex items-center gap-2 rounded-full border border-green-400/25 bg-green-500/10 px-4 py-2.5 text-sm font-medium text-green-300 backdrop-blur-xl transition duration-300 hover:scale-[1.03] hover:border-green-400/50 hover:bg-green-500/20"
                             >
                                 <MessageCircle size={16} />
-                                Start Your Project
+                                Projekt starten
                             </a>
                         </div>
                     </div>
@@ -123,20 +123,29 @@ export default function MultiSchrankFooter() {
                     <div>
                         <div className="space-y-2.5 text-[15px] leading-relaxed text-white">
                             <a
-                                href="mailto:info@multischrank.com"
+                                href="mailto:post@multischrank.de"
                                 className="block transition duration-300 hover:text-orange-200"
                             >
-                                info@multischrank.com
+                                post@multischrank.de
                             </a>
                             <a
-                                href="tel:+491111234567"
+                                href="tel:+4935187409610"
                                 className="block transition duration-300 hover:text-orange-200"
                             >
-                                +49 111 1234567
+                                +49 351 87409610
+                            </a>
+                            <a
+                                href="tel:+4915226398262"
+                                className="block transition duration-300 hover:text-orange-200"
+                            >
+                                +49 152 26398262
                             </a>
                             <div className="pt-1 text-white/85">
-                                <p>MultiSchrank Interiors</p>
-                                <p>Germany</p>
+                                <p>MultiSchrank Oleg Morawski
+                                    Gartenstr. 72
+                                    01445 Radebeul
+                                    Deutschland
+                                    USt-IdNr.: DE282912845</p>
                             </div>
                         </div>
                     </div>
@@ -166,19 +175,12 @@ export default function MultiSchrankFooter() {
                 {/* bottom bar */}
                 <div className="mt-4 flex flex-col gap-3 border-t border-white/20 pt-4 text-xs text-white sm:flex-row sm:items-center sm:justify-between">
                     <p>
-                        © {new Date().getFullYear()} MultiSchrank | Designed &
-                        developed by{" "}
-                        <a href="#" className="text-orange-200 transition duration-300 hover:text-orange-300">
-                            G+ Agency
+                        © {new Date().getFullYear()} MultiSchrank | Design &
+                        Entwicklung von{" "}
+                        <a href="https://ggagentur.de/" className="text-orange-200 transition duration-300 hover:text-orange-300">
+                            G+G Agency
                         </a>
                     </p>
-
-                    <a
-                        href="#"
-                        className="transition duration-300 hover:text-orange-200"
-                    >
-                        Privacy Policy
-                    </a>
                 </div>
             </div>
         </footer>

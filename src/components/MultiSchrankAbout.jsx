@@ -5,18 +5,18 @@ import { Sparkles, BadgeCheck, Ruler, Layers3 } from "lucide-react";
 const features = [
     {
         icon: <BadgeCheck size={18} className="text-orange-400" />,
-        title: "Premium Materials",
-        text: "Carefully selected finishes and surfaces that bring warmth, elegance, and lasting quality.",
+        title: "Hochwertige Materialien",
+        text: "Sorgfältig ausgewählte Oberflächen und Materialien, die Wärme, Eleganz und langlebige Qualität vermitteln.",
     },
     {
         icon: <Ruler size={18} className="text-orange-400" />,
-        title: "Tailored Design",
-        text: "Furniture concepts planned around real spaces, practical needs, and refined modern lifestyles.",
+        title: "Individuelles Design",
+        text: "Möbelkonzepte, die auf reale Räume, praktische Anforderungen und einen anspruchsvollen modernen Lebensstil abgestimmt sind.",
     },
     {
         icon: <Layers3 size={18} className="text-orange-400" />,
-        title: "Timeless Aesthetics",
-        text: "Clean lines, balanced proportions, and sophisticated detailing that remain relevant for years.",
+        title: "Zeitlose Ästhetik",
+        text: "Klare Linien, ausgewogene Proportionen und raffinierte Details, die auch nach Jahren modern bleiben.",
     },
 ];
 
@@ -134,21 +134,21 @@ export default function MultiSchrankAbout() {
                 >
                     <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.28em] text-orange-200 backdrop-blur-xl">
                         <Sparkles size={14} className="text-orange-400" />
-                        About MultiSchrank
+                        Über MultiSchrank
                     </div>
 
                     <h2 className="mt-6 text-4xl font-semibold leading-tight tracking-tight sm:text-5xl md:text-6xl">
-                        Crafted to bring{" "}
+                        Entwickelt, um{" "}
                         <span className="bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
-                            beauty and function
+                            Schönheit und Funktion
                         </span>{" "}
-                        into everyday spaces
+                        in den Alltag zu bringen
                     </h2>
 
                     <p className="mx-auto mt-6 max-w-3xl text-lg text-white/60">
-                        MultiSchrank creates premium furniture and interior solutions
-                        that combine modern aesthetics, thoughtful functionality, and
-                        timeless craftsmanship.
+                        MultiSchrank entwickelt hochwertige Möbel- und
+                        Innenraumlösungen, die moderne Ästhetik, durchdachte
+                        Funktionalität und zeitlose Handwerkskunst miteinander verbinden.
                     </p>
                 </motion.div>
 

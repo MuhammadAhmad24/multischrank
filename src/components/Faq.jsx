@@ -10,20 +10,20 @@ import { ChevronDown, Sparkles } from "lucide-react";
 
 const faqs = [
     {
-        q: "Can I request custom dimensions?",
-        a: "Yes, all major furniture pieces can be tailored according to your room size and project requirements.",
+        q: "Kann ich individuelle Maße anfragen?",
+        a: "Ja, alle wichtigen Möbelstücke können an Ihre Raummaße und Projektanforderungen angepasst werden.",
     },
     {
-        q: "Do you offer installation?",
-        a: "Yes, we provide installation support depending on the product type and location.",
+        q: "Bieten Sie auch Montage an?",
+        a: "Ja, wir bieten je nach Produkttyp und Standort Unterstützung bei der Montage an.",
     },
     {
-        q: "What materials do you use?",
-        a: "We work with premium laminates, MDF, engineered wood, and selected natural finishes depending on the collection.",
+        q: "Welche Materialien verwenden Sie?",
+        a: "Wir arbeiten je nach Kollektion mit hochwertigen Laminaten, MDF, Holzwerkstoffen und ausgewählten natürlichen Oberflächen.",
     },
     {
-        q: "How long does delivery take?",
-        a: "Delivery timelines depend on customization and production scope, but standard lead times are usually shared during quotation.",
+        q: "Wie lange dauert die Lieferung?",
+        a: "Die Lieferzeit hängt vom Grad der Individualisierung und dem Umfang des Projekts ab. Übliche Zeitrahmen werden in der Regel bereits im Angebot mitgeteilt.",
     },
 ];
 
@@ -167,7 +167,6 @@ export default function Faq() {
             ref={sectionRef}
             className="relative mx-auto max-w-5xl overflow-hidden px-6 py-12 md:px-10 md:py-18"
         >
-
             {/* static subtle grid */}
             <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[42px_42px]" />
             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[42px_42px]" />
@@ -193,9 +192,9 @@ export default function Faq() {
                         }}
                         className="mt-5 text-3xl font-semibold tracking-tight text-white md:text-5xl"
                     >
-                        Common questions,
+                        Häufige Fragen,
                         <span className="block bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
-                            clear answers
+                            klare Antworten
                         </span>
                     </motion.h2>
 
@@ -203,9 +202,9 @@ export default function Faq() {
                         style={{ opacity: textOpacity, y: textY }}
                         className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-white/60 md:text-base"
                     >
-                        Everything you may want to know about custom sizing,
-                        materials, installation, and delivery before starting
-                        your furniture project.
+                        Alles, was Sie vor dem Start Ihres Möbelprojekts über
+                        individuelle Maße, Materialien, Montage und Lieferung
+                        wissen möchten.
                     </motion.p>
                 </div>
 

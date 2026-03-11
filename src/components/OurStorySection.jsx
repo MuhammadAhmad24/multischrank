@@ -4,33 +4,33 @@ import { motion, useScroll, useTransform } from "framer-motion";
 const panels = [
     {
         index: "01",
-        title: "Driven by detail",
-        text: "Every project starts with a strong visual intention, where proportion, material, and atmosphere are shaped together from the very beginning.",
-        meta: "Intent / Atmosphere / Material",
+        title: "Vom Detail geleitet",
+        text: "Jedes Projekt beginnt mit einer klaren gestalterischen Absicht, bei der Proportion, Material und Atmosphäre von Anfang an gemeinsam entwickelt werden.",
+        meta: "Absicht / Atmosphäre / Material",
     },
     {
         index: "02",
-        title: "Built with balance",
-        text: "We design spaces that feel calm and refined, allowing softness, structure, and function to exist in the same rhythm without visual noise.",
-        meta: "Softness / Structure / Rhythm",
+        title: "Mit Balance gestaltet",
+        text: "Wir entwerfen Räume, die ruhig und anspruchsvoll wirken, sodass Weichheit, Struktur und Funktion im gleichen Rhythmus zusammenfinden – ohne visuelle Unruhe.",
+        meta: "Weichheit / Struktur / Rhythmus",
     },
     {
         index: "03",
-        title: "Made to last",
-        text: "Our approach is guided by timeless restraint, careful execution, and finishes that continue to feel relevant beyond short-lived trends.",
-        meta: "Restraint / Longevity / Presence",
+        title: "Für lange Zeit gemacht",
+        text: "Unser Ansatz wird von zeitloser Zurückhaltung, sorgfältiger Ausführung und Oberflächen geprägt, die auch über kurzlebige Trends hinaus relevant bleiben.",
+        meta: "Zurückhaltung / Langlebigkeit / Präsenz",
     },
     {
         index: "04",
-        title: "Shaped by clarity",
-        text: "We remove the unnecessary and focus on what truly matters, creating interiors that feel intentional, composed, and visually confident.",
-        meta: "Clarity / Precision / Focus",
+        title: "Von Klarheit geprägt",
+        text: "Wir reduzieren das Unnötige und konzentrieren uns auf das Wesentliche, um Innenräume zu schaffen, die bewusst, harmonisch und visuell souverän wirken.",
+        meta: "Klarheit / Präzision / Fokus",
     },
     {
         index: "05",
-        title: "Defined by experience",
-        text: "More than appearance, we care about how a space feels in use — natural to move through, easy to live with, and strong in character.",
-        meta: "Experience / Comfort / Identity",
+        title: "Durch Erfahrung definiert",
+        text: "Für uns zählt nicht nur die Optik, sondern auch, wie sich ein Raum im Alltag anfühlt – natürlich in der Bewegung, angenehm im Gebrauch und stark im Charakter.",
+        meta: "Erlebnis / Komfort / Identität",
     },
 ];
 
@@ -56,8 +56,6 @@ export default function OurStorySection() {
 
     const lineScale = useTransform(scrollYProgress, [0, 1], [0.08, 1]);
     const bgMove = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
-
-    
 
     return (
         <section
@@ -86,9 +84,8 @@ export default function OurStorySection() {
                     {/* top heading */}
                     <div className="absolute left-0 right-0 top-14 z-20 mx-auto max-w-7xl px-6 pt-8 md:px-10 lg:px-16">
                         <motion.div style={{ opacity: labelOpacity }}>
-
-                            <h2 className="mt-6 max-w-4xl text-5xl font-medium leading-[0.9] tracking-[-0.06em] text-white sm:text-6xl md:text-7xl lg:text-[96px]">
-                                Our Story
+                            <h2 className="max-w-4xl text-5xl font-medium leading-[0.9] tracking-[-0.06em] text-white sm:text-6xl md:text-7xl lg:text-[96px]">
+                                Unsere Geschichte
                             </h2>
                         </motion.div>
                     </div>

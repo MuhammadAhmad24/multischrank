@@ -5,32 +5,32 @@ import { ArrowUpRight } from "lucide-react";
 const partners = [
     {
         name: "Swiss Krono",
-        desc: "Korpus & Front Materials",
+        desc: "Korpus- und Frontmaterialien",
         url: "https://www.swisskrono.com/ch-de/produkte/interiors/one-world-collection/?popup=redirectInfo",
     },
     {
         name: "Egger",
-        desc: "Worktops / Arbeitsplatten",
+        desc: "Arbeitsplatten",
         url: "https://www.egger.com/de/moebel-innenausbau/sortiment/produkte/worktops?country=DE",
     },
     {
         name: "Blum",
-        desc: "Hinge Systems",
+        desc: "Scharniersysteme",
         url: "https://www.blum.com/de/de/produkte/scharniersysteme/uebersicht/",
     },
     {
         name: "Hettich",
-        desc: "Hardware & Hinges",
+        desc: "Beschläge und Scharniere",
         url: "https://www.hettich.com/de-de/startseite",
     },
     {
         name: "Inoxa",
-        desc: "Kitchen Accessories",
+        desc: "Küchenzubehör",
         url: "https://inoxa.it/en/kitchen",
     },
     {
         name: "Blanco",
-        desc: "Kitchen Systems",
+        desc: "Küchensysteme",
         url: "https://www.blanco.de/",
     },
 ];
@@ -64,13 +64,13 @@ export default function OurPartnersSection() {
                     className="mx-auto mb-16 max-w-3xl text-center"
                 >
                     <span className="text-[0.7rem] uppercase tracking-[0.35em] text-orange-200/50">
-                        Our Partners
+                        Unsere Partner
                     </span>
 
                     <h2 className="mt-4 text-4xl font-semibold leading-none text-white/90 md:text-5xl">
-                        Trusted material
+                        Vertrauenswürdige Partner für
                         <span className="block bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
-                            and hardware partners
+                            Materialien und Beschläge
                         </span>
                     </h2>
 

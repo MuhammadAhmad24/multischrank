@@ -21,18 +21,31 @@ export default function ContactIntro() {
     const cards = [
         {
             icon: Phone,
-            title: "Phone",
-            text: "+49 XXX XXX XXX",
+            title: "Telefon",
+            text: (
+                <>
+                    Telefon: +49 351 87409610 <br />
+                    Mobil: +49 152 26398262
+                </>
+            ),
         },
         {
             icon: Mail,
-            title: "Email",
-            text: "info@multischrank.com",
+            title: "E-Mail",
+            text: "post@multischrank.de",
         },
         {
             icon: MapPin,
-            title: "Location",
-            text: "Germany",
+            title: "Standort",
+            text: (
+                <>
+                    MultiSchrank
+                    Oleg Morawski
+                    Gartenstr. 72
+                    01445 Radebeul
+                    Deutschland
+                </>
+            ),
         },
     ];
 
@@ -53,15 +66,16 @@ export default function ContactIntro() {
                     className="mb-16 text-center md:mb-20"
                 >
                     <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-semibold leading-[1.02] tracking-[-0.04em]">
-                        Let’s start
+                        Starten wir
                         <span className="block bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
-                            your furniture project
+                            Ihr Möbelprojekt
                         </span>
                     </h2>
 
                     <p className="mx-auto mt-6 max-w-xl text-base leading-7 text-white/70">
-                        Share your ideas, questions, or project details. Our team will help you move
-                        forward with clarity.
+                        Teilen Sie Ihre Ideen, Fragen oder Projektdetails mit uns.
+                        Unser Team unterstützt Sie dabei, den nächsten Schritt mit
+                        Klarheit und Sicherheit zu gehen.
                     </p>
                 </motion.div>
 

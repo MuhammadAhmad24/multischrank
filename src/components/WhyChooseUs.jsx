@@ -6,26 +6,26 @@ const reasons = [
     {
         number: "01",
         icon: Sparkles,
-        title: "Detail Driven Approach",
-        text: "Every surface, edge, and proportion is considered carefully so the final result feels refined from every angle.",
+        title: "Detailorientierter Ansatz",
+        text: "Jede Oberfläche, Kante und Proportion wird sorgfältig berücksichtigt, damit das Endergebnis aus jedem Blickwinkel hochwertig wirkt.",
     },
     {
         number: "02",
         icon: Layers3,
-        title: "Premium Material Selection",
-        text: "We work with materials that bring warmth, durability, and a stronger visual presence to the space.",
+        title: "Hochwertige Materialauswahl",
+        text: "Wir arbeiten mit Materialien, die Wärme, Langlebigkeit und eine stärkere visuelle Präsenz in den Raum bringen.",
     },
     {
         number: "03",
         icon: BadgeCheck,
-        title: "Built Around Real Spaces",
-        text: "Instead of generic solutions, each piece is shaped around actual dimensions, use, and flow of the interior.",
+        title: "Für reale Räume entwickelt",
+        text: "Statt auf generische Lösungen zu setzen, wird jedes Element an tatsächliche Maße, Nutzung und den Fluss des Innenraums angepasst.",
     },
     {
         number: "04",
         icon: ArrowUpRight,
-        title: "Modern Yet Timeless",
-        text: "The design language stays clean and contemporary while remaining balanced enough to feel relevant for years.",
+        title: "Modern und zeitlos zugleich",
+        text: "Die Gestaltung bleibt klar und modern, ist dabei aber ausgewogen genug, um auch über Jahre hinweg relevant zu wirken.",
     },
 ];
 
@@ -77,7 +77,7 @@ function WhyChooseUsCard({ item, index, progress, total }) {
                 <div className="relative flex flex-col justify-between border-b border-white/10 p-6 sm:p-8 md:border-b-0 md:border-r md:p-10 lg:p-12">
                     <div className="flex items-start justify-between">
                         <span className="text-[0.7rem] font-medium uppercase tracking-[0.35em] text-orange-200/55">
-                            Why Choose Us
+                            Warum wir
                         </span>
 
                         <div className="flex h-12 w-12 items-center justify-center rounded-full border border-orange-300/10 bg-orange-400/10 text-orange-300">
@@ -104,19 +104,19 @@ function WhyChooseUsCard({ item, index, progress, total }) {
                     <div className="mt-8 grid grid-cols-2 gap-4 sm:gap-5">
                         <div className="rounded-2xl border border-white/10 bg-white/3 p-4 sm:p-5">
                             <div className="mb-2 text-xs uppercase tracking-[0.25em] text-orange-200/45">
-                                Quality
+                                Qualität
                             </div>
                             <div className="text-sm leading-7 text-white/70">
-                                Controlled execution with careful finishing and long-term durability in mind.
+                                Kontrollierte Ausführung mit sorgfältiger Verarbeitung und langfristiger Haltbarkeit im Blick.
                             </div>
                         </div>
 
                         <div className="rounded-2xl border border-white/10 bg-white/3 p-4 sm:p-5">
                             <div className="mb-2 text-xs uppercase tracking-[0.25em] text-orange-200/45">
-                                Experience
+                                Erfahrung
                             </div>
                             <div className="text-sm leading-7 text-white/70">
-                                Spaces are designed to feel visually calm, functional, and naturally premium.
+                                Räume werden so gestaltet, dass sie visuell ruhig, funktional und natürlich hochwertig wirken.
                             </div>
                         </div>
                     </div>
@@ -158,13 +158,13 @@ export default function WhyChooseUsStacked() {
                 >
                     <div>
                         <span className="inline-block text-[0.72rem] uppercase tracking-[0.35em] text-orange-200/50">
-                            Why Choose Us
+                            Warum wir
                         </span>
 
                         <h2 className="mt-4 text-4xl font-semibold leading-[0.95] text-white/85 sm:text-5xl md:text-6xl lg:text-7xl">
-                            Reasons that feel
+                            Gründe, die sich
                             <span className="block bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
-                                clear in every detail
+                                in jedem Detail zeigen
                             </span>
                         </h2>
                     </div>
