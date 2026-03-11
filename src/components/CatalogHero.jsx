@@ -44,41 +44,38 @@ export default function CatalogHero() {
         mass: 0.35,
     });
 
-    // left content motion
     const textY = useTransform(smoothProgress, [0, 0.5, 1], [80, 0, -80]);
     const textOpacity = useTransform(smoothProgress, [0, 0.18, 0.8, 1], [0, 1, 1, 0.35]);
 
-    // right image motion
     const imageY = useTransform(smoothProgress, [0, 0.5, 1], [100, 0, -100]);
     const imageScale = useTransform(smoothProgress, [0, 0.5, 1], [0.9, 1, 1.08]);
     const imageRotate = useTransform(smoothProgress, [0, 0.5, 1], [2.5, 0, -2]);
 
-    // background glow motion
     const glowLeftX = useTransform(smoothProgress, [0, 1], [-60, 80]);
     const glowLeftY = useTransform(smoothProgress, [0, 1], [-40, 60]);
 
     const glowRightX = useTransform(smoothProgress, [0, 1], [60, -70]);
     const glowRightY = useTransform(smoothProgress, [0, 1], [40, -50]);
 
-    // subtle heading emphasis
     const headingY = useTransform(smoothProgress, [0, 0.5, 1], [40, 0, -40]);
     const badgeY = useTransform(smoothProgress, [0, 1], [20, -20]);
 
     return (
         <section
             ref={sectionRef}
-            className="relative overflow-hidden z-50"
+            className="relative z-50 overflow-hidden"
         >
             <div className="absolute inset-0">
                 <motion.div
                     style={{ x: glowLeftX, y: glowLeftY }}
-                    className="fixed left-[-10%] top-[-10%] h-80 w-[320px] rounded-full bg-[#8a6a4a]/20 blur-3xl"
+                    className="fixed left-[-10%] top-[-10%] h-80 w-[320px] rounded-full bg-orange-500/16 blur-3xl"
                 />
                 <motion.div
                     style={{ x: glowRightX, y: glowRightY }}
-                    className="fixed bottom-[-20%] right-[-10%] h-85 w-85 rounded-full bg-[#6b4d33]/20 blur-3xl"
+                    className="fixed bottom-[-20%] right-[-10%] h-85 w-85 rounded-full bg-orange-700/14 blur-3xl"
                 />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_45%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_25%,rgba(249,115,22,0.10),transparent_28%)]" />
             </div>
 
             <div className="relative mx-auto grid min-h-screen max-w-360 grid-cols-1 gap-12 px-6 pb-14 pt-32 md:px-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:pb-18 lg:pt-30">
@@ -93,9 +90,9 @@ export default function CatalogHero() {
                     <motion.div
                         variants={fadeUp}
                         style={{ y: badgeY }}
-                        className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.22em] text-white/70 backdrop-blur-md"
+                        className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.22em] text-orange-200 backdrop-blur-md"
                     >
-                        <Sparkles className="h-4 w-4" />
+                        <Sparkles className="h-4 w-4 text-orange-400" />
                         Collection
                     </motion.div>
 
@@ -105,7 +102,7 @@ export default function CatalogHero() {
                         className="text-4xl font-semibold leading-[1.02] tracking-tight sm:text-5xl md:text-6xl"
                     >
                         Crafted furniture for
-                        <span className="block text-white/60">
+                        <span className="block bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
                             modern living spaces
                         </span>
                     </motion.h1>
@@ -127,9 +124,10 @@ export default function CatalogHero() {
                             <motion.button
                                 whileHover={{ y: -2, scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
-                                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/10"
+                                className="inline-flex items-center gap-2 rounded-full bg-orange-400 px-6 py-3 text-sm font-medium text-black transition hover:bg-white cursor-pointer"
                             >
                                 Request Custom Design
+                                <ArrowUpRight className="h-4 w-4" />
                             </motion.button>
                         </motion.div>
                     </a>
@@ -147,7 +145,7 @@ export default function CatalogHero() {
                     transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
                     className="relative"
                 >
-                    <div className="absolute -inset-6 rounded-[40px] bg-white/3 blur-2xl" />
+                    <div className="absolute -inset-6 rounded-[40px] bg-orange-500/6 blur-2xl" />
 
                     <div className="relative overflow-hidden rounded-4xl border border-white/10 bg-white/5 shadow-2xl">
                         <motion.img
@@ -170,6 +168,7 @@ export default function CatalogHero() {
 
                         <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/15 to-transparent" />
                         <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.10),transparent_35%,transparent_65%,rgba(255,255,255,0.08))]" />
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(249,115,22,0.16),transparent_30%)]" />
 
                         <motion.div
                             style={{
@@ -187,7 +186,7 @@ export default function CatalogHero() {
                             className="absolute bottom-0 left-0 right-0 p-6 md:p-8"
                         >
                             <div className="rounded-3xl border border-white/10 bg-black/25 p-5 backdrop-blur-md">
-                                <p className="text-xs uppercase tracking-[0.2em] text-white/55">
+                                <p className="text-xs uppercase tracking-[0.2em] text-orange-300">
                                     Signature Series
                                 </p>
                                 <h3 className="mt-2 text-xl font-medium text-white md:text-2xl">

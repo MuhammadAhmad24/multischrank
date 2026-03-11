@@ -128,7 +128,7 @@ function ValueCard({ item, index, progress }) {
             className="relative min-h-80 overflow-hidden rounded-[28px] border border-white/10 bg-white/4 p-6 backdrop-blur-xl md:p-7"
         >
             <div className="pointer-events-none absolute inset-0">
-                <div className="absolute -left-10 top-0 h-28 w-28 rounded-full bg-[#c5a06d]/8 blur-2xl" />
+                <div className="absolute -left-10 top-0 h-28 w-28 rounded-full bg-orange-500/10 blur-2xl" />
                 <div className="absolute bottom-0 right-0 h-24 w-24 rounded-full bg-white/6 blur-2xl" />
             </div>
 
@@ -139,7 +139,7 @@ function ValueCard({ item, index, progress }) {
             <div className="relative z-10 flex h-full flex-col">
                 <div className="flex items-center justify-between">
                     <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/6">
-                        <Icon className="h-6 w-6 text-[#d7b182]" />
+                        <Icon className="h-6 w-6 text-orange-300" />
                     </div>
                 </div>
 
@@ -153,7 +153,7 @@ function ValueCard({ item, index, progress }) {
                 </div>
 
                 <div className="mt-auto pt-10">
-                    <div className="h-px w-full bg-linear-to-r from-white/20 to-transparent" />
+                    <div className="h-px w-full bg-linear-to-r from-orange-200/30 to-transparent" />
                 </div>
             </div>
         </motion.div>
@@ -165,19 +165,16 @@ export default function OurValuesSection() {
     const headingRef = useRef(null);
     const cardsRef = useRef(null);
 
-    // full section only for decorative background motion
     const { scrollYProgress: sectionProgress } = useScroll({
         target: sectionRef,
         offset: ["start end", "end start"],
     });
 
-    // heading starts only when heading enters viewport
     const { scrollYProgress: headingProgress } = useScroll({
         target: headingRef,
         offset: ["start 0.8", "end 0.35"],
     });
 
-    // cards start only when cards grid enters viewport
     const { scrollYProgress: cardsProgress } = useScroll({
         target: cardsRef,
         offset: ["start 0.92", "end 0.45"],
@@ -194,9 +191,8 @@ export default function OurValuesSection() {
             ref={sectionRef}
             className="relative overflow-hidden bg-[#0f0f0d] py-28 text-[#f5f1eb] md:pt-36 md:pb-42"
         >
-            {/* ambient background */}
             <div className="pointer-events-none absolute inset-0">
-                <div className="absolute left-[-10%] top-[10%] h-72 w-72 rounded-full bg-[#b38a5a]/10 blur-3xl" />
+                <div className="absolute left-[-10%] top-[10%] h-72 w-72 rounded-full bg-orange-500/10 blur-3xl" />
                 <div className="absolute bottom-[5%] right-[-5%] h-80 w-80 rounded-full bg-white/5 blur-3xl" />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_35%)]" />
             </div>
@@ -208,7 +204,7 @@ export default function OurValuesSection() {
                         className="pt-2 md:pt-4"
                     >
                         <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[11px] uppercase tracking-[0.28em] text-white/65 backdrop-blur-sm">
-                            <span className="h-1.5 w-1.5 rounded-full bg-[#c5a06d]" />
+                            <span className="h-1.5 w-1.5 rounded-full bg-orange-400" />
                             Our Values
                         </div>
 
@@ -234,7 +230,7 @@ export default function OurValuesSection() {
 
                 <motion.div
                     style={{ scaleX: lineScale, opacity: lineOpacity }}
-                    className="mt-14 h-px origin-left bg-linear-to-r from-white/40 via-white/10 to-transparent"
+                    className="mt-14 h-px origin-left bg-linear-to-r from-orange-200/40 via-white/10 to-transparent"
                 />
 
                 <div

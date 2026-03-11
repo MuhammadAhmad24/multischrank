@@ -54,16 +54,20 @@ function HighlightCard({ item, index, progress }) {
                 filter: useTransform(blurValue, (v) => `blur(${v}px)`),
                 transformStyle: "preserve-3d",
             }}
-            className="rounded-3xl border border-white/10 bg-white/4 p-6 will-change-transform"
+            className="relative rounded-3xl border border-white/10 bg-white/4 p-6 will-change-transform"
         >
+            <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-3xl">
+                <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-orange-500/8 blur-2xl" />
+            </div>
+
             <motion.div
                 style={{ scale: iconScale }}
-                className="mb-4 inline-flex rounded-2xl border border-white/10 bg-white/5 p-3"
+                className="relative z-10 mb-4 inline-flex rounded-2xl border border-white/10 bg-white/5 p-3"
             >
-                <Icon className="h-5 w-5 text-white" />
+                <Icon className="h-5 w-5 text-orange-300" />
             </motion.div>
 
-            <motion.div style={{ y: innerY }}>
+            <motion.div style={{ y: innerY }} className="relative z-10">
                 <h3 className="text-lg font-medium text-white">{item.title}</h3>
 
                 <p className="mt-3 text-sm leading-7 text-white/60">
@@ -98,11 +102,16 @@ export default function CatalogHighlights() {
     return (
         <section
             ref={sectionRef}
-            className="border-y border-white/10 bg-white/3 py-16 md:py-20"
+            className="relative overflow-hidden border-y border-white/10 bg-white/3 py-16 md:py-20"
         >
+            <div className="pointer-events-none absolute inset-0">
+                <div className="absolute left-[8%] top-[10%] h-56 w-56 rounded-full bg-orange-500/6 blur-3xl" />
+                <div className="absolute right-[6%] bottom-[0%] h-64 w-64 rounded-full bg-orange-400/6 blur-3xl" />
+            </div>
+
             <motion.div
                 style={{ y: sectionY, opacity: sectionOpacity }}
-                className="mx-auto max-w-7xl px-6 md:px-10"
+                className="relative z-10 mx-auto max-w-7xl px-6 md:px-10"
             >
                 <motion.div
                     style={{
@@ -115,13 +124,13 @@ export default function CatalogHighlights() {
                     }}
                     className="mx-auto mb-10 max-w-3xl text-center md:mb-14"
                 >
-                    <p className="text-xs uppercase tracking-[0.28em] text-white/45">
+                    <p className="text-xs uppercase tracking-[0.28em] text-orange-200/70">
                         Why it feels premium
                     </p>
 
                     <h2 className="mt-4 text-3xl font-semibold leading-tight text-white md:text-5xl">
                         Crafted for balance,
-                        <span className="block text-white/65">
+                        <span className="block bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
                             precision, and lasting use
                         </span>
                     </h2>

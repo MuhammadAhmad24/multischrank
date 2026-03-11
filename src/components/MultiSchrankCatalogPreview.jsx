@@ -171,13 +171,13 @@ function SliderCard({ item, index, details }) {
                 <motion.div
                     animate={{ opacity: glowOpacity }}
                     transition={{ duration: 0.35 }}
-                    className="pointer-events-none absolute inset-0 rounded-4xl ring-1 ring-inset ring-amber-300/30"
+                    className="pointer-events-none absolute inset-0 rounded-4xl ring-1 ring-inset ring-orange-300/30"
                 />
 
                 <motion.div
                     animate={{ opacity: glowOpacity }}
                     transition={{ duration: 0.35 }}
-                    className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.16),transparent_58%)]"
+                    className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(249,115,22,0.16),transparent_58%)]"
                 />
 
                 <div className="relative flex h-full flex-col justify-between p-6 md:p-8">
@@ -193,7 +193,7 @@ function SliderCard({ item, index, details }) {
                             {item.tag}
                         </div>
 
-                        <div className="text-sm font-medium text-white/40">
+                        <div className="text-sm font-medium text-orange-200/40">
                             {String(index + 1).padStart(2, "0")}
                         </div>
                     </motion.div>
@@ -214,7 +214,7 @@ function SliderCard({ item, index, details }) {
                             {item.description}
                         </p>
 
-                        <div className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-white/85 transition duration-300 group-hover:text-amber-300 sm:mt-6">
+                        <div className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-white/85 transition duration-300 group-hover:text-orange-300 sm:mt-6">
                             <span>Explore Collection</span>
                             <ArrowUpRight
                                 size={16}
@@ -280,8 +280,9 @@ export default function MultiSchrankCatalogSlider() {
             className="relative overflow-hidden bg-neutral-950 py-12 text-white md:py-18"
         >
             <div className="pointer-events-none absolute inset-0">
-                <div className="absolute left-[-8%] top-[12%] h-80 w-80 rounded-full bg-amber-500/10 blur-3xl" />
-                <div className="absolute right-[-8%] bottom-[8%] h-96 w-96 rounded-full bg-white/6 blur-3xl" />
+                <div className="absolute left-[-8%] top-[12%] h-80 w-80 rounded-full bg-orange-500/10 blur-3xl" />
+                <div className="absolute right-[-8%] bottom-[8%] h-96 w-96 rounded-full bg-orange-300/6 blur-3xl" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_20%,rgba(249,115,22,0.08),transparent_26%)]" />
             </div>
 
             <motion.div
@@ -295,9 +296,9 @@ export default function MultiSchrankCatalogSlider() {
                     <div className="max-w-3xl">
                         <motion.div
                             variants={fadeUp}
-                            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.28em] text-white/65 backdrop-blur-xl"
+                            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.28em] text-orange-200 backdrop-blur-xl"
                         >
-                            <Sparkles size={14} className="text-amber-400" />
+                            <Sparkles size={14} className="text-orange-400" />
                             Our Collection
                         </motion.div>
 
@@ -306,7 +307,7 @@ export default function MultiSchrankCatalogSlider() {
                             className="mt-6 text-3xl font-semibold leading-[1.05] tracking-[-0.04em] text-white sm:text-4xl md:text-5xl xl:text-6xl"
                         >
                             Discover furniture with a{" "}
-                            <span className="bg-linear-to-r from-white via-white to-amber-300 bg-clip-text text-transparent">
+                            <span className="bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
                                 luxury perspective.
                             </span>
                         </motion.h2>
@@ -325,7 +326,7 @@ export default function MultiSchrankCatalogSlider() {
                 <motion.div variants={fadeUp} className="relative z-50 mt-8 sm:mt-14">
                     <button
                         onClick={() => instanceRef.current?.prev()}
-                        className="absolute left-4 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-neutral-900/70 text-white/80 backdrop-blur-xl transition duration-300 hover:border-white/20 hover:bg-neutral-800/80 hover:text-white lg:inline-flex"
+                        className="absolute left-4 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-neutral-900/70 text-white/80 backdrop-blur-xl transition duration-300 hover:border-orange-300/20 hover:bg-neutral-800/80 hover:text-orange-200 lg:inline-flex"
                         aria-label="Scroll left"
                     >
                         <ArrowLeft size={18} />
@@ -333,7 +334,7 @@ export default function MultiSchrankCatalogSlider() {
 
                     <button
                         onClick={() => instanceRef.current?.next()}
-                        className="absolute right-4 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-neutral-900/70 text-white/80 backdrop-blur-xl transition duration-300 hover:border-white/20 hover:bg-neutral-800/80 hover:text-white lg:inline-flex"
+                        className="absolute right-4 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-neutral-900/70 text-white/80 backdrop-blur-xl transition duration-300 hover:border-orange-300/20 hover:bg-neutral-800/80 hover:text-orange-200 lg:inline-flex"
                         aria-label="Scroll right"
                     >
                         <ArrowRight size={18} />
@@ -358,10 +359,11 @@ export default function MultiSchrankCatalogSlider() {
                                     key={idx}
                                     onClick={() => instanceRef.current?.moveToIdx(idx)}
                                     aria-label={`Go to slide ${idx + 1}`}
-                                    className={`h-2 rounded-full transition-all duration-500 ${isActive
-                                            ? "w-8 bg-amber-300"
-                                            : "w-2 bg-white/25 hover:bg-white/45"
-                                        }`}
+                                    className={`h-2 rounded-full transition-all duration-500 ${
+                                        isActive
+                                            ? "w-8 bg-orange-300"
+                                            : "w-2 bg-white/25 hover:bg-orange-200/45"
+                                    }`}
                                 />
                             );
                         })}
@@ -371,7 +373,7 @@ export default function MultiSchrankCatalogSlider() {
                 <div className="mx-auto mt-12 flex max-w-7xl flex-col items-center justify-center gap-4 px-5 sm:px-6 sm:flex-row lg:px-10">
                     <a
                         href="/catalog"
-                        className="group inline-flex items-center gap-2 rounded-full bg-white px-5 py-3.5 text-sm font-semibold text-neutral-900 transition duration-300 hover:scale-[1.03] hover:shadow-[0_12px_40px_rgba(255,255,255,0.18)] sm:px-6"
+                        className="group inline-flex items-center gap-2 rounded-full bg-orange-400 px-5 py-3.5 text-sm font-semibold text-neutral-900 transition duration-300 hover:scale-[1.03] hover:bg-orange-300 hover:shadow-[0_12px_40px_rgba(249,115,22,0.22)] sm:px-6"
                     >
                         View Full Catalog
                         <ArrowRight

@@ -25,8 +25,7 @@ const products = [
         material: "Oak",
         color: "Brown",
         price: 1200,
-        image:
-            "/catalog-wardrobe.webp",
+        image: "/catalog-wardrobe.webp",
     },
     {
         id: 2,
@@ -35,8 +34,7 @@ const products = [
         material: "Walnut",
         color: "Brown",
         price: 780,
-        image:
-            "/catalog-tv-unit.webp",
+        image: "/catalog-tv-unit.webp",
     },
     {
         id: 3,
@@ -45,8 +43,7 @@ const products = [
         material: "MDF",
         color: "White",
         price: 1600,
-        image:
-            "/catalog-kitchen.webp",
+        image: "/catalog-kitchen.webp",
     },
     {
         id: 4,
@@ -55,8 +52,7 @@ const products = [
         material: "Ash Wood",
         color: "Beige",
         price: 980,
-        image:
-            "/catalog-bedroom.webp",
+        image: "/catalog-bedroom.webp",
     },
     {
         id: 6,
@@ -65,8 +61,7 @@ const products = [
         material: "Walnut",
         color: "Black",
         price: 860,
-        image:
-            "/catalog-office.webp",
+        image: "/catalog-office.webp",
     },
 ];
 
@@ -137,7 +132,7 @@ function ProductCard({ item, index }) {
         >
             <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100">
                 <div className="absolute -left-10 top-0 h-32 w-32 rounded-full bg-white/10 blur-3xl" />
-                <div className="absolute bottom-0 right-0 h-28 w-28 rounded-full bg-[#8a6a4a]/20 blur-3xl" />
+                <div className="absolute bottom-0 right-0 h-28 w-28 rounded-full bg-orange-500/16 blur-3xl" />
             </div>
 
             <div className="relative aspect-[4/4.6] overflow-hidden">
@@ -150,6 +145,7 @@ function ProductCard({ item, index }) {
 
                 <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent opacity-90" />
                 <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_35%,transparent_65%,rgba(255,255,255,0.06))] opacity-60" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(249,115,22,0.12),transparent_30%)]" />
 
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8, y: -10 }}
@@ -162,7 +158,7 @@ function ProductCard({ item, index }) {
                     }}
                     className="absolute right-4 top-4 rounded-full border border-white/15 bg-black/25 p-2 backdrop-blur-md"
                 >
-                    <ArrowUpRight className="h-4 w-4 text-white transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    <ArrowUpRight className="h-4 w-4 text-orange-200 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </motion.div>
             </div>
 
@@ -171,7 +167,7 @@ function ProductCard({ item, index }) {
                 className="relative p-5 md:p-6"
             >
                 <div className="mb-3 flex items-center justify-between">
-                    <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.16em] text-white/55">
+                    <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.16em] text-orange-200/70">
                         {item.category}
                     </span>
                     <span className="text-sm text-white/80">${item.price}</span>
@@ -183,9 +179,9 @@ function ProductCard({ item, index }) {
                     Premium {item.material} finish with a refined silhouette.
                 </p>
 
-                <div className="mt-5 flex items-center justify-between">
+                <div className="mt-5 flex items-center justify-between hidden">
                     <span className="text-sm text-white/45">{item.color}</span>
-                    <button className="text-sm text-white transition duration-300 group-hover:text-[#f5f1eb]">
+                    <button className="text-sm text-white transition duration-300 group-hover:text-orange-200">
                         View Details
                     </button>
                 </div>
@@ -256,9 +252,12 @@ export default function CatalogProductsSection() {
         <>
             <section
                 ref={filtersRef}
-                className="relative border-white/10 z-50"
+                className="relative z-50 border-white/10"
             >
-                <div className="mx-auto max-w-7xl px-6 md:px-10">
+                <motion.div
+                    style={{ y: filterY, opacity: filterOpacity }}
+                    className="mx-auto max-w-7xl px-6 md:px-10"
+                >
                     <div className="no-scrollbar -mx-6 overflow-x-auto px-6 md:mx-0 md:px-0">
                         <div className="flex w-max gap-3 pb-1">
                             {categories.map((item) => {
@@ -268,10 +267,11 @@ export default function CatalogProductsSection() {
                                     <button
                                         key={item}
                                         onClick={() => setActiveCategory(item)}
-                                        className={`shrink-0 whitespace-nowrap rounded-full border px-5 py-3 text-sm transition-colors duration-300 ${active
-                                                ? "border-[#f5f1eb] bg-[#f5f1eb] text-[#111]"
-                                                : "border-white/10 bg-white/5 text-white/75 hover:bg-white/10"
-                                            }`}
+                                        className={`shrink-0 whitespace-nowrap rounded-full border px-5 py-3 text-sm transition-colors duration-300 ${
+                                            active
+                                                ? "border-orange-300 bg-orange-400 text-[#111]"
+                                                : "border-white/10 bg-white/5 text-white/75 hover:border-orange-300/20 hover:bg-white/10"
+                                        }`}
                                     >
                                         {item}
                                     </button>
@@ -279,14 +279,13 @@ export default function CatalogProductsSection() {
                             })}
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </section>
 
             <section
                 ref={sectionRef}
-                className="relative z-50 mx-auto max-w-7xl px-6 pt-8 pb-12 md:px-10 md:py-18"
+                className="relative z-50 mx-auto max-w-7xl px-6 pb-12 pt-8 md:px-10 md:py-18"
             >
-
                 <motion.div
                     style={{ y: headingY, opacity: headingOpacity }}
                     variants={stagger}
@@ -296,7 +295,7 @@ export default function CatalogProductsSection() {
                     className="relative mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between"
                 >
                     <motion.div variants={fadeUp}>
-                        <p className="text-xs uppercase tracking-[0.22em] text-white/45">
+                        <p className="text-xs uppercase tracking-[0.22em] text-orange-200/55">
                             Catalog
                         </p>
                         <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">

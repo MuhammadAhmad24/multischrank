@@ -20,29 +20,23 @@ export default function MultiSchrankHeader() {
     }, []);
 
     return (
-        <header className="relative overflow-hidden bg-neutral-950 text-white z-90">
-
-            {/* Navbar */}
+        <header className="relative z-90 overflow-hidden bg-neutral-950 text-white">
             <nav
-                className={`fixed top-0 z-50 w-full transition-all duration-500 ${scrolled
-                    ? "border-b border-white/10 bg-neutral-950/75 backdrop-blur-2xl"
-                    : "bg-transparent"
-                    }`}
+                className={`fixed top-0 z-50 w-full transition-all duration-500 ${
+                    scrolled
+                        ? "border-b border-white/10 bg-neutral-950/75 backdrop-blur-2xl"
+                        : "bg-transparent"
+                }`}
             >
-                <div className="mx-auto flex max-w-7xl items-center justify-between px-5 sm:px-6 py-4 lg:px-10">
+                <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6 lg:px-10">
                     {/* Logo */}
                     <Link to="/" className="group relative inline-flex items-center gap-3">
-                        {/* <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/15 bg-white/5 shadow-[0_0_30px_rgba(255,255,255,0.06)] backdrop-blur-xl transition duration-300 group-hover:scale-105 group-hover:border-amber-400/40">
-                            <span className="text-sm font-semibold text-white">
-                                M
-                            </span>
-                        </div> */}
+                        <div className="pointer-events-none absolute -left-4 top-1/2 h-14 w-14 -translate-y-1/2 rounded-full bg-orange-500/0 blur-2xl transition duration-500 group-hover:bg-orange-500/10" />
+
                         <img src="/logo.png" alt="logo" className="h-12 sm:h-16" />
+
                         <div>
-                            {/* <p className="text-[11px] uppercase tracking-[0.45em] text-white/45">
-                                Premium Interiors
-                            </p> */}
-                            <h1 className="text-lg font-semibold tracking-wide text-white">
+                            <h1 className="text-lg font-semibold tracking-wide text-white transition duration-300 group-hover:text-orange-100">
                                 MultiSchrank
                             </h1>
                         </div>
@@ -57,7 +51,7 @@ export default function MultiSchrankHeader() {
                                 className="group relative text-sm font-medium text-white/75 transition hover:text-white"
                             >
                                 {item.name}
-                                <span className="absolute -bottom-1 left-0 h-px w-0 bg-amber-400 transition-all duration-300 group-hover:w-full" />
+                                <span className="absolute -bottom-1 left-0 h-px w-0 bg-orange-400 transition-all duration-300 group-hover:w-full" />
                             </Link>
                         ))}
                     </div>
@@ -76,7 +70,7 @@ export default function MultiSchrankHeader() {
 
                         <Link
                             to="/catalog"
-                            className="group inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-neutral-900 transition duration-300 hover:scale-[1.03] hover:shadow-[0_10px_40px_rgba(255,255,255,0.18)]"
+                            className="group inline-flex items-center gap-2 rounded-full bg-orange-400 px-5 py-2.5 text-sm font-semibold text-neutral-900 transition duration-300 hover:scale-[1.03] hover:bg-orange-300 hover:shadow-[0_10px_40px_rgba(249,115,22,0.22)]"
                         >
                             Explore Catalog
                             <ArrowRight
@@ -89,7 +83,7 @@ export default function MultiSchrankHeader() {
                     {/* Mobile Toggle */}
                     <button
                         onClick={() => setMobileOpen(!mobileOpen)}
-                        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white backdrop-blur-xl transition hover:bg-white/10 lg:hidden"
+                        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white backdrop-blur-xl transition hover:border-orange-300/20 hover:bg-white/10 hover:text-orange-200 lg:hidden"
                     >
                         {mobileOpen ? <X size={20} /> : <Menu size={20} />}
                     </button>
@@ -97,17 +91,18 @@ export default function MultiSchrankHeader() {
 
                 {/* Mobile Menu */}
                 <div
-                    className={`overflow-hidden border-t border-white/10 bg-neutral-950/90 backdrop-blur-2xl transition-all duration-500 lg:hidden ${mobileOpen ? "max-h-105 opacity-100" : "max-h-0 opacity-0"
-                        }`}
+                    className={`overflow-hidden border-t border-white/10 bg-neutral-950/90 backdrop-blur-2xl transition-all duration-500 lg:hidden ${
+                        mobileOpen ? "max-h-105 opacity-100" : "max-h-0 opacity-0"
+                    }`}
                 >
-                    <div className="mx-auto max-w-7xl px-5 sm:px-6 py-5">
+                    <div className="mx-auto max-w-7xl px-5 py-5 sm:px-6">
                         <div className="flex flex-col gap-4">
                             {navLinks.map((item) => (
                                 <Link
                                     key={item.name}
                                     to={item.href}
                                     onClick={() => setMobileOpen(false)}
-                                    className="rounded-xl border border-white/8 bg-white/3 px-4 py-3 text-sm text-white/80 transition hover:border-white/15 hover:bg-white/5 hover:text-white"
+                                    className="rounded-xl border border-white/8 bg-white/3 px-4 py-3 text-sm text-white/80 transition hover:border-orange-300/20 hover:bg-white/5 hover:text-white"
                                 >
                                     {item.name}
                                 </Link>
@@ -123,8 +118,9 @@ export default function MultiSchrankHeader() {
                                 Contact Us
                             </a>
 
-                            <Link to="/catalog"
-                                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-semibold text-neutral-900 transition hover:opacity-90"
+                            <Link
+                                to="/catalog"
+                                className="inline-flex items-center justify-center gap-2 rounded-xl bg-orange-400 px-4 py-3 text-sm font-semibold text-neutral-900 transition hover:bg-orange-300"
                             >
                                 Explore Catalog
                                 <ArrowRight size={16} />

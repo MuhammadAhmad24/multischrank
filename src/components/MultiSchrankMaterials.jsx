@@ -51,25 +51,25 @@ const cardReveal = {
 const features = [
     {
         number: "01",
-        icon: <Layers3 size={18} className="text-amber-400" />,
+        icon: <Layers3 size={18} className="text-orange-400" />,
         title: "Premium Materials",
         text: "Carefully selected finishes, elegant textures, and refined surfaces that bring warmth, quality, and long-lasting visual appeal.",
     },
     {
         number: "02",
-        icon: <Hammer size={18} className="text-amber-400" />,
+        icon: <Hammer size={18} className="text-orange-400" />,
         title: "Precision Craftsmanship",
         text: "Every furniture concept is shaped with accuracy, balance, and detailing that reflects a premium standard from every angle.",
     },
     {
         number: "03",
-        icon: <ScanSearch size={18} className="text-amber-400" />,
+        icon: <ScanSearch size={18} className="text-orange-400" />,
         title: "Intelligent Function",
         text: "Smart storage, practical layouts, and thoughtful usability combine to create interiors that feel effortless in everyday living.",
     },
     {
         number: "04",
-        icon: <BadgeCheck size={18} className="text-amber-400" />,
+        icon: <BadgeCheck size={18} className="text-orange-400" />,
         title: "Refined Finish",
         text: "A timeless visual language with clean lines, soft balance, and sophisticated finishing designed for modern spaces.",
     },
@@ -87,9 +87,9 @@ function FeatureCard({ item, index }) {
                 y: -4,
                 transition: { duration: 0.25, ease: "easeOut" },
             }}
-            className="group relative overflow-hidden rounded-4xl border border-white/10 bg-white/5 p-6 backdrop-blur-2xl transition-all duration-500 hover:border-white/20 hover:shadow-[0_22px_60px_rgba(0,0,0,0.26)] md:p-8"
+            className="group relative overflow-hidden rounded-4xl border border-white/10 bg-white/5 p-6 backdrop-blur-2xl transition-all duration-500 hover:border-orange-300/20 hover:shadow-[0_22px_60px_rgba(0,0,0,0.26)] md:p-8"
         >
-            <div className="pointer-events-none absolute inset-0 rounded-4xl bg-[radial-gradient(circle_at_top_right,rgba(251,191,36,0.10),transparent_34%)] opacity-70" />
+            <div className="pointer-events-none absolute inset-0 rounded-4xl bg-[radial-gradient(circle_at_top_right,rgba(249,115,22,0.12),transparent_34%)] opacity-70" />
 
             <motion.div
                 animate={{ x: ["-160%", "220%"] }}
@@ -108,13 +108,13 @@ function FeatureCard({ item, index }) {
                         {item.icon}
                     </div>
 
-                    <div className="text-4xl font-semibold tracking-[-0.05em] text-white/10 md:text-5xl">
+                    <div className="text-4xl font-semibold tracking-[-0.05em] text-orange-200/10 md:text-5xl">
                         {item.number}
                     </div>
                 </div>
 
                 <div className="mt-6">
-                    <p className="text-xs uppercase tracking-[0.24em] text-white/40">
+                    <p className="text-xs uppercase tracking-[0.24em] text-orange-200/40">
                         Feature {item.number}
                     </p>
 
@@ -148,7 +148,7 @@ export default function MultiSchrankMaterials() {
                         repeat: Infinity,
                         ease: "easeInOut",
                     }}
-                    className="absolute left-[-10%] top-[8%] h-80 w-80 rounded-full bg-amber-500/10 blur-3xl"
+                    className="absolute left-[-10%] top-[8%] h-80 w-80 rounded-full bg-orange-500/10 blur-3xl"
                 />
                 <motion.div
                     animate={{ y: [0, 22, 0], scale: [1, 1.03, 1] }}
@@ -157,8 +157,9 @@ export default function MultiSchrankMaterials() {
                         repeat: Infinity,
                         ease: "easeInOut",
                     }}
-                    className="absolute right-[-8%] bottom-[10%] h-96 w-96 rounded-full bg-white/6 blur-3xl"
+                    className="absolute right-[-8%] bottom-[10%] h-96 w-96 rounded-full bg-orange-300/6 blur-3xl"
                 />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_20%,rgba(249,115,22,0.08),transparent_26%)]" />
             </div>
 
             <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
@@ -172,7 +173,7 @@ export default function MultiSchrankMaterials() {
                 >
                     <motion.div
                         whileHover={{ y: -2, scale: 1.02 }}
-                        className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.28em] text-white/65 backdrop-blur-xl"
+                        className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.28em] text-orange-200 backdrop-blur-xl"
                     >
                         <motion.span
                             animate={{
@@ -185,7 +186,7 @@ export default function MultiSchrankMaterials() {
                                 ease: "easeInOut",
                             }}
                         >
-                            <Sparkles size={14} className="text-amber-400" />
+                            <Sparkles size={14} className="text-orange-400" />
                         </motion.span>
                         Materials & Craftsmanship
                     </motion.div>

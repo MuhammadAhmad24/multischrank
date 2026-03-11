@@ -4,7 +4,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import ScrollToTop from "./components/ScrollToTop";
-import PremiumPreloader from "./components/PremiumPreloader";
+import Preloader from "./components/Preloader";
 import MultiSchrankHeader from "./components/Header";
 import MultiSchrankFooter from "./components/Footer";
 import Home from "./pages/Home";
@@ -24,7 +24,7 @@ function App() {
 
   return (
     <>
-      {loading && <PremiumPreloader onFinish={() => setLoading(false)} />}
+      {loading && <Preloader onFinish={() => setLoading(false)} />}
 
       {!loading && (
         <BrowserRouter>

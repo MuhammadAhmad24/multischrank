@@ -33,20 +33,19 @@ export default function AboutHero() {
             ref={sectionRef}
             className="relative bg-neutral-950 text-white"
         >
-
             {/* Background glow */}
             <motion.div
                 style={{ y: bgY }}
                 className="pointer-events-none fixed inset-0"
             >
-                <div className="fixed left-[10%] top-[5%] h-72 w-72 rounded-full bg-amber-500/10 blur-3xl" />
+                <div className="fixed left-[10%] top-[5%] h-72 w-72 rounded-full bg-orange-500/10 blur-3xl" />
                 <div className="absolute right-[8%] bottom-[0%] h-80 w-80 rounded-full bg-white/10 blur-3xl" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(249,115,22,0.08),transparent_24%)]" />
             </motion.div>
 
-            {/* overall scroll height */}
-            <div className="relative mx-auto grid min-h-[320vh] max-w-7xl grid-cols-1 gap-10 px-6 py-20 md:px-10 lg:grid-cols-2 lg:px-14">
+            <div className="relative mx-auto grid min-h-[320vh] max-w-7xl grid-cols-1 gap-10 px-6 py-20 md:px-10 lg:grid-cols-2 lg:px-14 z-50">
                 {/* LEFT / SCROLLING TEXT */}
-                <div className="relative flex flex-col justify-center py-[10vh]">
+                <div className="relative flex flex-col justify-center py-[10vh] z-50">
                     <div className="mx-auto flex w-full max-w-2xl flex-col gap-24 md:gap-32">
                         <div className="space-y-6">
                             <motion.span
@@ -54,7 +53,7 @@ export default function AboutHero() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, amount: 0.6 }}
                                 transition={{ duration: 0.7 }}
-                                className="inline-block rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[11px] uppercase tracking-[0.28em] text-white/60"
+                                className="inline-block rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[11px] uppercase tracking-[0.28em] text-orange-200"
                             >
                                 About Us
                             </motion.span>
@@ -66,7 +65,11 @@ export default function AboutHero() {
                                 transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
                                 className="max-w-3xl text-4xl font-medium leading-[0.95] tracking-[-0.04em] text-white sm:text-5xl md:text-6xl lg:text-7xl"
                             >
-                                We create interiors that feel premium before they are even touched.
+                                We create interiors that feel{" "}
+                                <span className="bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
+                                    premium
+                                </span>{" "}
+                                before they are even touched.
                             </motion.h1>
                         </div>
 
@@ -77,15 +80,13 @@ export default function AboutHero() {
                 </div>
 
                 {/* RIGHT / STICKY IMAGE */}
-
-
                 <div className="relative h-full">
                     <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden">
                         <div className="relative flex h-full w-full items-center justify-center">
                             {/* soft glow */}
                             <motion.div
                                 style={{ opacity: glowOpacity }}
-                                className="absolute h-88 w-88 rounded-full bg-white/10 blur-3xl"
+                                className="absolute h-88 w-88 rounded-full bg-orange-500/12 blur-3xl"
                             />
 
                             {/* image frame */}
@@ -103,14 +104,14 @@ export default function AboutHero() {
                                     className="h-full w-full object-cover"
                                 />
 
-                                {/* dark overlay for better text contrast */}
                                 <div className="absolute inset-0 bg-linear-to-b from-black/10 via-transparent to-black/20" />
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(249,115,22,0.16),transparent_30%)]" />
                             </motion.div>
 
                             {/* optional subtle ring */}
                             <motion.div
                                 style={{ scale: imageScale }}
-                                className="absolute h-65 w-52.5 rounded-4xl border border-white/8 sm:h-72.5 sm:w-60 md:h-82.5 md:w-67.5"
+                                className="absolute h-65 w-52.5 rounded-4xl border border-orange-200/10 sm:h-72.5 sm:w-60 md:h-82.5 md:w-67.5"
                             />
                         </div>
                     </div>
@@ -132,20 +133,17 @@ function RevealLine({ text }) {
         scrollYProgress,
         [0, 0.35, 0.7, 1],
         [
-            "rgba(255,255,255,0.22)",
-            "rgba(255,255,255,0.35)",
-            "rgba(255,255,255,0.78)",
-            "rgba(255,255,255,1)",
+            "rgba(255,244,235,0.22)",
+            "rgba(255,230,210,0.4)",
+            "rgba(255,205,170,0.82)",
+            "rgba(255,237,224,1)",
         ]
     );
 
     const y = useTransform(scrollYProgress, [0, 1], [40, 0]);
     const opacity = useTransform(scrollYProgress, [0, 0.25, 1], [0.35, 0.65, 1]);
 
-    // blur value
     const blurValue = useTransform(scrollYProgress, [0, 1], [8, 0]);
-
-    // filter string
     const filter = useTransform(blurValue, (value) => `blur(${value}px)`);
 
     return (

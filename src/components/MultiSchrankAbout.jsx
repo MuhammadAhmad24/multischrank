@@ -4,17 +4,17 @@ import { Sparkles, BadgeCheck, Ruler, Layers3 } from "lucide-react";
 
 const features = [
     {
-        icon: <BadgeCheck size={18} className="text-amber-400" />,
+        icon: <BadgeCheck size={18} className="text-orange-400" />,
         title: "Premium Materials",
         text: "Carefully selected finishes and surfaces that bring warmth, elegance, and lasting quality.",
     },
     {
-        icon: <Ruler size={18} className="text-amber-400" />,
+        icon: <Ruler size={18} className="text-orange-400" />,
         title: "Tailored Design",
         text: "Furniture concepts planned around real spaces, practical needs, and refined modern lifestyles.",
     },
     {
-        icon: <Layers3 size={18} className="text-amber-400" />,
+        icon: <Layers3 size={18} className="text-orange-400" />,
         title: "Timeless Aesthetics",
         text: "Clean lines, balanced proportions, and sophisticated detailing that remain relevant for years.",
     },
@@ -46,8 +46,10 @@ function AnimatedCard({ item, progress, range }) {
             className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-xl transition-all duration-500"
         >
             <div className="absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.15),transparent_60%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(249,115,22,0.16),transparent_60%)]" />
             </div>
+
+            <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-orange-500/8 blur-2xl opacity-0 transition duration-500 group-hover:opacity-100" />
 
             <div className="relative">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5">
@@ -95,11 +97,9 @@ export default function MultiSchrankAbout() {
         ["blur(10px)", "blur(0px)"]
     );
 
-    // 1 -> 2 -> 3 on scroll down
-    // 3 -> 2 -> 1 on scroll up automatically
     const ranges = [
-        [0.00, 0.22],
-        [0.18, 0.40],
+        [0.0, 0.22],
+        [0.18, 0.4],
         [0.36, 0.58],
     ];
 
@@ -107,15 +107,16 @@ export default function MultiSchrankAbout() {
         <section
             ref={sectionRef}
             id="about"
-            className="relative overflow-hidden bg-neutral-950 pb-12 sm:pb-18 -mt-20 text-white"
+            className="relative -mt-20 overflow-hidden bg-neutral-950 pb-12 text-white sm:pb-18"
         >
             {/* Background glow */}
             <motion.div
                 style={{ y: bgY }}
                 className="pointer-events-none absolute inset-0"
             >
-                <div className="absolute left-[10%] top-[10%] h-72 w-72 rounded-full bg-amber-500/10 blur-3xl" />
-                <div className="absolute right-[8%] bottom-[0%] h-80 w-80 rounded-full bg-white/10 blur-3xl" />
+                <div className="absolute left-[10%] top-[10%] h-72 w-72 rounded-full bg-orange-500/10 blur-3xl" />
+                <div className="absolute right-[8%] bottom-[0%] h-80 w-80 rounded-full bg-orange-300/6 blur-3xl" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_20%,rgba(249,115,22,0.08),transparent_26%)]" />
             </motion.div>
 
             <motion.div
@@ -131,14 +132,14 @@ export default function MultiSchrankAbout() {
                     }}
                     className="mx-auto max-w-4xl text-center"
                 >
-                    <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.28em] text-white/70 backdrop-blur-xl">
-                        <Sparkles size={14} className="text-amber-400" />
+                    <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.28em] text-orange-200 backdrop-blur-xl">
+                        <Sparkles size={14} className="text-orange-400" />
                         About MultiSchrank
                     </div>
 
                     <h2 className="mt-6 text-4xl font-semibold leading-tight tracking-tight sm:text-5xl md:text-6xl">
                         Crafted to bring{" "}
-                        <span className="bg-linear-to-r from-white via-white to-amber-300 bg-clip-text text-transparent">
+                        <span className="bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
                             beauty and function
                         </span>{" "}
                         into everyday spaces

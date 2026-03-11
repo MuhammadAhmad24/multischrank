@@ -66,8 +66,8 @@ function FAQItem({ item, index, openIndex, setOpenIndex, progress }) {
                 transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                 className="pointer-events-none absolute inset-0"
             >
-                <div className="absolute left-[-10%] top-[-30%] h-40 w-40 rounded-full bg-[#8a6a4a]/20 blur-3xl" />
-                <div className="absolute bottom-[-40%] right-[-10%] h-40 w-40 rounded-full bg-[#f5f1eb]/6 blur-3xl" />
+                <div className="absolute left-[-10%] top-[-30%] h-40 w-40 rounded-full bg-orange-500/16 blur-3xl" />
+                <div className="absolute bottom-[-40%] right-[-10%] h-40 w-40 rounded-full bg-orange-200/6 blur-3xl" />
             </motion.div>
 
             <button
@@ -83,7 +83,7 @@ function FAQItem({ item, index, openIndex, setOpenIndex, progress }) {
                         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                         className="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/5"
                     >
-                        <Sparkles className="h-4 w-4 text-white/80" />
+                        <Sparkles className="h-4 w-4 text-orange-300" />
                     </motion.div>
 
                     <div>
@@ -98,7 +98,7 @@ function FAQItem({ item, index, openIndex, setOpenIndex, progress }) {
                     transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                     className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5"
                 >
-                    <ChevronDown className="h-4 w-4 text-white/75" />
+                    <ChevronDown className="h-4 w-4 text-orange-200/80" />
                 </motion.div>
             </button>
 
@@ -122,7 +122,7 @@ function FAQItem({ item, index, openIndex, setOpenIndex, progress }) {
                             transition={{ duration: 0.35, delay: 0.05 }}
                             className="relative px-5 pb-5 md:px-7 md:pb-6"
                         >
-                            <div className="ml-14 border-l border-white/10 pl-5">
+                            <div className="ml-14 border-l border-orange-300/15 pl-5">
                                 <p className="max-w-2xl text-sm leading-7 text-white/65 md:text-[15px]">
                                     {item.a}
                                 </p>
@@ -167,16 +167,18 @@ export default function Faq() {
             ref={sectionRef}
             className="relative mx-auto max-w-5xl overflow-hidden px-6 py-12 md:px-10 md:py-18"
         >
+
             {/* static subtle grid */}
             <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[42px_42px]" />
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[42px_42px]" />
 
             <motion.div style={{ y: sectionLift }} className="relative">
                 <div className="mb-12 text-center">
                     <motion.div
                         style={{ opacity: badgeOpacity, y: badgeY }}
-                        className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[11px] uppercase tracking-[0.22em] text-white/60"
+                        className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[11px] uppercase tracking-[0.22em] text-orange-200"
                     >
-                        <Sparkles className="h-4 w-4" />
+                        <Sparkles className="h-4 w-4 text-orange-400" />
                         FAQ
                     </motion.div>
 
@@ -192,7 +194,7 @@ export default function Faq() {
                         className="mt-5 text-3xl font-semibold tracking-tight text-white md:text-5xl"
                     >
                         Common questions,
-                        <span className="block text-white/60">
+                        <span className="block bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
                             clear answers
                         </span>
                     </motion.h2>

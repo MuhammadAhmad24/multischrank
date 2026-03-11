@@ -69,14 +69,15 @@ Message: ${formData.message}`;
 
     return (
         <section className="relative overflow-hidden bg-neutral-950 pt-18 pb-12 text-white md:py-18">
-            {/* subtle grid */}
-            <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[42px_42px]" />
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[42px_42px]" />
+
             <div className="pointer-events-none absolute inset-0">
-                <div className="absolute left-[-10%] top-[10%] h-72 w-72 rounded-full bg-amber-500/10 blur-3xl" />
+                <div className="absolute left-[-10%] top-[10%] h-72 w-72 rounded-full bg-orange-500/10 blur-3xl" />
                 <div className="absolute bottom-[-10%] right-[-5%] h-72 w-72 rounded-full bg-orange-400/10 blur-3xl" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(249,115,22,0.08),transparent_26%)]" />
             </div>
 
-            <div className="relative mx-auto grid max-w-6xl sm:gap-12 px-6 md:px-8 lg:grid-cols-2 lg:items-start">
+            <div className="relative mx-auto grid max-w-6xl px-6 sm:gap-12 md:px-8 lg:grid-cols-2 lg:items-start z-50">
                 <motion.div
                     ref={headingRef}
                     style={{
@@ -86,18 +87,18 @@ Message: ${formData.message}`;
                     }}
                     className="relative sm:mt-18"
                 >
-                    <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/4 px-4 py-2 text-[11px] uppercase tracking-[0.22em] text-white/60 backdrop-blur-md">
+                    <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/4 px-4 py-2 text-[11px] uppercase tracking-[0.22em] text-orange-200 backdrop-blur-md">
                         Contact Form
                     </div>
 
                     <h2 className="text-[clamp(2.7rem,5vw,4.8rem)] font-semibold leading-[0.95] tracking-[-0.05em]">
                         Tell us about
-                        <span className="block">
+                        <span className="block bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
                             your project
                         </span>
                     </h2>
 
-                    <div className="mt-6 h-px w-24 bg-linear-to-r from-amber-400/80 via-white/30 to-transparent" />
+                    <div className="mt-6 h-px w-24 bg-linear-to-r from-orange-400/80 via-white/30 to-transparent" />
                 </motion.div>
 
                 <motion.div
@@ -107,9 +108,13 @@ Message: ${formData.message}`;
                         scale: formScale,
                         y: formY,
                     }}
-                    className="relative rounded-4xl border border-white/10 bg-white/4 p-6  backdrop-blur-xl md:p-8 z-40"
+                    className="relative z-60 rounded-4xl border border-white/10 bg-white/4 p-6 backdrop-blur-xl md:p-8"
                 >
-                    <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="pointer-events-none absolute inset-0 rounded-4xl">
+                        <div className="absolute right-0 top-0 h-32 w-32 rounded-full bg-orange-500/8 blur-3xl" />
+                    </div>
+
+                    <form onSubmit={handleSubmit} className="relative z-10 space-y-5">
                         <input
                             type="text"
                             name="name"
@@ -117,7 +122,7 @@ Message: ${formData.message}`;
                             required
                             value={formData.name}
                             onChange={handleChange}
-                            className="w-full rounded-2xl border border-white/10 bg-black/20 px-5 py-4 text-sm text-white placeholder:text-white/30 outline-none transition duration-300 focus:border-white/20 focus:bg-black/30"
+                            className="w-full rounded-2xl border border-white/10 bg-black/20 px-5 py-4 text-sm text-white placeholder:text-white/30 outline-none transition duration-300 focus:border-orange-300/40 focus:bg-black/30"
                         />
 
                         <input
@@ -127,7 +132,7 @@ Message: ${formData.message}`;
                             required
                             value={formData.phone}
                             onChange={handleChange}
-                            className="w-full rounded-2xl border border-white/10 bg-black/20 px-5 py-4 text-sm text-white placeholder:text-white/30 outline-none transition duration-300 focus:border-white/20 focus:bg-black/30"
+                            className="w-full rounded-2xl border border-white/10 bg-black/20 px-5 py-4 text-sm text-white placeholder:text-white/30 outline-none transition duration-300 focus:border-orange-300/40 focus:bg-black/30"
                         />
 
                         <input
@@ -137,7 +142,7 @@ Message: ${formData.message}`;
                             required
                             value={formData.email}
                             onChange={handleChange}
-                            className="w-full rounded-2xl border border-white/10 bg-black/20 px-5 py-4 text-sm text-white placeholder:text-white/30 outline-none transition duration-300 focus:border-white/20 focus:bg-black/30"
+                            className="w-full rounded-2xl border border-white/10 bg-black/20 px-5 py-4 text-sm text-white placeholder:text-white/30 outline-none transition duration-300 focus:border-orange-300/40 focus:bg-black/30"
                         />
 
                         <textarea
@@ -147,12 +152,12 @@ Message: ${formData.message}`;
                             required
                             value={formData.message}
                             onChange={handleChange}
-                            className="w-full resize-none rounded-2xl border border-white/10 bg-black/20 px-5 py-4 text-sm text-white placeholder:text-white/30 outline-none transition duration-300 focus:border-white/20 focus:bg-black/30"
+                            className="w-full resize-none rounded-2xl border border-white/10 bg-black/20 px-5 py-4 text-sm text-white placeholder:text-white/30 outline-none transition duration-300 focus:border-orange-300/40 focus:bg-black/30"
                         />
 
                         <button
                             type="submit"
-                            className="group flex w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-4 text-sm font-medium text-neutral-950 transition duration-300 hover:scale-[1.01]"
+                            className="group flex w-full items-center justify-center gap-2 rounded-full bg-orange-400 px-6 py-4 text-sm font-medium text-black transition duration-300 hover:scale-[1.01] hover:bg-white cursor-pointer"
                         >
                             Submit
                             <ArrowUpRight className="h-4 w-4 transition duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
