@@ -102,7 +102,7 @@ export default function CatalogHighlights() {
     return (
         <section
             ref={sectionRef}
-            className="relative overflow-hidden border-y border-white/10 bg-white/3 py-16 md:py-20"
+            className="relative overflow-hidden border-y border-white/10 bg-white/3 py-12 sm:py-16 md:py-20"
         >
             <div className="pointer-events-none absolute inset-0">
                 <div className="absolute left-[8%] top-[10%] h-56 w-56 rounded-full bg-orange-500/6 blur-3xl" />

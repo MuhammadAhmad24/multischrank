@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Menu, X, ArrowRight, MessageCircle } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const navLinks = [
@@ -20,7 +21,7 @@ export default function MultiSchrankHeader() {
     }, []);
 
     return (
-        <header className="relative z-90 overflow-hidden bg-neutral-950 text-white">
+        <header className="relative z-999 overflow-hidden bg-neutral-950 text-white">
             <nav
                 className={`fixed top-0 z-50 w-full transition-all duration-500 ${
                     scrolled
@@ -64,8 +65,8 @@ export default function MultiSchrankHeader() {
                             rel="noreferrer"
                             className="inline-flex items-center gap-2 rounded-full border border-green-400/25 bg-green-500/10 px-4 py-2 text-sm font-medium text-green-300 backdrop-blur-xl transition duration-300 hover:scale-[1.03] hover:border-green-400/50 hover:bg-green-500/20"
                         >
-                            <MessageCircle size={16} />
-                            Kontakt
+                            <FaWhatsapp size={16} />
+                            Jetzt anfragen
                         </a>
 
                         <Link
@@ -114,8 +115,8 @@ export default function MultiSchrankHeader() {
                                 rel="noreferrer"
                                 className="mt-2 inline-flex items-center justify-center gap-2 rounded-xl border border-green-400/20 bg-green-500/10 px-4 py-3 text-sm font-medium text-green-300 transition hover:bg-green-500/20"
                             >
-                                <MessageCircle size={16} />
-                                Kontakt
+                                <FaWhatsapp size={16} />
+                                Jetzt anfragen
                             </a>
 
                             <Link

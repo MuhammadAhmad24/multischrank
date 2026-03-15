@@ -43,7 +43,7 @@ export default function AboutHero() {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(249,115,22,0.08),transparent_24%)]" />
             </motion.div>
 
-            <div className="relative mx-auto grid min-h-[320vh] max-w-7xl grid-cols-1 gap-10 px-6 py-20 md:px-10 lg:grid-cols-2 lg:px-14 z-50">
+            <div className="relative mx-auto grid min-h-[200vh] sm:min-h-[320vh] max-w-7xl grid-cols-1 gap-10 px-5 sm:px-6 py-12 sm:py-20 md:px-10 lg:grid-cols-2 lg:px-14 z-50">
                 {/* LEFT / SCROLLING TEXT */}
                 <div className="relative flex flex-col justify-center py-[10vh] z-50">
                     <div className="mx-auto flex w-full max-w-2xl flex-col gap-24 md:gap-32">
@@ -158,7 +158,7 @@ function RevealLine({ text }) {
                     opacity,
                     filter,
                 }}
-                className="max-w-[18ch] text-3xl font-medium leading-[1.02] tracking-[-0.04em] sm:text-4xl md:text-5xl lg:text-6xl"
+                className="max-w-[24ch] text-2xl font-medium leading-[1.02] tracking-[-0.04em] sm:text-4xl md:text-5xl lg:text-6xl"
             >
                 {text}
             </motion.h2>

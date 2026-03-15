@@ -66,7 +66,7 @@ function WhyChooseUsCard({ item, index, progress, total }) {
                 zIndex: index + 1,
                 pointerEvents: "none",
             }}
-            className="absolute inset-x-0 bottom-10 mx-auto flex h-[58vh] w-full items-end sm:bottom-0"
+            className="absolute inset-x-0  bottom-10 mx-auto flex h-[58vh] w-full items-end sm:bottom-4"
         >
             <div className="relative grid h-full w-full grid-cols-1 overflow-hidden rounded-4xl border border-white/10 bg-linear-to-b from-[#161616] to-[#0c0c0c] shadow-[0_30px_120px_rgba(0,0,0,0.6)] md:grid-cols-[0.95fr_1.05fr]">
                 <div className="pointer-events-none absolute inset-0">
@@ -101,25 +101,7 @@ function WhyChooseUsCard({ item, index, progress, total }) {
                         {item.text}
                     </p>
 
-                    <div className="mt-8 grid grid-cols-2 gap-4 sm:gap-5">
-                        <div className="rounded-2xl border border-white/10 bg-white/3 p-4 sm:p-5">
-                            <div className="mb-2 text-xs uppercase tracking-[0.25em] text-orange-200/45">
-                                Qualität
-                            </div>
-                            <div className="text-sm leading-7 text-white/70">
-                                Kontrollierte Ausführung mit sorgfältiger Verarbeitung und langfristiger Haltbarkeit im Blick.
-                            </div>
-                        </div>
-
-                        <div className="rounded-2xl border border-white/10 bg-white/3 p-4 sm:p-5">
-                            <div className="mb-2 text-xs uppercase tracking-[0.25em] text-orange-200/45">
-                                Erfahrung
-                            </div>
-                            <div className="text-sm leading-7 text-white/70">
-                                Räume werden so gestaltet, dass sie visuell ruhig, funktional und natürlich hochwertig wirken.
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </motion.div>
@@ -154,14 +136,14 @@ export default function WhyChooseUsStacked() {
                 {/* heading */}
                 <motion.div
                     style={{ y: headingY, opacity: headingOpacity }}
-                    className="absolute left-0 right-0 top-0 z-30 mx-auto w-full max-w-6xl px-5 pt-16 sm:px-6 md:px-8 lg:px-10 lg:pt-20"
+                    className="absolute left-0 right-0 top-0 z-30 mx-auto w-full max-w-6xl px-5 pt-12 sm:px-6 md:px-8 lg:px-10 lg:pt-20"
                 >
                     <div>
                         <span className="inline-block text-[0.72rem] uppercase tracking-[0.35em] text-orange-200/50">
                             Warum wir
                         </span>
 
-                        <h2 className="mt-4 text-4xl font-semibold leading-[0.95] text-white/85 sm:text-5xl md:text-6xl lg:text-7xl">
+                        <h2 className="mt-4 text-3xl font-semibold leading-tight text-white/85 sm:text-5xl md:text-6xl lg:text-7xl">
                             Gründe, die sich
                             <span className="block bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
                                 in jedem Detail zeigen
@@ -171,7 +153,7 @@ export default function WhyChooseUsStacked() {
                 </motion.div>
 
                 {/* cards area */}
-                <div className="relative mx-auto h-screen w-full max-w-6xl overflow-hidden px-5 pb-24 pt-56 sm:px-6 md:px-8 lg:px-10 lg:pt-64">
+                <div className="relative mx-auto h-screen w-full max-w-6xl overflow-hidden px-5 pb-24 pt-50 sm:pt-56 sm:px-6 md:px-8 lg:px-10 lg:pt-64">
                     {reasons.map((item, index) => (
                         <WhyChooseUsCard
                             key={item.number}

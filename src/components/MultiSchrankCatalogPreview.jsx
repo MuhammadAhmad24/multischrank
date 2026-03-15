@@ -7,9 +7,9 @@ import {
     ArrowLeft,
     ArrowRight,
     ArrowUpRight,
-    MessageCircle,
     Sparkles,
 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 const container = {
     hidden: {},
@@ -392,7 +392,7 @@ export default function MultiSchrankCatalogSlider() {
                         rel="noreferrer"
                         className="group inline-flex items-center gap-2 rounded-full border border-green-400/25 bg-green-500/10 px-5 py-3.5 text-sm font-medium text-green-300 backdrop-blur-xl transition duration-300 hover:scale-[1.03] hover:border-green-400/50 hover:bg-green-500/20 sm:px-6"
                     >
-                        <MessageCircle size={17} />
+                        <FaWhatsapp size={17} />
                         Projekt starten
                         <ArrowUpRight
                             size={16}

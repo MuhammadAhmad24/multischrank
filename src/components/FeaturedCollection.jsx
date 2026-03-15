@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { ArrowUpRight, MessageCircle } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function FeaturedCollection() {
     const sectionRef = useRef(null);
@@ -46,7 +47,7 @@ export default function FeaturedCollection() {
                     <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.06),transparent_35%,transparent_70%,rgba(249,115,22,0.08))]" />
                 </div>
 
-                <div className="relative z-50 grid min-h-110 items-end p-7 md:p-10 lg:p-14">
+                <div className="relative z-50 grid min-h-110 items-end p-4 sm:p-7 md:p-10 lg:p-14">
                     <div className="max-w-2xl">
                         <p className="text-xs uppercase tracking-[0.24em] text-orange-200/65">
                             Ausgewählte Kollektion
@@ -59,7 +60,7 @@ export default function FeaturedCollection() {
                             </span>
                         </h2>
 
-                        <p className="max-w-xl text-sm text-white/70 sm:mt-5 sm:leading-7">
+                        <p className="max-w-xl text-sm text-white/70 my-1 sm:mt-5 sm:leading-7">
                             Präzise gestaltet mit klarer Verarbeitung, ausgewogenen
                             Stauraumlösungen und Oberflächen, die den Raum aufwerten,
                             ohne ihn zu überladen.
@@ -69,7 +70,7 @@ export default function FeaturedCollection() {
                             href="https://wa.me/4915563440433"
                             className="mt-3 inline-flex items-center gap-2 rounded-full bg-orange-400 px-6 py-3 text-sm font-medium text-[#111] transition hover:scale-[1.02] hover:bg-orange-300 sm:mt-7"
                         >
-                            <MessageCircle size={17} />
+                            <FaWhatsapp size={17} />
                             Projekt starten
                             <ArrowUpRight className="h-4 w-4" />
                         </a>

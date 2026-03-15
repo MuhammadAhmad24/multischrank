@@ -68,7 +68,7 @@ Nachricht: ${formData.message}`;
     };
 
     return (
-        <section className="relative overflow-hidden bg-neutral-950 pt-18 pb-12 text-white md:py-18">
+        <section className="relative overflow-hidden bg-neutral-950 py-12 text-white md:py-18">
             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[42px_42px]" />
 
             <div className="pointer-events-none absolute inset-0">
@@ -91,7 +91,7 @@ Nachricht: ${formData.message}`;
                         Kontaktformular
                     </div>
 
-                    <h2 className="text-[clamp(2.7rem,5vw,4.8rem)] font-semibold leading-[0.95] tracking-[-0.05em]">
+                    <h2 className="text-[clamp(2.7rem,5vw,4.8rem)] font-semibold tracking-[-0.05em]">
                         Erzählen Sie uns von
                         <span className="block bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
                             Ihrem Projekt

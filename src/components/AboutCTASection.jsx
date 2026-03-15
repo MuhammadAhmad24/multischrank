@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, MessageCircle, Sparkles } from "lucide-react";
+import { ArrowUpRight, Sparkles } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 const container = {
     hidden: {},
@@ -48,7 +49,7 @@ const scaleIn = {
 
 export default function AboutCTASection() {
     return (
-        <section className="relative overflow-hidden bg-[#0b0b0b] px-4 py-24 text-white sm:px-6 lg:px-8">
+        <section className="relative overflow-hidden bg-[#0b0b0b] px-4 py-12 sm:py-20 text-white sm:px-6 lg:px-8">
             {/* static subtle grid */}
             <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[42px_42px]" />
 
@@ -89,7 +90,7 @@ export default function AboutCTASection() {
 
                             <motion.h2
                                 variants={fadeUp}
-                                className="max-w-3xl text-3xl font-light leading-[1.05] text-white sm:text-4xl md:text-5xl lg:text-[64px]"
+                                className="max-w-3xl text-3xl font-light text-white sm:text-4xl md:text-5xl lg:text-[64px]"
                             >
                                 Lassen Sie uns einen Raum schaffen, der
                                 <span className="block bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
@@ -129,7 +130,7 @@ export default function AboutCTASection() {
                                     className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/12 bg-white/3 px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:scale-[1.02] hover:border-orange-300/20 hover:bg-white/[0.07]"
                                 >
                                     Per WhatsApp kontaktieren
-                                    <MessageCircle
+                                    <FaWhatsapp
                                         size={18}
                                         className="transition-transform duration-300 group-hover:translate-x-0.5"
                                     />

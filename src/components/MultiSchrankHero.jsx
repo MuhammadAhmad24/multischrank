@@ -142,14 +142,14 @@ export default function MultiSchrankHero() {
                     <div className="mt-8 space-y-3">
                         <motion.h1
                             variants={revealLine}
-                            className="mx-auto max-w-5xl text-5xl font-semibold leading-[0.95] tracking-[-0.05em] sm:text-6xl md:text-7xl xl:text-[6.4rem]"
+                            className="mx-auto max-w-5xl text-4xl font-semibold leading-[0.95] tracking-[-0.05em] sm:text-6xl md:text-7xl xl:text-[6.4rem]"
                         >
                             Moderne Möbel
                         </motion.h1>
 
                         <motion.h1
                             variants={revealLine}
-                            className="mx-auto max-w-5xl text-5xl font-semibold leading-[0.95] tracking-[-0.05em] sm:text-6xl md:text-7xl xl:text-[6.4rem]"
+                            className="mx-auto max-w-5xl text-4xl font-semibold leading-[0.95] tracking-[-0.05em] sm:text-6xl md:text-7xl xl:text-[6.4rem]"
                         >
                             für{" "}
                             <span className="bg-linear-to-r from-white via-orange-300 to-orange-500 bg-clip-text text-transparent">

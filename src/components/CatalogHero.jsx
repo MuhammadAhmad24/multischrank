@@ -99,7 +99,7 @@ export default function CatalogHero() {
                     <motion.h1
                         variants={fadeUp}
                         style={{ y: headingY }}
-                        className="text-3xl font-semibold leading-[1.02] tracking-tight sm:text-4xl md:text-5xl"
+                        className="text-2xl font-semibold leading-[1.02] tracking-tight sm:text-4xl md:text-5xl"
                     >
                         Maßgefertigte Möbel für
                         <span className="block bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">

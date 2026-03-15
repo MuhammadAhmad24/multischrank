@@ -56,7 +56,7 @@ export default function ProcessSection() {
     return (
         <section
             ref={sectionRef}
-            className="relative overflow-hidden bg-neutral-950 py-28 text-white md:py-32"
+            className="relative overflow-hidden bg-neutral-950 py-12 sm:py-20 text-white md:py-32"
         >
             {/* Background glow */}
             <motion.div
@@ -78,9 +78,9 @@ export default function ProcessSection() {
                         Handwerkskunst / Prozess
                     </span>
 
-                    <h2 className="mt-6 text-4xl font-medium leading-[0.92] tracking-[-0.05em] sm:text-5xl md:text-6xl">
+                    <h2 className="mt-6 text-4xl font-medium tracking-[-0.05em] sm:text-5xl md:text-6xl">
                         Ein verfeinerter Arbeitsablauf, geprägt von
-                        <span className="block bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
+                        <span className="block mt-2 bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
                             Präzision und Material.
                         </span>
                     </h2>
@@ -101,7 +101,7 @@ export default function ProcessSection() {
                         </div>
                     </div>
 
-                    <div className="space-y-24 md:space-y-28 lg:space-y-32">
+                    <div className="space-y-10 md:space-y-28 lg:space-y-32">
                         {steps.map((step, index) => (
                             <ProcessRow key={step.id} step={step} index={index} />
                         ))}

@@ -7,31 +7,40 @@ const partners = [
         name: "Swiss Krono",
         desc: "Korpus- und Frontmaterialien",
         url: "https://www.swisskrono.com/ch-de/produkte/interiors/one-world-collection/?popup=redirectInfo",
+        logo: "/logos/swiss-krono-logo.svg",
+        whiteBg: true,
     },
     {
         name: "Egger",
         desc: "Arbeitsplatten",
         url: "https://www.egger.com/de/moebel-innenausbau/sortiment/produkte/worktops?country=DE",
+        logo: "/logos/gen_egger_logo_de.svg",
+        whiteBg: true,
     },
     {
         name: "Blum",
         desc: "Scharniersysteme",
         url: "https://www.blum.com/de/de/produkte/scharniersysteme/uebersicht/",
+        logo: "/logos/blum.svg",
     },
     {
         name: "Hettich",
         desc: "Beschläge und Scharniere",
         url: "https://www.hettich.com/de-de/startseite",
+        logo: "/logos/hettich.svg",
+        whiteBg: true,
     },
     {
         name: "Inoxa",
         desc: "Küchenzubehör",
         url: "https://inoxa.it/en/kitchen",
+        logo: "/logos/Inoxa_logo_bianco.svg",
     },
     {
         name: "Blanco",
         desc: "Küchensysteme",
         url: "https://www.blanco.de/",
+        logo: "/logos/blanco.svg",
     },
 ];
 
@@ -49,7 +58,7 @@ export default function OurPartnersSection() {
     return (
         <section
             ref={ref}
-            className="relative overflow-hidden bg-[#070707] py-28 text-white"
+            className="relative overflow-hidden bg-[#070707] pb-12 pt-0 sm:py-20 text-white"
         >
             {/* glow */}
             <div className="pointer-events-none absolute inset-0">
@@ -67,7 +76,7 @@ export default function OurPartnersSection() {
                         Unsere Partner
                     </span>
 
-                    <h2 className="mt-4 text-4xl font-semibold leading-none text-white/90 md:text-5xl">
+                    <h2 className="mt-4 text-4xl font-semibold leading-tight text-white/90 md:text-5xl">
                         Vertrauenswürdige Partner für
                         <span className="block bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
                             Materialien und Beschläge
@@ -92,24 +101,26 @@ export default function OurPartnersSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: index * 0.08 }}
                             viewport={{ once: true }}
-                            className="group relative rounded-3xl border border-white/10 bg-white/4 p-6 backdrop-blur transition-all duration-500 hover:-translate-y-1 hover:border-orange-300/20 hover:bg-white/[0.07]"
+                            className="group relative rounded-3xl border border-white/10 bg-white/4 p-6 backdrop-blur transition-all duration-500 hover:-translate-y-1 hover:border-orange-300/20 hover:bg-white/[0.07] flex flex-col items-center justify-center"
                         >
                             <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-3xl opacity-0 transition duration-500 group-hover:opacity-100">
                                 <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-orange-500/10 blur-2xl" />
                             </div>
 
-                            <div className="relative z-10 flex items-center justify-between">
-                                <h3 className="text-lg font-semibold text-white/90">
-                                    {partner.name}
-                                </h3>
-
-                                <ArrowUpRight
-                                    size={18}
-                                    className="text-orange-200/55 transition group-hover:text-orange-300"
-                                />
+                            <div className="relative z-10 flex items-center justify-center">
+                                <div
+                                    className={`flex w-32 items-center justify-center rounded-xl ${partner.whiteBg ? "bg-white p-4" : ""
+                                        }`}
+                                >
+                                    <img
+                                        src={partner.logo}
+                                        alt={partner.name}
+                                        className="max-h-10 w-auto object-contain opacity-90 transition group-hover:opacity-100"
+                                    />
+                                </div>
                             </div>
 
-                            <p className="relative z-10 mt-3 text-sm text-white/60">
+                            <p className="relative z-10 mt-3 text-center text-sm text-white/60">
                                 {partner.desc}
                             </p>
                         </motion.a>

@@ -107,8 +107,8 @@ export default function OurStorySection() {
 
 function StoryPanel({ panel, i }) {
     return (
-        <section className="relative flex h-screen w-screen shrink-0 items-center pt-14">
-            <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-6 md:px-10 lg:grid-cols-[0.8fr_1.2fr] lg:px-16">
+        <section className="relative flex h-screen w-screen shrink-0 items-center pt-30 sm:pt-14">
+            <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-2.5 sm:gap-10 px-6 md:px-10 lg:grid-cols-[0.8fr_1.2fr] lg:px-16">
                 {/* left side */}
                 <div className="flex items-start lg:items-end">
                     <motion.div

@@ -8,8 +8,8 @@ import {
     BadgeCheck,
     ScanSearch,
     ArrowUpRight,
-    MessageCircle,
 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 const introFade = {
     hidden: {
@@ -220,7 +220,7 @@ export default function MultiSchrankMaterials() {
                                 }}
                                 className="pointer-events-none absolute -top-[30%] left-0 h-[160%] w-[34%] -rotate-18 bg-linear-to-r from-transparent via-white/18 to-transparent blur-xl"
                             />
-                            <MessageCircle size={17} />
+                            <FaWhatsapp size={17} />
                             Besprechen Sie Ihr Projekt
                             <ArrowUpRight
                                 size={16}

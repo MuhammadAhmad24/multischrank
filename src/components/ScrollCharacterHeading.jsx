@@ -60,7 +60,6 @@ export default function ScrollCharacterHeading({
 
     const { scrollYProgress } = useScroll({
         target: ref,
-        // animation jaldi start ho aur top 30% se pehle complete ho
         offset: ["start 92%", "start 30%"],
     });
 
@@ -70,7 +69,7 @@ export default function ScrollCharacterHeading({
     return (
         <h2
             ref={ref}
-            className={`mt-6 text-3xl font-semibold leading-[1.05] tracking-[-0.04em] text-white sm:text-4xl md:text-5xl xl:text-6xl ${className}`}
+            className={`mt-6 text-[20px] font-semibold leading-[1.05] tracking-[-0.04em] text-white sm:text-4xl md:text-5xl xl:text-6xl ${className}`}
         >
             <Line
                 text={line1}

@@ -24,7 +24,6 @@ const products = [
         category: "Kleiderschränke",
         material: "Eiche",
         color: "Braun",
-        price: 1200,
         image: "/catalog-wardrobe.webp",
     },
     {
@@ -33,7 +32,6 @@ const products = [
         category: "TV-Möbel",
         material: "Walnuss",
         color: "Braun",
-        price: 780,
         image: "/catalog-tv-unit.webp",
     },
     {
@@ -42,7 +40,6 @@ const products = [
         category: "Küchen",
         material: "MDF",
         color: "Weiß",
-        price: 1600,
         image: "/catalog-kitchen.webp",
     },
     {
@@ -51,7 +48,6 @@ const products = [
         category: "Schlafzimmer",
         material: "Eschenholz",
         color: "Beige",
-        price: 980,
         image: "/catalog-bedroom.webp",
     },
     {
@@ -60,7 +56,6 @@ const products = [
         category: "Büro",
         material: "Walnuss",
         color: "Schwarz",
-        price: 860,
         image: "/catalog-office.webp",
     },
 ];
@@ -161,7 +156,6 @@ function ProductCard({ item, index }) {
                     <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.16em] text-orange-200/70">
                         {item.category}
                     </span>
-                    <span className="text-sm text-white/80">{item.price}€</span>
                 </div>
 
                 <h3 className="text-xl font-medium text-white">{item.name}</h3>
@@ -191,7 +185,7 @@ export default function CatalogProductsSection() {
     return (
         <>
             <section ref={filtersRef}>
-                <div className="mx-auto max-w-7xl px-6 md:px-10">
+                <div className="mx-auto max-w-7xl px-6 md:px-10 overflow-hidden">
                     <div className="flex w-max gap-3 pb-1">
                         {categories.map((item) => {
                             const active = activeCategory === item;
@@ -215,7 +209,7 @@ export default function CatalogProductsSection() {
 
             <section
                 ref={sectionRef}
-                className="mx-auto max-w-7xl px-6 pb-12 pt-8 md:px-10 md:py-18"
+                className="mx-auto max-w-7xl px-6 pb-0 pt-8 md:px-10 md:py-18"
             >
                 <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                     <div>

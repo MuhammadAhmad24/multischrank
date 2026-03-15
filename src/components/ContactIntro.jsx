@@ -24,8 +24,7 @@ export default function ContactIntro() {
             title: "Telefon",
             text: (
                 <>
-                    Telefon: +49 351 87409610 <br />
-                    Mobil: +49 152 26398262
+                    Mobil: +49 155 63440433
                 </>
             ),
         },
@@ -40,10 +39,12 @@ export default function ContactIntro() {
             text: (
                 <>
                     MultiSchrank
-                    Oleg Morawski
+                    Inh. Oleg Morawski <br />
                     Gartenstr. 72
                     01445 Radebeul
                     Deutschland
+
+
                 </>
             ),
         },
@@ -65,7 +66,7 @@ export default function ContactIntro() {
                     style={{ opacity, y }}
                     className="mb-16 text-center md:mb-20"
                 >
-                    <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-semibold leading-[1.02] tracking-[-0.04em]">
+                    <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-semibold leading-tight tracking-[-0.04em]">
                         Starten wir
                         <span className="block bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
                             Ihr Möbelprojekt

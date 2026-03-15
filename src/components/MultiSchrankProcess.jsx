@@ -2,13 +2,13 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
     Sparkles,
-    MessageCircle,
     ArrowUpRight,
     Ruler,
     PencilRuler,
     Hammer,
     CheckCircle2,
 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 const steps = [
     {
@@ -152,7 +152,7 @@ export default function MultiSchrankProcess() {
                                     rel="noreferrer"
                                     className="group inline-flex items-center gap-2 rounded-full border border-green-400/25 bg-green-500/10 px-5 py-3.5 text-sm font-medium text-green-300 backdrop-blur-xl transition duration-300 hover:scale-[1.03] hover:border-green-400/50 hover:bg-green-500/20"
                                 >
-                                    <MessageCircle size={17} />
+                                    <FaWhatsapp size={17} />
                                     Starten Sie Ihr Projekt
                                     <ArrowUpRight
                                         size={16}

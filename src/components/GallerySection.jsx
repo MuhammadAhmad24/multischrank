@@ -145,7 +145,7 @@ export default function GallerySection() {
     return (
         <section
             ref={sectionRef}
-            className="relative overflow-hidden bg-[#0f0f0d] py-24 text-[#f5f1eb] md:py-32"
+            className="relative overflow-hidden bg-[#0f0f0d] py-12 sm:py-20 text-[#f5f1eb] md:py-32"
         >
             <div className="pointer-events-none absolute inset-0">
                 <div className="absolute left-[-10%] top-[8%] h-72 w-72 rounded-full bg-[#b38a5a]/10 blur-3xl" />

@@ -189,7 +189,7 @@ export default function OurValuesSection() {
     return (
         <section
             ref={sectionRef}
-            className="relative overflow-hidden bg-[#0f0f0d] py-28 text-[#f5f1eb] md:pt-36 md:pb-42"
+            className="relative overflow-hidden bg-[#0f0f0d]  py-12 sm:py-20 text-[#f5f1eb] md:pt-36 md:pb-42"
         >
             <div className="pointer-events-none absolute inset-0">
                 <div className="absolute left-[-10%] top-[10%] h-72 w-72 rounded-full bg-orange-500/10 blur-3xl" />
@@ -208,7 +208,7 @@ export default function OurValuesSection() {
                             Unsere Werte
                         </div>
 
-                        <h2 className="text-3xl font-medium leading-[0.95] tracking-[-0.04em] sm:text-5xl md:text-6xl xl:text-7xl">
+                        <h2 className="text-[25px] font-medium leading-[0.95] tracking-[-0.04em] sm:text-5xl md:text-6xl xl:text-7xl">
                             <ScrollRevealText
                                 text="Prinzipien, die"
                                 progress={headingProgress}
@@ -235,7 +235,7 @@ export default function OurValuesSection() {
 
                 <div
                     ref={cardsRef}
-                    className="mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-4"
+                    className="mt-4 sm:mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-4"
                 >
                     {values.map((item, index) => (
                         <ValueCard

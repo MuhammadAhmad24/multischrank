@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { MessageCircle } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const navLinks = [
@@ -15,6 +15,12 @@ const socialLinks = [
     { name: "Facebook", href: "#" },
 ];
 
+const legalLinks = [
+    { name: "Impressum", href: "/Impressum" },
+    { name: "Datenschutz", href: "/PrivacyPolicy" },
+    { name: "AGB", href: "/Terms" },
+];
+
 const brand = "MultiSchrank";
 
 function AnimatedBrandText({ text }) {
@@ -23,14 +29,13 @@ function AnimatedBrandText({ text }) {
             className="
                 select-none
                 leading-none
-                tracking-[-0.08em]
                 text-white
-                text-[3.4rem]
-                sm:text-[6rem]
-                md:text-[8rem]
-                lg:text-[11rem]
-                xl:text-[14rem]
-                2xl:text-[16rem]
+                text-[3rem]
+                sm:text-[5rem]
+                md:text-[7rem]
+                lg:text-[9rem]
+                xl:text-[12rem]
+                2xl:text-[14rem]
                 font-semibold
                 whitespace-nowrap
             "
@@ -49,7 +54,7 @@ function AnimatedBrandText({ text }) {
                         stiffness: 260,
                         damping: 16,
                     }}
-                    className="inline-block origin-bottom transition-colors duration-300"
+                    className="inline-block mx-px origin-bottom transition-colors duration-300"
                 >
                     {char === " " ? "\u00A0" : char}
                 </motion.span>
@@ -96,7 +101,7 @@ export default function MultiSchrankFooter() {
                                 rel="noreferrer"
                                 className="mt-6 relative z-90 inline-flex items-center gap-2 rounded-full border border-green-400/25 bg-green-500/10 px-4 py-2.5 text-sm font-medium text-green-300 backdrop-blur-xl transition duration-300 hover:scale-[1.03] hover:border-green-400/50 hover:bg-green-500/20"
                             >
-                                <MessageCircle size={16} />
+                                <FaWhatsapp size={16} />
                                 Projekt starten
                             </a>
                         </div>
@@ -129,23 +134,18 @@ export default function MultiSchrankFooter() {
                                 post@multischrank.de
                             </a>
                             <a
-                                href="tel:+4935187409610"
+                                href="tel:4915563440433"
                                 className="block transition duration-300 hover:text-orange-200"
                             >
-                                +49 351 87409610
-                            </a>
-                            <a
-                                href="tel:+4915226398262"
-                                className="block transition duration-300 hover:text-orange-200"
-                            >
-                                +49 152 26398262
+                                +49 155 63440433
                             </a>
                             <div className="pt-1 text-white/85">
-                                <p>MultiSchrank Oleg Morawski
-                                    Gartenstr. 72
-                                    01445 Radebeul
-                                    Deutschland
-                                    USt-IdNr.: DE282912845</p>
+                                <p>MultiSchrank Inh. Oleg Morawski
+Gartenstr. 72 
+01445 Radebeul 
+Deutschland
+
+</p>
                             </div>
                         </div>
                     </div>
@@ -173,15 +173,34 @@ export default function MultiSchrankFooter() {
                 </div>
 
                 {/* bottom bar */}
-                <div className="mt-4 flex flex-col gap-3 border-t border-white/20 pt-4 text-xs text-white sm:flex-row sm:items-center sm:justify-between">
-                    <p>
-                        © {new Date().getFullYear()} MultiSchrank | Design &
-                        Entwicklung von{" "}
-                        <a href="https://ggagentur.de/" className="text-orange-200 transition duration-300 hover:text-orange-300">
-                            G+G Agency
-                        </a>
-                    </p>
-                </div>
+                <div className="mt-4 flex flex-col gap-4 border-t border-white/20 pt-4 text-xs text-white sm:flex-row sm:items-center sm:justify-between">
+
+    <p>
+        © {new Date().getFullYear()} MultiSchrank | Design &
+        Entwicklung von{" "}
+        <a
+            href="https://ggagentur.de/"
+            className="text-orange-200 transition duration-300 hover:text-orange-300"
+        >
+            G+G Agency
+        </a>
+    </p>
+
+    {/* legal links */}
+    <div className="flex flex-wrap items-center gap-4 text-white/70">
+        {legalLinks.map((item) => (
+            <Link
+                key={item.name}
+                to={item.href}
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="transition duration-300 hover:text-orange-200"
+            >
+                {item.name}
+            </Link>
+        ))}
+    </div>
+
+</div>
             </div>
         </footer>
     );

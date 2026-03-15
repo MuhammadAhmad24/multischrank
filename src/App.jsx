@@ -9,6 +9,9 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Catalog from "./pages/Catalog";
+import Impressum from "./pages/Impressum";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Terms from "./pages/Terms";
 
 function App() {
     const [loading, setLoading] = useState(true);
@@ -34,6 +37,9 @@ function App() {
                         <Route path="/about" element={<About />} />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/catalog" element={<Catalog />} />
+                        <Route path="/Impressum" element={<Impressum />} />
+                        <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
+                        <Route path="/Terms" element={<Terms />} />
                     </Routes>
 
                     <MultiSchrankFooter />
