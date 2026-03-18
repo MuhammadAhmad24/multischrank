@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { useKeenSlider } from "keen-slider/react";
 import { Link } from "react-router-dom";
@@ -10,6 +10,7 @@ import {
     Sparkles,
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
+import { useLanguage } from "../LanguageContext";
 
 const container = {
     hidden: {},
@@ -38,56 +39,144 @@ const fadeUp = {
     },
 };
 
-const items = [
-    {
-        title: "Luxus-Kleiderschränke",
-        description:
-            "Elegante Schranksysteme mit hochwertigen Oberflächen, nahtlosen Details und intelligentem Stauraum.",
-        image: "catalog-wardrobe.webp",
-        tag: "Highlight",
-        href: "/catalog",
+const content = {
+    de: {
+        badge: "Unsere Kollektion",
+        title: "Entdecken Sie Möbel mit",
+        highlight: "luxuriöser Ausstrahlung.",
+        desc: "Entdecken Sie eine kuratierte Auswahl hochwertiger Möbel und Interior-Lösungen für elegante Zuhause, moderne Lebensstile und zeitlose Wohnräume.",
+        discover: "Kollektion entdecken",
+        viewCatalog: "Gesamten Katalog ansehen",
+        startProject: "Projekt starten",
+        prevAria: "Nach links scrollen",
+        nextAria: "Nach rechts scrollen",
+        goToSlide: "Gehe zu Slide",
+        items: [
+            {
+                id: 1,
+                title: "Luxus-Kleiderschränke",
+                description:
+                    "Elegante Schranksysteme mit hochwertigen Oberflächen, nahtlosen Details und intelligentem Stauraum.",
+                image: "catalog-wardrobe.webp",
+                tag: "Highlight",
+                href: "/catalog",
+            },
+            {
+                id: 2,
+                title: "Wohnzimmermöbel",
+                description:
+                    "Moderne Möbelkonzepte, die Wärme, Eleganz und Ausgewogenheit in den Alltag bringen.",
+                image: "catalog-living.webp",
+                tag: "Modern",
+                href: "/catalog",
+            },
+            {
+                id: 3,
+                title: "Schlafzimmermöbel",
+                description:
+                    "Zeitlose Möbelstücke für Schlafzimmer, gestaltet für Komfort, Ruhe und moderne Eleganz.",
+                image: "catalog-bedroom.webp",
+                tag: "Stilvoll",
+                href: "/catalog",
+            },
+            {
+                id: 4,
+                title: "Küchenlösungen",
+                description:
+                    "Funktionale Küchenmöbel und hochwertige Designlösungen, individuell abgestimmt auf modernes Wohnen.",
+                image: "catalog-kitchen.webp",
+                tag: "Individuell",
+                href: "/catalog",
+            },
+            {
+                id: 5,
+                title: "TV-Möbel",
+                description:
+                    "Minimalistische TV-Units für klare Raumkompositionen und eine gehobene Innenraumästhetik.",
+                image: "catalog-tv-unit.webp",
+                tag: "Minimal",
+                href: "/catalog",
+            },
+            {
+                id: 6,
+                title: "Büromöbel",
+                description:
+                    "Durchdachte Arbeitsmöbel, die Produktivität, Eleganz und praktische Organisation verbinden.",
+                image: "catalog-office.webp",
+                tag: "Workspace",
+                href: "/catalog",
+            },
+        ],
     },
-    {
-        title: "Wohnzimmermöbel",
-        description:
-            "Moderne Möbelkonzepte, die Wärme, Eleganz und Ausgewogenheit in den Alltag bringen.",
-        image: "catalog-living.webp",
-        tag: "Modern",
-        href: "/catalog",
+    en: {
+        badge: "Our Collection",
+        title: "Discover furniture with",
+        highlight: "a luxurious presence.",
+        desc: "Explore a curated selection of premium furniture and interior solutions for elegant homes, modern lifestyles, and timeless living spaces.",
+        discover: "Discover collection",
+        viewCatalog: "View full catalog",
+        startProject: "Start your project",
+        prevAria: "Scroll left",
+        nextAria: "Scroll right",
+        goToSlide: "Go to slide",
+        items: [
+            {
+                id: 1,
+                title: "Luxury wardrobes",
+                description:
+                    "Elegant wardrobe systems with premium finishes, seamless detailing, and intelligent storage.",
+                image: "catalog-wardrobe.webp",
+                tag: "Highlight",
+                href: "/catalog",
+            },
+            {
+                id: 2,
+                title: "Living room furniture",
+                description:
+                    "Modern furniture concepts that bring warmth, elegance, and balance into everyday living.",
+                image: "catalog-living.webp",
+                tag: "Modern",
+                href: "/catalog",
+            },
+            {
+                id: 3,
+                title: "Bedroom furniture",
+                description:
+                    "Timeless bedroom furniture designed for comfort, calm, and modern elegance.",
+                image: "catalog-bedroom.webp",
+                tag: "Stylish",
+                href: "/catalog",
+            },
+            {
+                id: 4,
+                title: "Kitchen solutions",
+                description:
+                    "Functional kitchen furniture and premium design solutions tailored to modern living.",
+                image: "catalog-kitchen.webp",
+                tag: "Custom",
+                href: "/catalog",
+            },
+            {
+                id: 5,
+                title: "TV units",
+                description:
+                    "Minimal TV units for clean room compositions and an elevated interior aesthetic.",
+                image: "catalog-tv-unit.webp",
+                tag: "Minimal",
+                href: "/catalog",
+            },
+            {
+                id: 6,
+                title: "Office furniture",
+                description:
+                    "Thoughtfully designed work furniture that combines productivity, elegance, and practical organization.",
+                image: "catalog-office.webp",
+                tag: "Workspace",
+                href: "/catalog",
+            },
+        ],
     },
-    {
-        title: "Schlafzimmermöbel",
-        description:
-            "Zeitlose Möbelstücke für Schlafzimmer, gestaltet für Komfort, Ruhe und moderne Eleganz.",
-        image: "catalog-bedroom.webp",
-        tag: "Stilvoll",
-        href: "/catalog",
-    },
-    {
-        title: "Küchenlösungen",
-        description:
-            "Funktionale Küchenmöbel und hochwertige Designlösungen, individuell abgestimmt auf modernes Wohnen.",
-        image: "catalog-kitchen.webp",
-        tag: "Individuell",
-        href: "/catalog",
-    },
-    {
-        title: "TV-Möbel",
-        description:
-            "Minimalistische TV-Units für klare Raumkompositionen und eine gehobene Innenraumästhetik.",
-        image: "catalog-tv-unit.webp",
-        tag: "Minimal",
-        href: "/catalog",
-    },
-    {
-        title: "Büromöbel",
-        description:
-            "Durchdachte Arbeitsmöbel, die Produktivität, Eleganz und praktische Organisation verbinden.",
-        image: "catalog-office.webp",
-        tag: "Workspace",
-        href: "/catalog",
-    },
-];
+};
 
 function autoplay(slider) {
     let timeout;
@@ -122,7 +211,103 @@ function autoplay(slider) {
     slider.on("updated", nextTimeout);
 }
 
-function SliderCard({ item, index, details }) {
+function MobileSliderCard({ item, index, discoverText, currentSlide }) {
+    const isActive = currentSlide === index;
+
+    return (
+        <div className="keen-slider__slide flex justify-center">
+            <div
+                className="transition-transform duration-200 ease-out"
+                style={{
+                    transform: `translateY(${isActive ? 0 : 6}px) scale(${isActive ? 1 : 0.985})`,
+                    opacity: isActive ? 1 : 0.92,
+                    willChange: "transform",
+                }}
+            >
+                <Link
+                    to={item.href}
+                    style={{ WebkitTapHighlightColor: "transparent" }}
+                    className="group relative block h-90 w-[78vw] overflow-hidden rounded-4xl border border-white/10 bg-white/5 backdrop-blur-md"
+                >
+                    <div className="absolute inset-0 overflow-hidden">
+                        <img
+                            src={item.image}
+                            alt={item.title}
+                            loading="lazy"
+                            className="h-full w-full object-cover transition-transform duration-200 ease-out"
+                            style={{
+                                transform: `scale(${isActive ? 1.02 : 1})`,
+                                willChange: "transform",
+                            }}
+                        />
+
+                        <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/25 to-transparent" />
+                        <div className="absolute inset-0 bg-[linear-gradient(120deg,transparent_0%,rgba(255,255,255,0.05)_45%,transparent_65%)] opacity-55" />
+                    </div>
+
+                    <div
+                        className="pointer-events-none absolute inset-0 rounded-4xl ring-1 ring-inset ring-white/10 transition-opacity duration-200"
+                        style={{ opacity: 0.85 }}
+                    />
+
+                    <div
+                        className="pointer-events-none absolute inset-0 rounded-4xl ring-1 ring-inset ring-orange-300/30 transition-opacity duration-200"
+                        style={{ opacity: isActive ? 0.7 : 0.18 }}
+                    />
+
+                    <div
+                        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(249,115,22,0.10),transparent_58%)] transition-opacity duration-200"
+                        style={{ opacity: isActive ? 0.7 : 0.18 }}
+                    />
+
+                    <div className="relative flex h-full flex-col justify-between p-6">
+                        <div
+                            className="flex items-start justify-between gap-4 transition-all duration-200"
+                            style={{
+                                opacity: isActive ? 1 : 0.88,
+                                transform: `translateY(${isActive ? 0 : 4}px)`,
+                            }}
+                        >
+                            <div className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-[11px] uppercase tracking-[0.24em] text-white/75 backdrop-blur-md">
+                                {item.tag}
+                            </div>
+
+                            <div className="text-sm font-medium text-orange-200/40">
+                                {String(index + 1).padStart(2, "0")}
+                            </div>
+                        </div>
+
+                        <div
+                            className="max-w-xl transition-all duration-200"
+                            style={{
+                                opacity: isActive ? 1 : 0.88,
+                                transform: `translateY(${isActive ? 0 : 8}px)`,
+                            }}
+                        >
+                            <h3 className="text-2xl font-semibold tracking-[-0.03em] text-white">
+                                {item.title}
+                            </h3>
+
+                            <p className="mt-1 max-w-lg text-sm text-white/65">
+                                {item.description}
+                            </p>
+
+                            <div className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-white/85 transition duration-300 group-hover:text-orange-300">
+                                <span>{discoverText}</span>
+                                <ArrowUpRight
+                                    size={16}
+                                    className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </Link>
+            </div>
+        </div>
+    );
+}
+
+function DesktopSliderCard({ item, index, details, discoverText }) {
     const slide = details?.slides?.[index];
     const portion = slide?.portion ?? 0;
     const distance = Math.abs(slide?.distance ?? 1);
@@ -150,7 +335,7 @@ function SliderCard({ item, index, details }) {
             >
                 <Link
                     to={item.href}
-                    className="group relative block h-90 w-[82vw] overflow-hidden rounded-4xl border border-white/10 bg-white/5 backdrop-blur-2xl sm:h-112 sm:w-120 lg:h-136 lg:w-160"
+                    className="group relative block h-90 w-[82vw] overflow-hidden rounded-4xl border border-white/10 bg-white/5 backdrop-blur-2xl sm:h-112 sm:w-120 lg:h-[80vh] lg:max-h-175 lg:w-[clamp(320px,50vw,820px)]"
                 >
                     <div className="absolute inset-0 overflow-hidden">
                         <motion.img
@@ -218,7 +403,7 @@ function SliderCard({ item, index, details }) {
                             </p>
 
                             <div className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-white/85 transition duration-300 group-hover:text-orange-300 sm:mt-6">
-                                <span>Kollektion entdecken</span>
+                                <span>{discoverText}</span>
                                 <ArrowUpRight
                                     size={16}
                                     className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -233,30 +418,68 @@ function SliderCard({ item, index, details }) {
 }
 
 export default function MultiSchrankCatalogSlider() {
+    const { lang } = useLanguage();
+    const t = content[lang];
+
+    const [isMobile, setIsMobile] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
     const [details, setDetails] = useState(null);
+
+    useEffect(() => {
+        const media = window.matchMedia("(max-width: 767px)");
+
+        const updateIsMobile = () => setIsMobile(media.matches);
+        updateIsMobile();
+
+        if (media.addEventListener) {
+            media.addEventListener("change", updateIsMobile);
+            return () => media.removeEventListener("change", updateIsMobile);
+        } else {
+            media.addListener(updateIsMobile);
+            return () => media.removeListener(updateIsMobile);
+        }
+    }, []);
+
+    const plugins = useMemo(() => {
+        return isMobile ? [] : [autoplay];
+    }, [isMobile]);
 
     const [sliderRef, instanceRef] = useKeenSlider(
         {
             loop: true,
             mode: "snap",
             rubberband: false,
-            renderMode: "precision",
+            renderMode: isMobile ? "performance" : "precision",
             initial: 0,
+            dragSpeed: isMobile ? 0.65 : 1,
             slideChanged(slider) {
                 setCurrentSlide(slider.track.details.rel);
+
+                if (!isMobile) {
+                    setDetails(slider.track.details);
+                }
             },
             detailsChanged(slider) {
-                setDetails(slider.track.details);
+                if (!isMobile) {
+                    setDetails(slider.track.details);
+                }
             },
             created(slider) {
                 setCurrentSlide(slider.track.details.rel);
-                setDetails(slider.track.details);
+
+                if (!isMobile) {
+                    setDetails(slider.track.details);
+                }
+            },
+            updated(slider) {
+                if (!isMobile) {
+                    setDetails(slider.track.details);
+                }
             },
             slides: {
                 origin: "center",
                 perView: 1,
-                spacing: 20,
+                spacing: isMobile ? 10 : 20,
             },
             breakpoints: {
                 "(min-width: 640px)": {
@@ -275,17 +498,51 @@ export default function MultiSchrankCatalogSlider() {
                 },
             },
         },
-        [autoplay]
+        plugins
     );
+
+    useEffect(() => {
+        if (!instanceRef.current) return;
+
+        const updateSlider = () => {
+            if (!instanceRef.current) return;
+
+            instanceRef.current.update();
+
+            const trackDetails = instanceRef.current.track.details;
+            setCurrentSlide(trackDetails.rel);
+
+            if (!isMobile) {
+                setDetails(trackDetails);
+            } else {
+                setDetails(null);
+            }
+        };
+
+        const raf1 = requestAnimationFrame(() => {
+            const raf2 = requestAnimationFrame(updateSlider);
+            return () => cancelAnimationFrame(raf2);
+        });
+
+        return () => cancelAnimationFrame(raf1);
+    }, [lang, isMobile, instanceRef]);
 
     return (
         <section
             id="catalog"
-            className="relative overflow-hidden bg-neutral-950 py-12 text-white md:py-18"
+            className="relative overflow-hidden bg-neutral-950 py-6 text-white md:py-18"
         >
             <div className="pointer-events-none absolute inset-0">
-                <div className="absolute left-[-8%] top-[12%] h-80 w-80 rounded-full bg-orange-500/10 blur-3xl" />
-                <div className="absolute right-[-8%] bottom-[8%] h-96 w-96 rounded-full bg-orange-300/6 blur-3xl" />
+                <div
+                    className={`absolute left-[-8%] top-[12%] rounded-full bg-orange-500/10 ${
+                        isMobile ? "h-48 w-48 blur-2xl" : "h-80 w-80 blur-3xl"
+                    }`}
+                />
+                <div
+                    className={`absolute right-[-8%] bottom-[8%] rounded-full bg-orange-300/6 ${
+                        isMobile ? "h-56 w-56 blur-2xl" : "h-96 w-96 blur-3xl"
+                    }`}
+                />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_20%,rgba(249,115,22,0.08),transparent_26%)]" />
             </div>
 
@@ -300,19 +557,21 @@ export default function MultiSchrankCatalogSlider() {
                     <div className="max-w-3xl">
                         <motion.div
                             variants={fadeUp}
-                            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.28em] text-orange-200 backdrop-blur-xl"
+                            className={`inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.28em] text-orange-200 ${
+                                isMobile ? "backdrop-blur-md" : "backdrop-blur-xl"
+                            }`}
                         >
                             <Sparkles size={14} className="text-orange-400" />
-                            Unsere Kollektion
+                            {t.badge}
                         </motion.div>
 
                         <motion.h2
                             variants={fadeUp}
                             className="mt-6 text-3xl font-semibold leading-[1.05] tracking-[-0.04em] text-white sm:text-4xl md:text-5xl xl:text-6xl"
                         >
-                            Entdecken Sie Möbel mit{" "}
+                            {t.title}{" "}
                             <span className="bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
-                                luxuriöser Ausstrahlung.
+                                {t.highlight}
                             </span>
                         </motion.h2>
 
@@ -320,9 +579,7 @@ export default function MultiSchrankCatalogSlider() {
                             variants={fadeUp}
                             className="mt-6 max-w-2xl text-base leading-8 text-white/65 md:text-lg"
                         >
-                            Entdecken Sie eine kuratierte Auswahl hochwertiger Möbel
-                            und Interior-Lösungen für elegante Zuhause, moderne
-                            Lebensstile und zeitlose Wohnräume.
+                            {t.desc}
                         </motion.p>
                     </div>
                 </div>
@@ -331,7 +588,7 @@ export default function MultiSchrankCatalogSlider() {
                     <button
                         onClick={() => instanceRef.current?.prev()}
                         className="absolute left-4 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-neutral-900/70 text-white/80 backdrop-blur-xl transition duration-300 hover:border-orange-300/20 hover:bg-neutral-800/80 hover:text-orange-200 lg:inline-flex"
-                        aria-label="Nach links scrollen"
+                        aria-label={t.prevAria}
                     >
                         <ArrowLeft size={18} />
                     </button>
@@ -339,30 +596,41 @@ export default function MultiSchrankCatalogSlider() {
                     <button
                         onClick={() => instanceRef.current?.next()}
                         className="absolute right-4 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-neutral-900/70 text-white/80 backdrop-blur-xl transition duration-300 hover:border-orange-300/20 hover:bg-neutral-800/80 hover:text-orange-200 lg:inline-flex"
-                        aria-label="Nach rechts scrollen"
+                        aria-label={t.nextAria}
                     >
                         <ArrowRight size={18} />
                     </button>
 
                     <div ref={sliderRef} className="keen-slider px-0 sm:px-6 lg:px-10">
-                        {items.map((item, index) => (
-                            <SliderCard
-                                key={item.title}
-                                item={item}
-                                index={index}
-                                details={details}
-                            />
-                        ))}
+                        {t.items.map((item, index) =>
+                            isMobile ? (
+                                <MobileSliderCard
+                                    key={item.id}
+                                    item={item}
+                                    index={index}
+                                    discoverText={t.discover}
+                                    currentSlide={currentSlide}
+                                />
+                            ) : (
+                                <DesktopSliderCard
+                                    key={item.id}
+                                    item={item}
+                                    index={index}
+                                    details={details}
+                                    discoverText={t.discover}
+                                />
+                            )
+                        )}
                     </div>
 
                     <div className="mt-7 flex items-center justify-center gap-2">
-                        {items.map((_, idx) => {
+                        {t.items.map((_, idx) => {
                             const isActive = currentSlide === idx;
                             return (
                                 <button
                                     key={idx}
                                     onClick={() => instanceRef.current?.moveToIdx(idx)}
-                                    aria-label={`Gehe zu Slide ${idx + 1}`}
+                                    aria-label={`${t.goToSlide} ${idx + 1}`}
                                     className={`h-2 rounded-full transition-all duration-500 ${
                                         isActive
                                             ? "w-8 bg-orange-300"
@@ -379,7 +647,7 @@ export default function MultiSchrankCatalogSlider() {
                         to="/catalog"
                         className="group inline-flex items-center gap-2 rounded-full bg-orange-400 px-5 py-3.5 text-sm font-semibold text-neutral-900 transition duration-300 hover:scale-[1.03] hover:bg-orange-300 hover:shadow-[0_12px_40px_rgba(249,115,22,0.22)] sm:px-6"
                     >
-                        Gesamten Katalog ansehen
+                        {t.viewCatalog}
                         <ArrowRight
                             size={17}
                             className="transition-transform duration-300 group-hover:translate-x-1"
@@ -390,10 +658,12 @@ export default function MultiSchrankCatalogSlider() {
                         href="https://wa.me/4915563440433"
                         target="_blank"
                         rel="noreferrer"
-                        className="group inline-flex items-center gap-2 rounded-full border border-green-400/25 bg-green-500/10 px-5 py-3.5 text-sm font-medium text-green-300 backdrop-blur-xl transition duration-300 hover:scale-[1.03] hover:border-green-400/50 hover:bg-green-500/20 sm:px-6"
+                        className={`group inline-flex items-center gap-2 rounded-full border border-green-400/25 bg-green-500/10 px-5 py-3.5 text-sm font-medium text-green-300 transition duration-300 hover:scale-[1.03] hover:border-green-400/50 hover:bg-green-500/20 sm:px-6 ${
+                            isMobile ? "backdrop-blur-md" : "backdrop-blur-xl"
+                        }`}
                     >
                         <FaWhatsapp size={17} />
-                        Projekt starten
+                        {t.startProject}
                         <ArrowUpRight
                             size={16}
                             className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"

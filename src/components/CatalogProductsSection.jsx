@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
     motion,
     AnimatePresence,
@@ -7,58 +7,125 @@ import {
     useSpring,
 } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { useLanguage } from "../LanguageContext";
 
-const categories = [
-    "Alle",
-    "Kleiderschränke",
-    "TV-Möbel",
-    "Küchen",
-    "Schlafzimmer",
-    "Büro",
-];
-
-const products = [
-    {
-        id: 1,
-        name: "Nordischer Eichen-Kleiderschrank",
-        category: "Kleiderschränke",
-        material: "Eiche",
-        color: "Braun",
-        image: "/catalog-wardrobe.webp",
+// TRANSLATIONS
+const content = {
+    de: {
+        categories: [
+            "Alle",
+            "Kleiderschränke",
+            "TV-Möbel",
+            "Küchen",
+            "Schlafzimmer",
+            "Büro",
+        ],
+        sectionLabel: "Katalog",
+        sectionTitle: "Ausgewählte Möbelstücke",
+        sectionDesc:
+            "Eine kuratierte Auswahl hochwertiger Möbelstücke für den täglichen Gebrauch, architektonische Harmonie und moderne Innenräume.",
+        productDesc: "Hochwertige {material}-Oberfläche mit eleganter Silhouette.",
+        products: [
+            {
+                id: 1,
+                name: "Nordischer Eichen-Kleiderschrank",
+                category: "Kleiderschränke",
+                material: "Eiche",
+                color: "Braun",
+                image: "/catalog-wardrobe.webp",
+            },
+            {
+                id: 2,
+                name: "Minimalistisches TV-Lowboard",
+                category: "TV-Möbel",
+                material: "Walnuss",
+                color: "Braun",
+                image: "/catalog-tv-unit.webp",
+            },
+            {
+                id: 3,
+                name: "Moderner Küchenschrank",
+                category: "Küchen",
+                material: "MDF",
+                color: "Weiß",
+                image: "/catalog-kitchen.webp",
+            },
+            {
+                id: 4,
+                name: "Bettgestell mit weichen Kanten",
+                category: "Schlafzimmer",
+                material: "Eschenholz",
+                color: "Beige",
+                image: "/catalog-bedroom.webp",
+            },
+            {
+                id: 6,
+                name: "Executive-Schreibtisch",
+                category: "Büro",
+                material: "Walnuss",
+                color: "Schwarz",
+                image: "/catalog-office.webp",
+            },
+        ],
     },
-    {
-        id: 2,
-        name: "Minimalistisches TV-Lowboard",
-        category: "TV-Möbel",
-        material: "Walnuss",
-        color: "Braun",
-        image: "/catalog-tv-unit.webp",
+    en: {
+        categories: [
+            "All",
+            "Wardrobes",
+            "TV Units",
+            "Kitchens",
+            "Bedroom",
+            "Office",
+        ],
+        sectionLabel: "Catalog",
+        sectionTitle: "Selected furniture pieces",
+        sectionDesc:
+            "A curated selection of high-quality furniture pieces designed for everyday use, architectural harmony, and modern interiors.",
+        productDesc: "Premium {material} finish with an elegant silhouette.",
+        products: [
+            {
+                id: 1,
+                name: "Nordic oak wardrobe",
+                category: "Wardrobes",
+                material: "Oak",
+                color: "Brown",
+                image: "/catalog-wardrobe.webp",
+            },
+            {
+                id: 2,
+                name: "Minimalist TV lowboard",
+                category: "TV Units",
+                material: "Walnut",
+                color: "Brown",
+                image: "/catalog-tv-unit.webp",
+            },
+            {
+                id: 3,
+                name: "Modern kitchen cabinet",
+                category: "Kitchens",
+                material: "MDF",
+                color: "White",
+                image: "/catalog-kitchen.webp",
+            },
+            {
+                id: 4,
+                name: "Soft-edge bed frame",
+                category: "Bedroom",
+                material: "Ash wood",
+                color: "Beige",
+                image: "/catalog-bedroom.webp",
+            },
+            {
+                id: 6,
+                name: "Executive desk",
+                category: "Office",
+                material: "Walnut",
+                color: "Black",
+                image: "/catalog-office.webp",
+            },
+        ],
     },
-    {
-        id: 3,
-        name: "Moderner Küchenschrank",
-        category: "Küchen",
-        material: "MDF",
-        color: "Weiß",
-        image: "/catalog-kitchen.webp",
-    },
-    {
-        id: 4,
-        name: "Bettgestell mit weichen Kanten",
-        category: "Schlafzimmer",
-        material: "Eschenholz",
-        color: "Beige",
-        image: "/catalog-bedroom.webp",
-    },
-    {
-        id: 6,
-        name: "Executive-Schreibtisch",
-        category: "Büro",
-        material: "Walnuss",
-        color: "Schwarz",
-        image: "/catalog-office.webp",
-    },
-];
+};
 
 const fadeUp = {
     hidden: { opacity: 0, y: 40, filter: "blur(10px)" },
@@ -82,46 +149,68 @@ const fadeUp = {
     },
 };
 
-const stagger = {
-    hidden: {},
-    show: {
-        transition: {
-            staggerChildren: 0.08,
-        },
-    },
-};
-
-function ProductCard({ item, index }) {
+function ProductCard({ item, index, descTemplate, isMobile }) {
     const cardRef = useRef(null);
 
     const { scrollYProgress } = useScroll({
         target: cardRef,
-        offset: ["start 92%", "end 15%"],
+        offset: isMobile ? ["start 97%", "end 18%"] : ["start 92%", "end 15%"],
     });
 
     const smooth = useSpring(scrollYProgress, {
-        stiffness: 120,
-        damping: 22,
-        mass: 0.35,
+        stiffness: isMobile ? 90 : 120,
+        damping: isMobile ? 24 : 22,
+        mass: isMobile ? 0.5 : 0.35,
     });
 
-    const y = useTransform(smooth, [0, 1], [60, -18]);
-    const opacity = useTransform(smooth, [0, 0.2, 0.75, 1], [0, 1, 1, 0.92]);
-    const scale = useTransform(smooth, [0, 0.2, 1], [0.94, 1, 1]);
-    const imageScale = useTransform(smooth, [0, 0.5, 1], [1.18, 1.08, 1.14]);
-    const imageY = useTransform(smooth, [0, 1], [24, -24]);
-    const contentY = useTransform(smooth, [0, 1], [24, -10]);
+    const y = useTransform(
+        smooth,
+        [0, 1],
+        isMobile ? [24, -8] : [60, -18]
+    );
+
+    const opacity = useTransform(
+        smooth,
+        [0, 0.2, 0.75, 1],
+        isMobile ? [0, 1, 1, 0.98] : [0, 1, 1, 0.92]
+    );
+
+    const scale = useTransform(
+        smooth,
+        [0, 0.2, 1],
+        isMobile ? [0.97, 1, 1] : [0.94, 1, 1]
+    );
+
+    const imageScale = useTransform(
+        smooth,
+        [0, 0.5, 1],
+        isMobile ? [1.08, 1.03, 1.05] : [1.18, 1.08, 1.14]
+    );
+
+    const imageY = useTransform(
+        smooth,
+        [0, 1],
+        isMobile ? [10, -10] : [24, -24]
+    );
+
+    const contentY = useTransform(
+        smooth,
+        [0, 1],
+        isMobile ? [8, -4] : [24, -10]
+    );
 
     return (
         <motion.div
             ref={cardRef}
             layout
-            initial="hidden"
-            animate="show"
-            exit="exit"
-            variants={fadeUp}
-            style={{ y, opacity, scale }}
-            whileHover={{ y: -10, scale: 1.01 }}
+            initial={false}
+            style={{
+                y,
+                opacity,
+                scale,
+                willChange: "transform, opacity",
+            }}
+            whileHover={isMobile ? undefined : { y: -10, scale: 1.01 }}
             transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
             className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/4"
         >
@@ -129,8 +218,9 @@ function ProductCard({ item, index }) {
                 <motion.img
                     src={item.image}
                     alt={item.name}
-                    style={{ scale: imageScale, y: imageY }}
+                    style={{ scale: imageScale, y: imageY, willChange: "transform" }}
                     className="h-full w-full object-cover"
+                    loading="lazy"
                 />
 
                 <motion.div
@@ -139,7 +229,7 @@ function ProductCard({ item, index }) {
                     viewport={{ once: false, amount: 0.5 }}
                     transition={{
                         delay: index * 0.04,
-                        duration: 0.5,
+                        duration: isMobile ? 0.4 : 0.5,
                         ease: [0.22, 1, 0.36, 1],
                     }}
                     className="absolute right-4 top-4 rounded-full border border-white/15 bg-black/25 p-2 backdrop-blur-md"
@@ -149,7 +239,7 @@ function ProductCard({ item, index }) {
             </div>
 
             <motion.div
-                style={{ y: contentY }}
+                style={{ y: contentY, willChange: "transform" }}
                 className="relative p-5 md:p-6"
             >
                 <div className="mb-3 flex items-center justify-between">
@@ -161,43 +251,76 @@ function ProductCard({ item, index }) {
                 <h3 className="text-xl font-medium text-white">{item.name}</h3>
 
                 <p className="mt-3 text-sm leading-7 text-white/60">
-                    Hochwertige {item.material}-Oberfläche mit eleganter
-                    Silhouette.
+                    {descTemplate.replace("{material}", item.material)}
                 </p>
-
             </motion.div>
         </motion.div>
     );
 }
 
 export default function CatalogProductsSection() {
-    const [activeCategory, setActiveCategory] = useState("Kleiderschränke");
+    const { lang } = useLanguage();
+    const t = content[lang];
+
+    const [isMobile, setIsMobile] = useState(false);
+    const [activeCategory, setActiveCategory] = useState(
+        lang === "de" ? "Kleiderschränke" : "Wardrobes"
+    );
 
     const filtersRef = useRef(null);
     const sectionRef = useRef(null);
 
+    useEffect(() => {
+        const media = window.matchMedia("(max-width: 767px)");
+
+        const updateIsMobile = () => setIsMobile(media.matches);
+        updateIsMobile();
+
+        if (media.addEventListener) {
+            media.addEventListener("change", updateIsMobile);
+            return () => media.removeEventListener("change", updateIsMobile);
+        } else {
+            media.addListener(updateIsMobile);
+            return () => media.removeListener(updateIsMobile);
+        }
+    }, []);
+
+    useEffect(() => {
+        setActiveCategory(lang === "de" ? "Kleiderschränke" : "Wardrobes");
+    }, [lang]);
+
     const filteredProducts = useMemo(() => {
-        return activeCategory === "Alle"
-            ? [...products]
-            : products.filter((item) => item.category === activeCategory);
-    }, [activeCategory]);
+        return activeCategory === t.categories[0]
+            ? [...t.products]
+            : t.products.filter((item) => item.category === activeCategory);
+    }, [activeCategory, t]);
 
     return (
         <>
             <section ref={filtersRef}>
-                <div className="mx-auto max-w-7xl px-6 md:px-10 overflow-hidden">
-                    <div className="flex w-max gap-3 pb-1">
-                        {categories.map((item) => {
+                <div className="mx-auto max-w-7xl overflow-hidden px-6 md:px-10">
+                    <div
+                        className={`
+                            flex w-full gap-3 overflow-x-auto pb-2
+                            ${isMobile ? "snap-x snap-mandatory no-scrollbar" : "w-max pb-1"}
+                        `}
+                    >
+                        {t.categories.map((item) => {
                             const active = activeCategory === item;
 
                             return (
                                 <button
                                     key={item}
                                     onClick={() => setActiveCategory(item)}
-                                    className={`rounded-full border px-5 py-3 text-sm ${active
-                                            ? "border-orange-300 bg-orange-400 text-[#111]"
-                                            : "border-white/10 bg-white/5 text-white/75"
-                                        }`}
+                                    className={`
+                                        shrink-0 rounded-full border px-5 py-3 text-sm transition-colors duration-300
+                                        ${isMobile ? "snap-start" : ""}
+                                        ${
+                                            active
+                                                ? "border-orange-300 bg-orange-400 text-[#111]"
+                                                : "border-white/10 bg-white/5 text-white/75"
+                                        }
+                                    `}
                                 >
                                     {item}
                                 </button>
@@ -214,27 +337,27 @@ export default function CatalogProductsSection() {
                 <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                     <div>
                         <p className="text-xs uppercase tracking-[0.22em] text-orange-200/55">
-                            Katalog
+                            {t.sectionLabel}
                         </p>
                         <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
-                            Ausgewählte Möbelstücke
+                            {t.sectionTitle}
                         </h2>
                     </div>
 
                     <p className="max-w-xl text-sm leading-7 text-white/60">
-                        Eine kuratierte Auswahl hochwertiger Möbelstücke für
-                        den täglichen Gebrauch, architektonische Harmonie und
-                        moderne Innenräume.
+                        {t.sectionDesc}
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
-                    <AnimatePresence mode="wait">
+                    <AnimatePresence initial={false}>
                         {filteredProducts.map((item, index) => (
                             <ProductCard
-                                key={`${activeCategory}-${item.id}`}
+                                key={`${lang}-${activeCategory}-${item.id}`}
                                 item={item}
                                 index={index}
+                                descTemplate={t.productDesc}
+                                isMobile={isMobile}
                             />
                         ))}
                     </AnimatePresence>

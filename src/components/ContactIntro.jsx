@@ -1,9 +1,85 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { useLanguage } from "../LanguageContext";
+
+const content = {
+    de: {
+        title1: "Starten wir",
+        titleHighlight: "Ihr Möbelprojekt",
+        desc: "Teilen Sie Ihre Ideen, Fragen oder Projektdetails mit uns. Unser Team unterstützt Sie dabei, den nächsten Schritt mit Klarheit und Sicherheit zu gehen.",
+        cards: [
+            {
+                title: "Telefon",
+                text: (
+                    <>
+                        Mobil: +49 155 63440433
+                    </>
+                ),
+            },
+            {
+                title: "E-Mail",
+                text: "post@multischrank.de",
+            },
+            {
+                title: "Standort",
+                text: (
+                    <>
+                        MultiSchrank
+                        <br />
+                        Inh. Oleg Morawski
+                        <br />
+                        Gartenstr. 72
+                        <br />
+                        01445 Radebeul
+                        <br />
+                        Deutschland
+                    </>
+                ),
+            },
+        ],
+    },
+    en: {
+        title1: "Let’s start",
+        titleHighlight: "your furniture project",
+        desc: "Share your ideas, questions, or project details with us. Our team will help you take the next step with clarity and confidence.",
+        cards: [
+            {
+                title: "Phone",
+                text: (
+                    <>
+                        Mobile: +49 155 63440433
+                    </>
+                ),
+            },
+            {
+                title: "Email",
+                text: "post@multischrank.de",
+            },
+            {
+                title: "Location",
+                text: (
+                    <>
+                        MultiSchrank
+                        <br />
+                        Owner: Oleg Morawski
+                        <br />
+                        Gartenstr. 72
+                        <br />
+                        01445 Radebeul
+                        <br />
+                        Germany
+                    </>
+                ),
+            },
+        ],
+    },
+};
 
 export default function ContactIntro() {
     const sectionRef = useRef(null);
+    const { lang } = useLanguage();
+    const t = content[lang];
 
     const { scrollYProgress } = useScroll({
         target: sectionRef,
@@ -18,37 +94,7 @@ export default function ContactIntro() {
 
     const y = useTransform(scrollYProgress, [0, 1], [60, -60]);
 
-    const cards = [
-        {
-            icon: Phone,
-            title: "Telefon",
-            text: (
-                <>
-                    Mobil: +49 155 63440433
-                </>
-            ),
-        },
-        {
-            icon: Mail,
-            title: "E-Mail",
-            text: "post@multischrank.de",
-        },
-        {
-            icon: MapPin,
-            title: "Standort",
-            text: (
-                <>
-                    MultiSchrank
-                    Inh. Oleg Morawski <br />
-                    Gartenstr. 72
-                    01445 Radebeul
-                    Deutschland
-
-
-                </>
-            ),
-        },
-    ];
+    const icons = [Phone, Mail, MapPin];
 
     return (
         <section
@@ -67,22 +113,20 @@ export default function ContactIntro() {
                     className="mb-16 text-center md:mb-20"
                 >
                     <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-semibold leading-tight tracking-[-0.04em]">
-                        Starten wir
+                        {t.title1}
                         <span className="block bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
-                            Ihr Möbelprojekt
+                            {t.titleHighlight}
                         </span>
                     </h2>
 
                     <p className="mx-auto mt-6 max-w-xl text-base leading-7 text-white/70">
-                        Teilen Sie Ihre Ideen, Fragen oder Projektdetails mit uns.
-                        Unser Team unterstützt Sie dabei, den nächsten Schritt mit
-                        Klarheit und Sicherheit zu gehen.
+                        {t.desc}
                     </p>
                 </motion.div>
 
                 <div className="grid gap-5 md:grid-cols-3 md:gap-6">
-                    {cards.map((card, index) => {
-                        const Icon = card.icon;
+                    {t.cards.map((card, index) => {
+                        const Icon = icons[index];
 
                         return (
                             <motion.div

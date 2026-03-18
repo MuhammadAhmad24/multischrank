@@ -1,7 +1,27 @@
 import React, { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useLanguage } from "../LanguageContext";
+
+// TRANSLATIONS
+const content = {
+    de: {
+        eyebrow: "Exklusive Innenräume",
+        loading: "Lädt",
+        tagline: "Durchdachte Räume. Stilvolles Wohnen.",
+        logoAlt: "MultiSchrank Logo",
+    },
+    en: {
+        eyebrow: "Exclusive interiors",
+        loading: "Loading",
+        tagline: "Thoughtful spaces. Stylish living.",
+        logoAlt: "MultiSchrank Logo",
+    },
+};
 
 export default function Preloader({ onFinish }) {
+    const { lang } = useLanguage();
+    const t = content[lang] || content.en;
+
     const [progress, setProgress] = useState(0);
     const [isComplete, setIsComplete] = useState(false);
     const [shouldRender, setShouldRender] = useState(true);
@@ -75,17 +95,17 @@ export default function Preloader({ onFinish }) {
                         animate={
                             isComplete
                                 ? {
-                                    opacity: 0,
-                                    y: -12,
-                                    scale: 0.985,
-                                    filter: "blur(6px)",
-                                }
+                                      opacity: 0,
+                                      y: -12,
+                                      scale: 0.985,
+                                      filter: "blur(6px)",
+                                  }
                                 : {
-                                    opacity: 1,
-                                    y: 0,
-                                    scale: 1,
-                                    filter: "blur(0px)",
-                                }
+                                      opacity: 1,
+                                      y: 0,
+                                      scale: 1,
+                                      filter: "blur(0px)",
+                                  }
                         }
                         transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                         className="relative z-10 flex w-full max-w-xl flex-col items-center px-6"
@@ -100,12 +120,16 @@ export default function Preloader({ onFinish }) {
                             transition={{ duration: 0.45, delay: isComplete ? 0 : 0.08 }}
                             className="mb-6"
                         >
-                            <img src="/logo.png" alt="logo" className="h-16 sm:h-20" />
+                            <img
+                                src="/logo.png"
+                                alt={t.logoAlt}
+                                className="h-16 sm:h-20"
+                            />
                         </motion.div>
 
                         <div className="text-center">
                             <p className="mb-2 text-[11px] uppercase tracking-[0.5em] text-orange-200/45">
-                                Exklusive Innenräume
+                                {t.eyebrow}
                             </p>
                             <h1 className="text-3xl font-semibold tracking-[0.18em] text-white sm:text-4xl">
                                 MultiSchrank
@@ -114,7 +138,7 @@ export default function Preloader({ onFinish }) {
 
                         <div className="mt-10 w-full max-w-md">
                             <div className="mb-3 flex items-center justify-between text-[11px] uppercase tracking-[0.35em] text-white/35">
-                                <span>Lädt</span>
+                                <span>{t.loading}</span>
                                 <span>{progress}%</span>
                             </div>
 
@@ -134,7 +158,7 @@ export default function Preloader({ onFinish }) {
                             transition={{ delay: 0.35, duration: 0.6 }}
                             className="mt-6 text-center text-sm text-white/45"
                         >
-                            Durchdachte Räume. Stilvolles Wohnen.
+                            {t.tagline}
                         </motion.p>
                     </motion.div>
                 </motion.div>

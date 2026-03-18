@@ -1,51 +1,113 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useLanguage } from "../LanguageContext";
 
-const panels = [
-    {
-        index: "01",
-        title: "Vom Detail geleitet",
-        text: "Jedes Projekt beginnt mit einer klaren gestalterischen Absicht, bei der Proportion, Material und Atmosphäre von Anfang an gemeinsam entwickelt werden.",
-        meta: "Absicht / Atmosphäre / Material",
+// TRANSLATIONS
+const content = {
+    de: {
+        heading: "Unsere Geschichte",
+        panels: [
+            {
+                index: "01",
+                title: "Vom Detail geleitet",
+                text: "Jedes Projekt beginnt mit einer klaren gestalterischen Absicht, bei der Proportion, Material und Atmosphäre von Anfang an gemeinsam entwickelt werden.",
+                meta: "Absicht / Atmosphäre / Material",
+            },
+            {
+                index: "02",
+                title: "Mit Balance gestaltet",
+                text: "Wir entwerfen Räume, die ruhig und anspruchsvoll wirken, sodass Weichheit, Struktur und Funktion im gleichen Rhythmus zusammenfinden – ohne visuelle Unruhe.",
+                meta: "Weichheit / Struktur / Rhythmus",
+            },
+            {
+                index: "03",
+                title: "Für lange Zeit gemacht",
+                text: "Unser Ansatz wird von zeitloser Zurückhaltung, sorgfältiger Ausführung und Oberflächen geprägt, die auch über kurzlebige Trends hinaus relevant bleiben.",
+                meta: "Zurückhaltung / Langlebigkeit / Präsenz",
+            },
+            {
+                index: "04",
+                title: "Von Klarheit geprägt",
+                text: "Wir reduzieren das Unnötige und konzentrieren uns auf das Wesentliche, um Innenräume zu schaffen, die bewusst, harmonisch und visuell souverän wirken.",
+                meta: "Klarheit / Präzision / Fokus",
+            },
+            {
+                index: "05",
+                title: "Durch Erfahrung definiert",
+                text: "Für uns zählt nicht nur die Optik, sondern auch, wie sich ein Raum im Alltag anfühlt – natürlich in der Bewegung, angenehm im Gebrauch und stark im Charakter.",
+                meta: "Erlebnis / Komfort / Identität",
+            },
+        ],
     },
-    {
-        index: "02",
-        title: "Mit Balance gestaltet",
-        text: "Wir entwerfen Räume, die ruhig und anspruchsvoll wirken, sodass Weichheit, Struktur und Funktion im gleichen Rhythmus zusammenfinden – ohne visuelle Unruhe.",
-        meta: "Weichheit / Struktur / Rhythmus",
+    en: {
+        heading: "Our Story",
+        panels: [
+            {
+                index: "01",
+                title: "Guided by detail",
+                text: "Every project begins with a clear design intention, where proportion, material, and atmosphere are developed together from the very beginning.",
+                meta: "Intention / Atmosphere / Material",
+            },
+            {
+                index: "02",
+                title: "Designed with balance",
+                text: "We create spaces that feel calm and refined, where softness, structure, and function come together in the same rhythm without visual noise.",
+                meta: "Softness / Structure / Rhythm",
+            },
+            {
+                index: "03",
+                title: "Made to last",
+                text: "Our approach is shaped by timeless restraint, careful execution, and finishes that remain relevant far beyond short-lived trends.",
+                meta: "Restraint / Longevity / Presence",
+            },
+            {
+                index: "04",
+                title: "Defined by clarity",
+                text: "We reduce the unnecessary and focus on the essential to create interiors that feel intentional, harmonious, and visually confident.",
+                meta: "Clarity / Precision / Focus",
+            },
+            {
+                index: "05",
+                title: "Shaped by experience",
+                text: "For us, it is not only about appearance, but also how a space feels in daily life — natural in movement, comfortable in use, and strong in character.",
+                meta: "Experience / Comfort / Identity",
+            },
+        ],
     },
-    {
-        index: "03",
-        title: "Für lange Zeit gemacht",
-        text: "Unser Ansatz wird von zeitloser Zurückhaltung, sorgfältiger Ausführung und Oberflächen geprägt, die auch über kurzlebige Trends hinaus relevant bleiben.",
-        meta: "Zurückhaltung / Langlebigkeit / Präsenz",
-    },
-    {
-        index: "04",
-        title: "Von Klarheit geprägt",
-        text: "Wir reduzieren das Unnötige und konzentrieren uns auf das Wesentliche, um Innenräume zu schaffen, die bewusst, harmonisch und visuell souverän wirken.",
-        meta: "Klarheit / Präzision / Fokus",
-    },
-    {
-        index: "05",
-        title: "Durch Erfahrung definiert",
-        text: "Für uns zählt nicht nur die Optik, sondern auch, wie sich ein Raum im Alltag anfühlt – natürlich in der Bewegung, angenehm im Gebrauch und stark im Charakter.",
-        meta: "Erlebnis / Komfort / Identität",
-    },
-];
+};
 
 export default function OurStorySection() {
+    const { lang } = useLanguage();
+    const t = content[lang] || content.en;
+
     const sectionRef = useRef(null);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const media = window.matchMedia("(max-width: 767px)");
+
+        const updateIsMobile = () => setIsMobile(media.matches);
+        updateIsMobile();
+
+        if (media.addEventListener) {
+            media.addEventListener("change", updateIsMobile);
+            return () => media.removeEventListener("change", updateIsMobile);
+        } else {
+            media.addListener(updateIsMobile);
+            return () => media.removeListener(updateIsMobile);
+        }
+    }, []);
 
     const { scrollYProgress } = useScroll({
         target: sectionRef,
         offset: ["start start", "end end"],
     });
 
+    // Desktop same, mobile only slightly optimized
     const x = useTransform(
         scrollYProgress,
         [0, 1],
-        ["0%", "-80%"]
+        ["0%", isMobile ? "-80%" : "-80%"]
     );
 
     const labelOpacity = useTransform(
@@ -55,14 +117,18 @@ export default function OurStorySection() {
     );
 
     const lineScale = useTransform(scrollYProgress, [0, 1], [0.08, 1]);
-    const bgMove = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
+    const bgMove = useTransform(
+        scrollYProgress,
+        [0, 1],
+        ["0%", isMobile ? "8%" : "12%"]
+    );
 
     return (
         <section
             ref={sectionRef}
             className="relative bg-neutral-950 text-white"
         >
-            <div className="relative h-[420vh]">
+            <div className={`relative ${isMobile ? "h-[360vh]" : "h-[420vh]"}`}>
                 <div className="sticky top-0 h-screen overflow-hidden">
                     {/* background */}
                     <div className="absolute inset-0 overflow-hidden">
@@ -70,7 +136,13 @@ export default function OurStorySection() {
                             style={{ x: bgMove }}
                             className="absolute inset-0 opacity-[0.08]"
                         >
-                            <div className="h-full w-full bg-[linear-gradient(to_right,rgba(255,255,255,0.12)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-size-[64px_64px]" />
+                            <div
+                                className={`h-full w-full bg-[linear-gradient(to_right,rgba(255,255,255,0.12)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] ${
+                                    isMobile
+                                        ? "bg-size-[40px_40px]"
+                                        : "bg-size-[64px_64px]"
+                                }`}
+                            />
                         </motion.div>
 
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.06),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.04),transparent_26%)]" />
@@ -82,10 +154,22 @@ export default function OurStorySection() {
                     </div>
 
                     {/* top heading */}
-                    <div className="absolute left-0 right-0 top-14 z-20 mx-auto max-w-7xl px-6 pt-8 md:px-10 lg:px-16">
+                    <div
+                        className={`absolute left-0 right-0 z-20 mx-auto max-w-7xl ${
+                            isMobile
+                                ? "top-8 px-5 pt-4"
+                                : "top-14 px-6 pt-8 md:px-10 lg:px-16"
+                        }`}
+                    >
                         <motion.div style={{ opacity: labelOpacity }}>
-                            <h2 className="max-w-4xl text-5xl font-medium leading-[0.9] tracking-[-0.06em] text-white sm:text-6xl md:text-7xl lg:text-[96px]">
-                                Unsere Geschichte
+                            <h2
+                                className={`max-w-4xl font-medium leading-[0.9] tracking-[-0.06em] text-white ${
+                                    isMobile
+                                        ? "text-[40px]"
+                                        : "text-5xl sm:text-6xl md:text-7xl lg:text-[96px]"
+                                }`}
+                            >
+                                {t.heading}
                             </h2>
                         </motion.div>
                     </div>
@@ -95,8 +179,13 @@ export default function OurStorySection() {
                         style={{ x }}
                         className="flex h-full w-[500%]"
                     >
-                        {panels.map((panel, i) => (
-                            <StoryPanel key={panel.index} panel={panel} i={i} />
+                        {t.panels.map((panel, i) => (
+                            <StoryPanel
+                                key={panel.index}
+                                panel={panel}
+                                i={i}
+                                isMobile={isMobile}
+                            />
                         ))}
                     </motion.div>
                 </div>
@@ -105,10 +194,20 @@ export default function OurStorySection() {
     );
 }
 
-function StoryPanel({ panel, i }) {
+function StoryPanel({ panel, i, isMobile }) {
     return (
-        <section className="relative flex h-screen w-screen shrink-0 items-center pt-30 sm:pt-14">
-            <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-2.5 sm:gap-10 px-6 md:px-10 lg:grid-cols-[0.8fr_1.2fr] lg:px-16">
+        <section
+            className={`relative flex h-screen w-screen shrink-0 items-center ${
+                isMobile ? "pt-24" : "pt-30 sm:pt-14"
+            }`}
+        >
+            <div
+                className={`mx-auto grid w-full max-w-7xl grid-cols-1 ${
+                    isMobile
+                        ? "gap-4 px-5"
+                        : "gap-2.5 px-6 sm:gap-10 md:px-10 lg:grid-cols-[0.8fr_1.2fr] lg:px-16"
+                }`}
+            >
                 {/* left side */}
                 <div className="flex items-start lg:items-end">
                     <motion.div
@@ -118,7 +217,13 @@ function StoryPanel({ panel, i }) {
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                         className="text-white/14"
                     >
-                        <span className="block text-[96px] font-medium leading-none tracking-[-0.08em] sm:text-[130px] md:text-[180px] lg:text-[220px]">
+                        <span
+                            className={`block font-medium leading-none tracking-[-0.08em] ${
+                                isMobile
+                                    ? "text-[72px]"
+                                    : "text-[96px] sm:text-[130px] md:text-[180px] lg:text-[220px]"
+                            }`}
+                        >
                             {panel.index}
                         </span>
                     </motion.div>
@@ -126,13 +231,17 @@ function StoryPanel({ panel, i }) {
 
                 {/* right side */}
                 <div className="flex items-center">
-                    <div className="max-w-3xl">
+                    <div className={isMobile ? "max-w-full" : "max-w-3xl"}>
                         <motion.h3
                             initial={{ opacity: 0, y: 70 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: false, amount: 0.45 }}
                             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                            className="text-4xl font-medium leading-[0.92] tracking-[-0.05em] text-white sm:text-5xl md:text-6xl lg:text-7xl"
+                            className={`font-medium leading-[0.92] tracking-[-0.05em] text-white ${
+                                isMobile
+                                    ? "text-[32px]"
+                                    : "text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
+                            }`}
                         >
                             {panel.title}
                         </motion.h3>
@@ -146,7 +255,11 @@ function StoryPanel({ panel, i }) {
                                 delay: 0.08,
                                 ease: [0.22, 1, 0.36, 1],
                             }}
-                            className="mt-6 max-w-2xl text-base leading-8 text-white/58 md:text-lg"
+                            className={`max-w-2xl text-white/58 ${
+                                isMobile
+                                    ? "mt-4 text-sm leading-7"
+                                    : "mt-6 text-base leading-8 md:text-lg"
+                            }`}
                         >
                             {panel.text}
                         </motion.p>
@@ -156,7 +269,11 @@ function StoryPanel({ panel, i }) {
                             whileInView={{ scaleX: 1, opacity: 1 }}
                             viewport={{ once: false, amount: 0.45 }}
                             transition={{ duration: 0.8, delay: 0.12 }}
-                            className="mt-8 h-px w-full max-w-[320px] origin-left bg-white/15"
+                            className={`origin-left bg-white/15 ${
+                                isMobile
+                                    ? "mt-6 h-px w-full max-w-55"
+                                    : "mt-8 h-px w-full max-w-[320px]"
+                            }`}
                         />
 
                         <motion.div
@@ -164,7 +281,11 @@ function StoryPanel({ panel, i }) {
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: false, amount: 0.45 }}
                             transition={{ duration: 1, delay: 0.18 }}
-                            className="mt-5 text-[11px] uppercase tracking-[0.24em] text-white/35"
+                            className={`uppercase text-white/35 ${
+                                isMobile
+                                    ? "mt-4 text-[10px] tracking-[0.2em]"
+                                    : "mt-5 text-[11px] tracking-[0.24em]"
+                            }`}
                         >
                             {panel.meta}
                         </motion.div>

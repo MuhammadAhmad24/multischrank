@@ -4,6 +4,7 @@ import CatalogHero from "../components/CatalogHero";
 import CatalogHighlights from "../components/CatalogHighlights";
 import FeaturedCollection from "../components/FeaturedCollection";
 import CatalogProductsSection from "../components/CatalogProductsSection";
+import ShowcaseVideos from "../components/ShowcaseVideos";
 
 
 export default function CatalogPage() {
@@ -11,6 +12,7 @@ export default function CatalogPage() {
         <main className="bg-[#0f0f10] text-[#f5f1eb]">
             <CatalogHero />
             <CatalogProductsSection/>
+            <ShowcaseVideos />
             <FeaturedCollection />
             <CatalogHighlights />
             <Faq />

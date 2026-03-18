@@ -1,8 +1,51 @@
 import React, { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { useLanguage } from "../LanguageContext";
+
+const content = {
+    de: {
+        badge: "Kontaktformular",
+        title1: "Erzählen Sie uns von",
+        titleHighlight: "Ihrem Projekt",
+        placeholders: {
+            name: "Vollständiger Name",
+            phone: "Telefonnummer",
+            email: "E-Mail-Adresse",
+            message: "Erzählen Sie uns mehr über Ihr Projekt...",
+        },
+        button: "Absenden",
+        whatsappText: (data) => `Hallo, ich möchte mich über ein Möbelprojekt informieren.
+
+Name: ${data.name}
+Telefon: ${data.phone}
+E-Mail: ${data.email}
+Nachricht: ${data.message}`,
+    },
+    en: {
+        badge: "Contact form",
+        title1: "Tell us about",
+        titleHighlight: "your project",
+        placeholders: {
+            name: "Full name",
+            phone: "Phone number",
+            email: "Email address",
+            message: "Tell us more about your project...",
+        },
+        button: "Send message",
+        whatsappText: (data) => `Hello, I would like to inquire about a furniture project.
+
+Name: ${data.name}
+Phone: ${data.phone}
+Email: ${data.email}
+Message: ${data.message}`,
+    },
+};
 
 export default function ContactForm() {
+    const { lang } = useLanguage();
+    const t = content[lang];
+
     const [formData, setFormData] = useState({
         name: "",
         phone: "",
@@ -55,13 +98,7 @@ export default function ContactForm() {
         e.preventDefault();
 
         const whatsappNumber = "4915563440433";
-
-        const text = `Hallo, ich möchte mich über ein Möbelprojekt informieren.
-
-Name: ${formData.name}
-Telefon: ${formData.phone}
-E-Mail: ${formData.email}
-Nachricht: ${formData.message}`;
+        const text = t.whatsappText(formData);
 
         const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
         window.open(url, "_blank");
@@ -88,13 +125,13 @@ Nachricht: ${formData.message}`;
                     className="relative sm:mt-18"
                 >
                     <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/4 px-4 py-2 text-[11px] uppercase tracking-[0.22em] text-orange-200 backdrop-blur-md">
-                        Kontaktformular
+                        {t.badge}
                     </div>
 
                     <h2 className="text-[clamp(2.7rem,5vw,4.8rem)] font-semibold tracking-[-0.05em]">
-                        Erzählen Sie uns von
+                        {t.title1}
                         <span className="block bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
-                            Ihrem Projekt
+                            {t.titleHighlight}
                         </span>
                     </h2>
 
@@ -114,7 +151,7 @@ Nachricht: ${formData.message}`;
                         <input
                             type="text"
                             name="name"
-                            placeholder="Vollständiger Name"
+                            placeholder={t.placeholders.name}
                             required
                             value={formData.name}
                             onChange={handleChange}
@@ -124,7 +161,7 @@ Nachricht: ${formData.message}`;
                         <input
                             type="text"
                             name="phone"
-                            placeholder="Telefonnummer"
+                            placeholder={t.placeholders.phone}
                             required
                             value={formData.phone}
                             onChange={handleChange}
@@ -134,7 +171,7 @@ Nachricht: ${formData.message}`;
                         <input
                             type="email"
                             name="email"
-                            placeholder="E-Mail-Adresse"
+                            placeholder={t.placeholders.email}
                             required
                             value={formData.email}
                             onChange={handleChange}
@@ -144,7 +181,7 @@ Nachricht: ${formData.message}`;
                         <textarea
                             name="message"
                             rows={6}
-                            placeholder="Erzählen Sie uns mehr über Ihr Projekt..."
+                            placeholder={t.placeholders.message}
                             required
                             value={formData.message}
                             onChange={handleChange}
@@ -155,7 +192,7 @@ Nachricht: ${formData.message}`;
                             type="submit"
                             className="group flex w-full items-center justify-center gap-2 rounded-full bg-orange-400 px-6 py-4 text-sm font-medium text-black transition duration-300 hover:scale-[1.01] hover:bg-white cursor-pointer"
                         >
-                            Absenden
+                            {t.button}
                             <ArrowUpRight className="h-4 w-4 transition duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                         </button>
                     </form>
