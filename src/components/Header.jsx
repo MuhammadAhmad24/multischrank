@@ -40,12 +40,13 @@ export default function MultiSchrankHeader() {
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
+    // bg-neutral-950
     return (
-        <header className="relative z-999 overflow-hidden bg-neutral-950 text-white">
+        <header className="relative z-999 overflow-hidden bg-transparent text-white">
             <nav
                 className={`fixed top-0 z-50 w-full transition-all duration-500 ${
                     scrolled
-                        ? "border-b border-white/10 bg-neutral-950/75 backdrop-blur-2xl"
+                        ? "border-b border-white/10 bg-transparent backdrop-blur-2xl" //bg-neutral-950/75
                         : "bg-transparent"
                 }`}
             >

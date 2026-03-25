@@ -128,14 +128,13 @@ export default function MultiSchrankFooter() {
 
                     {/* contact */}
                     <div className="space-y-2.5 text-[15px]">
-                        <a href="mailto:post@multischrank.de">post@multischrank.de</a>
-                        <a href="tel:4915563440433">+49 155 63440433</a>
                         <p className="text-white/80">
-                            MultiSchrank Inh. Oleg Morawski <br />
+                            MultiSchrank <br /> Oleg Morawski <br />
                             Gartenstr. 72 <br />
-                            01445 Radebeul <br />
-                            Deutschland
+                            D-01445 Radebeul <br />
                         </p>
+                        <a href="tel:4915563440433">+49 155 63440433</a> <br />
+                        <a href="mailto:post@multischrank.de">post@multischrank.de</a> <br />
                     </div>
 
                     {/* socials */}

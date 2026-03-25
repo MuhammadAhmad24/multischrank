@@ -192,7 +192,7 @@ export default function AboutCTASection() {
 
                             <motion.h2
                                 variants={fadeUp}
-                                className="max-w-3xl text-3xl font-light text-white sm:text-4xl md:text-5xl lg:text-[64px]"
+                                className="max-w-3xl text-3xl font-light leading-tight text-white sm:text-4xl md:text-5xl lg:text-[64px]"
                             >
                                 {t.title1}
                                 <span className="block bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">

@@ -192,7 +192,7 @@ export default function OurPartnersSection() {
                         {t.badge}
                     </span>
 
-                    <h2 className="mt-4 text-[2rem] font-semibold leading-[1.1] text-white/90 sm:text-4xl md:text-5xl">
+                    <h2 className="mt-4 text-[2rem] font-semibold leading-tight text-white/90 sm:text-4xl md:text-5xl">
                         {t.title1}
                         <span className="block bg-linear-to-r from-orange-200 via-orange-300 to-orange-500 bg-clip-text text-transparent">
                             {t.highlight}

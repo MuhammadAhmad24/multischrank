@@ -18,31 +18,31 @@ const content = {
     de: {
         badge: "Unsere Werte",
         heading1: "Prinzipien, die",
-        heading2: "jede unserer Entscheidungen prägen",
+        heading2: "unsere Entscheidungen leiten",
         values: [
             {
                 icon: Gem,
                 number: "01",
                 title: "Materialqualität",
-                text: "Wir wählen Oberflächen, Texturen und Konstruktionsmaterialien mit Blick auf langfristige Haltbarkeit und visuelle Balance.",
+                text: "Wir wählen Oberflächen, Texturen und Konstruktionsmaterialien mit Fokus auf dauerhafte Qualität und eine ausgewogene Ästhetik.",
             },
             {
                 icon: ShieldCheck,
                 number: "02",
                 title: "Für Langlebigkeit gebaut",
-                text: "Jedes Detail entsteht mit Präzision, Stabilität und disziplinierter Ausführung, damit das Endergebnis über lange Zeit verlässlich wirkt.",
+                text: "Jedes Detail wird mit Präzision, Stabilität und sorgfältiger Ausführung umgesetzt, damit das Ergebnis langfristig zuverlässig bleibt.",
             },
             {
                 icon: Sparkles,
                 number: "03",
                 title: "Ruhige Ästhetik",
-                text: "Unser Ansatz vermeidet visuelle Unruhe. Im Mittelpunkt stehen Proportion, Wärme und eine raffinierte Schlichtheit, die zeitlos statt kurzfristig wirkt.",
+                text: "Unser Ansatz vermeidet visuelle Unruhe und setzt auf Proportion, Wärme und eine klare, zeitlose Gestaltung statt kurzlebiger Trends.",
             },
             {
                 icon: Compass,
                 number: "04",
                 title: "Kundenzentriertes Denken",
-                text: "Jedes Projekt orientiert sich an echten Lebensgewohnheiten und nicht nur an Trends, damit jeder Raum persönlich und funktional wirkt.",
+                text: "Jedes Projekt orientiert sich an realen Lebensgewohnheiten statt nur an Trends, sodass jeder Raum persönlich und funktional gestaltet ist.",
             },
         ],
     },
@@ -166,30 +166,30 @@ function ValueCard({ item, index, progress, isMobile }) {
         yRaw,
         isMobile
             ? {
-                  stiffness: 220,
-                  damping: 30,
-                  mass: 0.45,
-              }
+                stiffness: 220,
+                damping: 30,
+                mass: 0.45,
+            }
             : {
-                  stiffness: 110,
-                  damping: 22,
-                  mass: 0.75,
-              }
+                stiffness: 110,
+                damping: 22,
+                mass: 0.75,
+            }
     );
 
     const scale = useSpring(
         scaleRaw,
         isMobile
             ? {
-                  stiffness: 220,
-                  damping: 30,
-                  mass: 0.45,
-              }
+                stiffness: 220,
+                damping: 30,
+                mass: 0.45,
+            }
             : {
-                  stiffness: 110,
-                  damping: 20,
-                  mass: 0.75,
-              }
+                stiffness: 110,
+                damping: 20,
+                mass: 0.75,
+            }
     );
 
     return (
@@ -201,20 +201,17 @@ function ValueCard({ item, index, progress, isMobile }) {
                 filter,
                 willChange: "transform, opacity, filter",
             }}
-            className={`relative min-h-80 overflow-hidden rounded-[28px] border border-white/10 bg-white/4 p-6 ${
-                isMobile ? "backdrop-blur-md" : "backdrop-blur-xl"
-            } md:p-7`}
+            className={`relative min-h-80 overflow-hidden rounded-[28px] border border-white/10 bg-white/4 p-6 ${isMobile ? "backdrop-blur-md" : "backdrop-blur-xl"
+                } md:p-7`}
         >
             <div className="pointer-events-none absolute inset-0">
                 <div
-                    className={`absolute -left-10 top-0 rounded-full bg-orange-500/10 ${
-                        isMobile ? "h-20 w-20 blur-xl" : "h-28 w-28 blur-2xl"
-                    }`}
+                    className={`absolute -left-10 top-0 rounded-full bg-orange-500/10 ${isMobile ? "h-20 w-20 blur-xl" : "h-28 w-28 blur-2xl"
+                        }`}
                 />
                 <div
-                    className={`absolute bottom-0 right-0 rounded-full bg-white/6 ${
-                        isMobile ? "h-16 w-16 blur-xl" : "h-24 w-24 blur-2xl"
-                    }`}
+                    className={`absolute bottom-0 right-0 rounded-full bg-white/6 ${isMobile ? "h-16 w-16 blur-xl" : "h-24 w-24 blur-2xl"
+                        }`}
                 />
             </div>
 
@@ -330,14 +327,12 @@ export default function OurValuesSection() {
                 className="pointer-events-none absolute inset-0"
             >
                 <div
-                    className={`absolute left-[-10%] top-[10%] rounded-full bg-orange-500/10 ${
-                        isMobile ? "h-44 w-44 blur-2xl" : "h-72 w-72 blur-3xl"
-                    }`}
+                    className={`absolute left-[-10%] top-[10%] rounded-full bg-orange-500/10 ${isMobile ? "h-44 w-44 blur-2xl" : "h-72 w-72 blur-3xl"
+                        }`}
                 />
                 <div
-                    className={`absolute bottom-[5%] right-[-5%] rounded-full bg-white/5 ${
-                        isMobile ? "h-52 w-52 blur-2xl" : "h-80 w-80 blur-3xl"
-                    }`}
+                    className={`absolute bottom-[5%] right-[-5%] rounded-full bg-white/5 ${isMobile ? "h-52 w-52 blur-2xl" : "h-80 w-80 blur-3xl"
+                        }`}
                 />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_35%)]" />
             </motion.div>
