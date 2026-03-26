@@ -41,13 +41,14 @@ export default function MultiSchrankHeader() {
     }, []);
 
     return (
-        <header className="relative z-999 bg-neutral-950 overflow-hidden text-white">
-            <nav
-                className={`fixed top-0 z-50 w-full transition-all duration-500 ${
+        <header className="relative z-999 overflow-hidden bg-neutral-950 text-white">
+            {/* ${
                     scrolled
-                        ? "border-b border-white/10 bg-neutral-950/25 backdrop-blur-2xl"
+                        ? "border-b border-white/10 bg-neutral-950/75 backdrop-blur-2xl"
                         : "bg-neutral-950"
-                }`}
+                } */}
+            <nav
+                className={`relative top-0 z-50 w-full transition-all duration-500 bg-neutral-950`}
             >
                 <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6 lg:px-10">
                     <Link to="/" className="group relative inline-flex items-center gap-3">
@@ -87,21 +88,19 @@ export default function MultiSchrankHeader() {
                         <div className="flex overflow-hidden rounded-full border border-white/10 bg-white/5 text-xs">
                             <button
                                 onClick={() => setLang("de")}
-                                className={`px-3 py-1.5 cursor-pointer transition ${
-                                    lang === "de"
+                                className={`px-3 py-1.5 cursor-pointer transition ${lang === "de"
                                         ? "bg-orange-400 text-black"
                                         : "text-white/70 hover:text-white"
-                                }`}
+                                    }`}
                             >
                                 DE
                             </button>
                             <button
                                 onClick={() => setLang("en")}
-                                className={`px-3 py-1.5 cursor-pointer transition ${
-                                    lang === "en"
+                                className={`px-3 py-1.5 cursor-pointer transition ${lang === "en"
                                         ? "bg-orange-400 text-black"
                                         : "text-white/70 hover:text-white"
-                                }`}
+                                    }`}
                             >
                                 EN
                             </button>
@@ -117,30 +116,27 @@ export default function MultiSchrankHeader() {
                 </div>
 
                 <div
-                    className={`overflow-hidden border-t border-white/10 bg-neutral-950/90 backdrop-blur-2xl transition-all duration-500 lg:hidden ${
-                        mobileOpen ? "max-h-105 opacity-100" : "max-h-0 opacity-0"
-                    }`}
+                    className={`overflow-hidden border-t border-white/10 bg-neutral-950/90 backdrop-blur-2xl transition-all duration-500 lg:hidden ${mobileOpen ? "max-h-105 opacity-100" : "max-h-0 opacity-0"
+                        }`}
                 >
                     <div className="mx-auto max-w-7xl px-5 py-5 sm:px-6">
                         <div className="mb-4 flex justify-center">
                             <div className="flex overflow-hidden rounded-full border border-white/10 bg-white/5 text-xs">
                                 <button
                                     onClick={() => setLang("de")}
-                                    className={`px-3 py-1.5 transition ${
-                                        lang === "de"
+                                    className={`px-3 py-1.5 transition ${lang === "de"
                                             ? "bg-orange-400 text-black"
                                             : "text-white/70 hover:text-white"
-                                    }`}
+                                        }`}
                                 >
                                     DE
                                 </button>
                                 <button
                                     onClick={() => setLang("en")}
-                                    className={`px-3 py-1.5 transition ${
-                                        lang === "en"
+                                    className={`px-3 py-1.5 transition ${lang === "en"
                                             ? "bg-orange-400 text-black"
                                             : "text-white/70 hover:text-white"
-                                    }`}
+                                        }`}
                                 >
                                     EN
                                 </button>
