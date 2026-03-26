@@ -147,7 +147,7 @@ export default function MultiSchrankHero() {
     return (
         <section
             ref={sectionRef}
-            className="relative bg-[#0a0a0a] text-white"
+            className="relative bg-[#fff] text-black"
         >
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_30%)]" />

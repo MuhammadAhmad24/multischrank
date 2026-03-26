@@ -41,14 +41,14 @@ export default function MultiSchrankHeader() {
     }, []);
 
     return (
-        <header className="relative z-999 overflow-hidden bg-neutral-950 text-white">
+        <header className="relative z-999 overflow-hidden bg-[#009cde] text-white">
             {/* ${
                     scrolled
                         ? "border-b border-white/10 bg-neutral-950/75 backdrop-blur-2xl"
                         : "bg-neutral-950"
                 } */}
             <nav
-                className={`relative top-0 z-50 w-full transition-all duration-500 bg-neutral-950`}
+                className={`relative top-0 z-50 w-full transition-all duration-500 bg-[#009cde]`}
             >
                 <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6 lg:px-10">
                     <Link to="/" className="group relative inline-flex items-center gap-3">
