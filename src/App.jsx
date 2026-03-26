@@ -29,20 +29,22 @@ function App() {
 
             {!loading && (
                 <BrowserRouter>
-                    <ScrollToTop />
-                    <MultiSchrankHeader />
+                    <div className="app-shell">
+                        <ScrollToTop />
+                        <MultiSchrankHeader />
 
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/about" element={<About />} />
-                        <Route path="/contact" element={<Contact />} />
-                        <Route path="/catalog" element={<Catalog />} />
-                        <Route path="/Impressum" element={<Impressum />} />
-                        <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
-                        <Route path="/Terms" element={<Terms />} />
-                    </Routes>
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/about" element={<About />} />
+                            <Route path="/contact" element={<Contact />} />
+                            <Route path="/catalog" element={<Catalog />} />
+                            <Route path="/Impressum" element={<Impressum />} />
+                            <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
+                            <Route path="/Terms" element={<Terms />} />
+                        </Routes>
 
-                    <MultiSchrankFooter />
+                        <MultiSchrankFooter />
+                    </div>
                 </BrowserRouter>
             )}
         </>
